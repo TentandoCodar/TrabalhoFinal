@@ -5,7 +5,7 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Alatsi&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Poppins:300,400,600,700&display=swap');
-
+@import url('https://fonts.googleapis.com/css?family=Roboto:100&display=swap');
 
 
 
@@ -17,10 +17,12 @@
 }
 
 .nav-back-arrow{
+  display: flex;
   position: fixed;
   left: 30px;
   font-size: 30px;
   z-index: 1000px;
+  margin-top: -50;
 }
 
 .popover-content{

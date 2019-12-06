@@ -18,10 +18,10 @@
         </button>
       </a>
 
-      <ion-item></ion-item>
+
       <ion-item *ngIf="isLoggedIn">-------------- Logged Only --------------</ion-item>
 
-
+      <ion-item></ion-item>
         <div *ngIf="isLoggedIn">
           <button menuClose ion-item (click)="push('CadastroFuncPage')">
             Cadastrar Funcionário
@@ -41,12 +41,12 @@
           <button menuClose ion-item (click)="push('CadastroFornecPage')">
             Cadastrar Fornecedor
           </button>
-        </div>
+
 
 
       <ion-item>
       </ion-item>
-      
+
       <button *ngIf="isLoggedIn" menuClose ion-item (click)="logout()">
         Logout
       </button>
@@ -60,7 +60,7 @@
                   <div class="stats-item"> <img width="20px" src="../assets/icon/sun.svg" alt="">         <p> 213 lm</p> </div>
         </ion-row>
       </button>
-
+  </div>
 
     </ion-list>
 

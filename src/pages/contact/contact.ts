@@ -22,15 +22,28 @@ export class ContactPage {
 
   login(){
     this.afAuth.auth.signInWithEmailAndPassword(this.email,this.password).then((resp) => {
-      console.log("Deu boa")
+      
+      this.isLoggedIn = true;
     }).catch((err) => {
       alert("Nao foi possivel logar em nossos sistemas");
       console.log(err)
     })
   }
-
-  logout(){
-    this.isLoggedIn = false;
+  ionViewWillEnter() {
+    this.afAuth.authState.subscribe(user => {
+      try {
+        if(user.email) {
+          this.email = user.email;
+          this.isLoggedIn = true;
+        }
+        else {
+          this.isLoggedIn = false;
+        }
+      }
+      catch {
+        this.isLoggedIn = false;
+      }
+    })
   }
 
   cadFunc(){

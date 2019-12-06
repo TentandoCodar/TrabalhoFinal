@@ -15,7 +15,7 @@ import { Observable } from 'rxjs';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = TabsPage;
+  rootPage: any = 'SplashScreenPage';
   isLoggedIn: boolean = false;
 
   constructor(app: App, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public afAuth: AngularFireAuth) {
@@ -23,13 +23,13 @@ export class MyApp {
     app.viewDidEnter.subscribe((e) => {
       this.isAuth();
     })
-    
-    
-    
+
+
+
   }
 
-  
-  
+
+
 
   isAuth() {
     this.afAuth.authState.subscribe(user => {
