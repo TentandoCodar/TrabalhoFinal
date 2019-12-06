@@ -1,0 +1,72 @@
+<ion-menu side="right" type="overlay" [content]="mycontent">
+  <ion-content>
+    <ion-list>
+    ...
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav #mycontent [root]="rootPage"></ion-nav>
+
+<ion-content padding class="ficarnomeio">
+
+
+<div class="conteudoperfil">
+  <div *ngIf="isLoggedIn == false" class="">
+    <div style="text-align: center;">
+      <img src="../assets/imgs/logowaveoficial.png" alt="" height="210px" width="210px">
+    </div>
+
+    <div class="planilha">
+      <div class="lugardotitulo_form">
+<h2 class="titulo_form">LOGIN</h2>
+      </div>
+      <ion-item class="texto">
+        <ion-label position="floating"><ion-icon name="md-person"></ion-icon></ion-label>
+        <ion-input [(ngModel)]="email"></ion-input>
+      </ion-item>
+      <br>
+      <ion-item class="texto">
+        <ion-label position="floating"><ion-icon name="md-lock"></ion-icon></ion-label>
+        <ion-input type="password" [(ngModel)]="password"></ion-input>
+      </ion-item>
+      <br>
+    </div>
+    <br/><br/>
+
+    <div class="posicaobotao">
+      <button ion-button (click)="login(email, password)" class="button_style">Logar</button>
+    </div>
+
+
+
+  </div>
+
+  <div  *ngIf="isLoggedIn == true" class="">
+
+    <ion-icon menuToggle class="bolinhahome floating-options" name="md-menu"></ion-icon>
+
+
+      <div class="topo_perfil" style="text-align: center; padding-top: 30px">
+        <img src="../assets/imgs/leticia1.jpeg" alt="" height="100px" width="100px" class="img_perfil">
+        <h4>@juliamartins</h4>
+      </div>
+
+      <div class="corpo_perfil" style="text-align: center; padding-top: 30px">
+        <h2 style="font-family: 'Poppins'; font-weight: 700">INFORMAÇÕES GERAIS</h2>
+        <div style="text-align: left; padding-left: 35px">
+          <p class="texto_perfil">Nome: {{Name}}</p>
+          <p class="texto_perfil">Email: {{email}}</p>
+          <p class="texto_perfil">Telefone: {{Phone}}</p>
+          <p class="texto_perfil">Endereço: {{Address}}</p>
+          <p class="texto_perfil">Cidade: {{City}}</p>
+          <p class="texto_perfil">CEP: {{Zip}}</p>
+          <p class="texto_perfil">Número do cartão: {{CardNumber}}</p>
+        </div>
+      </div>
+        <button type="button" name="button" class="button_style"><span style="color: #000">CADASTRAR</span></button>
+
+
+
+  </div>
+</div>

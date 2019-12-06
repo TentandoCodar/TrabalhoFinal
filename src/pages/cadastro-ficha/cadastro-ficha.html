@@ -1,0 +1,318 @@
+<!--
+  Generated template for the CadastroFichaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+      <ion-icon class="nav-back-arrow" name="md-arrow-back" (click)="push()"></ion-icon>
+    <ion-title>Cadastro de Ficha</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="ficarnomeio">
+
+  <div class="planilha">
+    <div class="lugardotitulo_form">
+      <h3 class="titulo_form">CADASTRAR FICHA TÉCNICA</h3>
+    </div>
+    <div class="formulario">
+      <input type="text" class="input_form" placeholder="Referência">
+    </div>
+    <div class="formulario">
+      <input type="text" class="input_form" placeholder="Data">
+    </div>
+    <div class="formulario">
+      <input type="text" class="input_form" placeholder="Descrição da Peça">
+    </div>
+  </div>
+
+  <div class="planilha">
+    <div class="lugardotitulo_form">
+      <h3 class="titulo_form">CLIENTE</h3>
+    </div>
+    <div class="formulario">
+      <input type="number" class="input_form" placeholder="Codigo">
+    </div>
+    <div class="formulario">
+      <select class="" name="">
+<option value="[object Object]">Selecione um cliente</option>
+      </select>
+    </div>
+    <div class="formulario">
+      <input type="text" class="input_form" placeholder="Telefone">
+    </div>
+    <div class="formulario">
+      <input type="text" class="input_form" placeholder="Lacre 1">
+    </div>
+    <div class="formulario">
+      <input type="text" class="input_form" placeholder="Lacre 2">
+    </div>
+    <div class="formulario">
+      <input type="text" class="input_form" placeholder="Lacre 3">
+    </div>
+    <div class="formulario">
+      <input type="text" class="input_form" placeholder="Modelista">
+    </div>
+    <div class="formulario">
+      <input type="text" class="input_form" placeholder="Número de Produtos">
+    </div>
+    <div class="formulario">
+      <input type="text" class="input_form" placeholder="Observações">
+    </div>
+    <div class="formulario">
+      <input type="text" class="input_form" placeholder="Quantidade a ser Produzida">
+    </div>
+    <div class="formulario">
+      <input type="text" class="input_form" placeholder="Custo da Mão-de-Obra (Por Peça)">
+    </div>
+    <div class="formulario">
+      <input type="text" class="input_form" placeholder="Preço do Custo">
+    </div>
+    <div class="formulario">
+      <input type="text" class="input_form" placeholder="Divisor Padrão">
+    </div>
+    <div class="formulario">
+      <input type="text" class="input_form" placeholder="Preço de Venda">
+    </div>
+  </div>
+
+  <div class="planilha">
+    <div class="lugardotitulo_form">
+      <h3 class="titulo_form">CLIENTE</h3>
+    </div>
+    <div class="formulario">
+      <select class="" name="">
+        <option value="[object Object]">Descrição</option>
+      </select>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- <form class="border p-4 mb-4" id="formft">
+                    <div class="row"> -->
+                      <!-- <div class="col-md-10">
+                        <div class="form-group">
+                          <label>Referência</label>
+                          <input type="text" class="form-control" id="uid" readonly="">
+                        </div>
+                      </div> -->
+                      <!-- <div class="col-md-2">
+                        <div class="form-group">
+                          <label>Data</label>
+                          <input type="text" class="form-control" id="data" readonly="" required="">
+                        </div>
+                      </div> -->
+                      <!-- <div class="col-md-12">
+                        <div class="form-group">
+                          <label>Descrição da Peça</label>
+                          <input type="text" class="form-control" id="descricao" required="">
+                        </div>
+                      </div> -->
+                    <!-- </div>
+                    <hr>
+                    <h3 style="margin-left:12px">Cliente</h3>
+                    <hr>
+                    <div class="row"> -->
+                      <!-- <div class="col-md-3">
+                        <div class="form-group">
+                          <label>Codigo</label>
+                          <input type="number" class="form-control" id="codigo" readonly="" required="">
+                        </div>
+                      </div> -->
+                      <!-- <div class="col-md-3">
+                        <div class="form-group">
+                          <label>Nome</label>
+                          <select id="nome" class="form-control" onchange="attcliente();" required="">
+                            <option value="1536258991657">marcelo</option>
+
+                            <option value="1536259067883">celsinho</option>
+
+                            <option value="1536948968447">mauricio</option>
+
+                            <option value="1537473524119">João</option>
+
+                            <option value="1537991918290">roberto</option>
+
+                            <option value="1538075949583">Teste Console</option>
+
+                            <option value="1550888368533">filipemack</option>
+                          </select>
+                        </div>
+                      </div> -->
+                      <!-- <div class="col-md-3">
+                        <div class="form-group">
+                          <label>Email</label>
+                          <input type="text" class="form-control" id="email" readonly="">
+                        </div>
+                      </div> -->
+                      <!-- <div class="col-md-3">
+                        <div class="form-group">
+                          <label>Telefone</label>
+                          <input type="text" class="form-control" id="telefone" readonly="">
+                        </div>
+                      </div> -->
+                    <!-- </div>
+                    <hr>
+                    <div class="row"> -->
+                      <!-- <div class="col-md-3">
+                        <div class="form-group">
+                          <label>Lacre 1</label>
+                          <input type="text" class="form-control" id="lacre1" placeholder="">
+                        </div>
+                      </div> -->
+                      <!-- <div class="col-md-3">
+                        <div class="form-group">
+                          <label>Lacre 2</label>
+                          <input type="text" class="form-control" id="lacre2" placeholder="">
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label>Lacre 3</label>
+                          <input type="text" class="form-control" id="lacre3" placeholder="">
+                        </div>
+                      </div> -->
+                      <!-- <div class="col-md-3">
+                        <div class="form-group">
+                          <label>Modelista</label>
+                          <input type="text" class="form-control" id="modelista" required="">
+                        </div>
+                      </div> -->
+                    <!-- </div>
+                    <div class="row"> -->
+                      <!-- <div class="col-md-3">
+                        <label>Número de Produtos</label>
+                        <div class="form-group input-group">
+                          <span class="input-group-addon" id="menos"><i class="fas fa-minus fa-lg" style="color:white;"></i></span>
+                          <input type="text" class="form-control" id="numProd" readonly="">
+                          <span class="input-group-addon" id="mais"><i class="fas fa-plus fa-lg" style="color:white;"></i></span>
+                        </div>
+                      </div> -->
+                      <!-- <div class="col-md-9">
+                        <div class="form-group">
+                          <label>Observações</label>
+                          <input type="text" class="form-control" id="obs">
+                        </div>
+                      </div> -->
+                      <!-- <div class="col-md-3">
+                        <div class="form-group">
+                          <label>Quantidade a ser Produzida</label>
+                          <input type="number" onclick="this.select();" value="1" class="form-control" id="qp" onkeyup="calcQuant();" oninput="calcQuant();" required="">
+                        </div>
+                      </div> -->
+                      <!-- <div class="col-md-3">
+                        <label>Custo da Mão-de-Obra (Por Peça)</label>
+                        <div class="form-group input-group">
+                          <span class="input-group-addon">R$</span>
+                          <input type="number" class="form-control" id="cm" readonly="">
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <label>Preço do Custo</label>
+                        <div class="form-group input-group">
+                          <span class="input-group-addon">R$</span>
+                          <input type="text" class="form-control" id="pc" readonly="" required="">
+                        </div>
+                      </div> -->
+                      <!-- <div class="col-md-2">
+                        <div class="form-group">
+                          <label>Divisor Padrão</label>
+                          <input type="number" class="form-control" id="dp" readonly="">
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <label>Preço de Venda</label>
+                        <div class="form-group input-group">
+                          <span class="input-group-addon">R$</span>
+                          <input type="text" class="form-control" id="pv" readonly="" required="">
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary">Adicionar Ficha Técnica</button>
+                      </div> -->
+
+                      <!-- <div class="col-md-12">
+                        <h3>Produtos</h3>
+                        <hr>
+                        <div id="produtos">
+      <div class="row">
+        <div class="col-md-2">
+          <div class="form-group">
+            <label>Codigo do Produto</label>
+            <input type="number" class="form-control" id="codigo1" readonly="">
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            <label>Descrição</label>
+            <select id="descricao1" class="form-control" onchange="attproduto(1);"><option value="nenhum">Nada</option>
+        <option value="1537384899135">Tecido 01</option>
+
+        <option value="1537384899136">Tecido 02</option>
+
+        <option value="1537473296509">Botão 01</option>
+
+        <option value="1537552922520">Tecido 03</option>
+
+        <option value="1537558992867">Tecido Jeans</option>
+
+        <option value="1537559256389">Algodão</option>
+
+        <option value="1537897685134">Tecido 04</option>
+
+        <option value="1550888470694">Tecido Camuflado</option>
+        </select>
+          </div>
+        </div>
+        <div class="col-md-1" id="q1" style="display: none;">
+          <div class="form-group">
+            <label>Quantidade</label>
+            <input type="number" class="form-control" id="quant1" onclick="this.select();" onkeyup="calcPrec(1)" oninput="calcPrec(1)">
+          </div>
+        </div>
+        <div class="col-md-1">
+          <div class="form-group">
+            <label>Unidade</label>
+            <input type="text" class="form-control" id="u1" readonly="">
+          </div>
+        </div>
+        <div class="col-md-2">
+        <label>Preço Unitário</label>
+          <div class="form-group input-group">
+            <span class="input-group-addon">R$</span>
+            <input type="number" class="form-control" id="pu1" value="0" readonly="">
+          </div>
+        </div>
+        <div class="col-md-2" id="p1" style="display: none;">
+          <label>Preço</label>
+          <div class="form-group input-group">
+            <span class="input-group-addon">R$</span>
+            <input type="number" class="form-control" id="preco1" value="0" readonly="">
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            <label>Data de Cadastro</label>
+            <input type="text" class="form-control" id="datac1" readonly="">
+          </div>
+        </div>
+      </div>
+      <hr>
+      </div>
+                      </div>
+                    </div>
+                  </form>
+</ion-content> -->

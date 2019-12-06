@@ -1,18 +1,24 @@
-<ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
-</ion-header>
 
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3>
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
+<ion-content padding style="background-image: linear-gradient(60deg, #f8f9fa, #f8f9fa); text-align: center;">
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <ion-icon menuToggle class="bolinhahome floating-options" name="md-menu"></ion-icon>
+
+    <h1 style="font-family: 'Poppins'; font-weight: 700">AREIA E SAL</h1>
+    <br>
+    <div class="quadrado1" (click)="homeCardClick('product','231312')"></div>
+    <div class="quadrado2" (click)="homeCardClick('product','1312223')"></div>
+    <div class="quadrado3" (click)="homeCardClick('product','1123123')"></div>
+    <div class="quadrado4" (click)="homeCardClick('product','1233132')"></div>
+
+  <!-- <div class="conjuntocards">
+    <div class="cardmaior2" (click)="homeCardClick('colection','verao')"><p class="titulocolecao">Artigos<br>e Tendências</p></div>
+
+    <div class="quadrado1" (click)="homeCardClick('product','231312')"><p class="descricao">Artigo1</p></div>
+    <div class="quadrado2" (click)="homeCardClick('product','1312223')"><p class="descricao">Artigo2</p></div>
+    <div class="quadrado1" (click)="homeCardClick('product','1123123')"><p class="descricao">Artigo3</p></div>
+    <div class="quadrado2" (click)="homeCardClick('product','1233132')"><p class="descricao">Artigo4</p></div>
+  </div> -->
+
+
 </ion-content>

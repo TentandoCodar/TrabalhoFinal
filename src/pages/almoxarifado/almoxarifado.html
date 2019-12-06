@@ -1,0 +1,51 @@
+<ion-content class="fundo">
+  <ion-icon class="nav-back-arrow" name="md-arrow-back" (click)="push(TabsPage)"></ion-icon>
+
+
+
+      <ion-card>  API dos caras:  https://community.thingspeak.com/documentation%20.../api/  </ion-card>
+
+      <ion-card>
+        <ion-card-header>
+          Temperatura   <span class="stats-unit">°C </span>
+        </ion-card-header>
+        <ion-card-content>
+          <iframe height="100%" src='https://thingspeak.com/channels/756771/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&width=auto&height=auto&color=20B2AA&bgcolor=FFFFFF&offset=-3&yaxis= &xaxis= &title= '></iframe>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+        <ion-card-header>
+          Umidade  <span class="stats-unit"> %</span>
+        </ion-card-header>
+        <ion-card-content>
+          <iframe height="100%" src='https://thingspeak.com/channels/756771/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15&width=auto&height=auto&color=20B2AA&bgcolor=FFFFFF&offset=-3&yaxis= &xaxis= &title= '></iframe>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+        <ion-card-header>
+          Luminosidade <span class="stats-unit">R</span>
+        </ion-card-header>
+        <ion-card-content>
+          <iframe height="100%" src='https://thingspeak.com/channels/756771/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15&width=auto&height=auto&color=20B2AA&bgcolor=FFFFFF&offset=-3&yaxis= &xaxis= &title= '></iframe>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+        <ion-card-header>
+          Wi-Fi <span class="stats-unit">dbi</span>
+        </ion-card-header>
+        <ion-card-content>
+          <iframe height="100%" src='https://thingspeak.com/channels/756771/charts/4?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15?width=373&height=auto&color=20B2AA&bgcolor=FFFFFF&yaxis= &xaxis= &title= '></iframe>
+        </ion-card-content>
+      </ion-card>
+
+
+
+
+
+
+
+
+</ion-content>

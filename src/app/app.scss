@@ -1,16 +1,135 @@
-// http://ionicframework.com/docs/theming/
 
 
-// App Global Sass
-// --------------------------------------------------
-// Put style rules here that you want to apply globally. These
-// styles are for the entire app and not just one component.
-// Additionally, this file can be also used as an entry point
-// to import other Sass files to be included in the output CSS.
-//
-// Shared Sass variables, which can be used to adjust Ionic's
-// default Sass variables, belong in "theme/variables.scss".
-//
-// To declare rules for a specific mode, create a child rule
-// for the .md, .ios, or .wp mode classes. The mode class is
-// automatically applied to the <body> element in the app.
+//Global CSS configs
+
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Alatsi&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,600,700&display=swap');
+
+
+
+
+.floating-options{
+  position: fixed;
+  right: 30px;
+  font-size: 30px;
+  z-index: 1000px;
+}
+
+.nav-back-arrow{
+  position: fixed;
+  left: 30px;
+  font-size: 30px;
+  z-index: 1000px;
+}
+
+.popover-content{
+  top: 10px                     !important;
+  left: auto                    !important;
+  right: 10px                   !important;
+  width: 100px                  !important;
+  transform-origin: right top   !important;
+}
+
+.button_style{
+  border: 2px solid rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0);
+  font-family: 'Poppins';
+  font-weight: 700;
+  font-size: 17px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.corpo_perfil{
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 5%;
+  background-color: #fff;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  box-shadow: 3px 3px 14px rgba(0, 0, 0, 0.1);
+}
+
+
+.ficarnomeio{
+  text-align: center;
+  background: #f9f8fa;
+}
+
+
+.img_perfil{
+  border-radius: 100%;
+  border: 2px solid white;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.titulo_form{
+  font-family: 'Poppins';
+  font-weight: 700;
+}
+
+.lugardotitulo_form{
+padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.input_form{
+  background-color: rgba(0, 0, 0, 0);
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: rgba(0, 0, 0, 1) solid 1px;
+  width: 80%;
+}
+
+.formulario{
+  margin-top: 30px;
+  margin-bottom:  30px;
+}
+
+.planilha{
+  margin-bottom: 5%;
+  padding-left: 5%;
+  padding-right: 5%;
+  background-color: #fff;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  box-shadow: 3px 3px 14px rgba(0, 0, 0, 0.1);
+  font-family: 'Raleway';
+}
+
+.stats-header{
+  font-size: 17px;
+}
+
+.stats-container{
+  margin-bottom: 0px;
+}
+
+.stats-unit{
+  color: #aaa;
+}
+
+.stats-group{
+  width: 100%;
+  margin-top: 10px;
+  width: 100%;
+  align-items: right;
+}
+
+.stats-item{
+  margin: 0px 5px;
+  align-items: center;
+  text-align: center;
+}
+
+.conteudoperfil{
+  background: rgba(0, 0, 0, 0);
+}
+
+.texto_perfil{
+  font-family: 'Poppins';
+}

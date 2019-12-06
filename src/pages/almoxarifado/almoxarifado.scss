@@ -1,0 +1,25 @@
+page-almoxarifado {
+  .fundo{
+    // background-color: #f2f2f2;
+  }
+
+
+  .card iframe {
+    overflow-y: scroll;
+     border: 0;
+     height: 100%;
+     left: 0;
+     // position: absolute;
+     top: 0;
+     width: 100%;
+     zoom: 1.75;
+  }
+
+
+ion-card-header{
+  padding-bottom: 0px ;
+}
+
+
+
+}

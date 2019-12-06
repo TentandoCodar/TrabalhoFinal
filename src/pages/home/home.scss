@@ -1,3 +1,93 @@
-page-home {
+  page-home {
+    .cardmaior{
+      width: 100%;
+      height: 20%;
+      background-color: #8ca8c0;
+      margin-bottom: 8%;
+      background-color: rgba(255, 255, 255, 0.2);
+      background-size: cover;
+      box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    }
 
+    .cardmaior2{
+      width: 100%;
+      height: 30%;
+      background-color: #8ca8c0;
+      margin-bottom: 8%;
+      margin-top: -5%;
+      background-image: url("../../assets/imgs/colecao2.png");
+      background-size: cover;
+      box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .quadrado1{
+      width: 47.5%;
+      height: 40%;
+      background-color: #8ca8c0;
+      margin-right: 2.5%;
+      float: left;
+      margin-bottom: 7%;
+      box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+      background-image: url('../../assets/imgs/leticia1.jpeg');
+      background-size: cover;
+    }
+
+    .quadrado2{
+      width: 47.5%;
+      height: 40%;
+      background-color: #8ca8c0;
+      margin-left: 2.5%;
+      float: left;
+      margin-bottom: 7%;
+      box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+      background-image: url('../../assets/imgs/leticia2.jpeg');
+      background-size: cover;
+    }
+
+    .quadrado3{
+      width: 47.5%;
+      height: 40%;
+      background-color: #8ca8c0;
+      margin-right: 2.5%;
+      float: left;
+      margin-bottom: 7%;
+      box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+      background-image: url('../../assets/imgs/leticia3.jpeg');
+      background-size: cover;
+    }
+
+    .quadrado4{
+      width: 47.5%;
+      height: 40%;
+      background-color: #8ca8c0;
+      margin-left: 2.5%;
+      float: left;
+      margin-bottom: 7%;
+      box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+      background-image: url('../../assets/imgs/leticia4.jpeg');
+      background-size: cover;
+    }
+
+    .bolinhahome{
+      color: #000;
+      height: auto;
+    }
+
+    .titulocolecao{
+      text-align: center;
+      font-family: 'Alatsi';
+      font-size: 26px;
+      color: #fff;
+      padding-top: 8%;
+      padding-bottom: 7%;
+    }
+}
+
+.bolinhacontact{
+  color: #fff;
+  padding-top: 5px;
+}
+
+.conjuntocards{
+  overflow: hidden;
 }
