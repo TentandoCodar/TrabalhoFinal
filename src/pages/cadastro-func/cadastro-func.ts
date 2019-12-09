@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController  } from 'ionic-angular';
 import {AngularFireAuth} from 'angularfire2/auth';
 import { TabsPage } from '../tabs/tabs';
 
@@ -19,8 +19,8 @@ export class CadastroFuncPage {
   email:string;
   password:string;
   name:string;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public afAuth: AngularFireAuth) {
-    
+  constructor(public navCtrl: NavController, public navParams: NavParams, public afAuth: AngularFireAuth, public viewCtrl: ViewController) {
+
   }
 
   ionViewDidLoad() {
@@ -29,12 +29,12 @@ export class CadastroFuncPage {
 
 
   push(){
-    this.navCtrl.push(TabsPage);
+    this.viewCtrl.dismiss();
   }
 
   signUp() {
     this.afAuth.auth.createUserWithEmailAndPassword(this.email,this.password).then((resp:any) => {
-      
+
     }).catch((err) => {
 
     })

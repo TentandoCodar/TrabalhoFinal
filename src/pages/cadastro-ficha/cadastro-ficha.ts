@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import firebase from 'firebase';
 import { TabsPage } from '../tabs/tabs';
 
@@ -33,7 +33,7 @@ export class CadastroFichaPage {
   priceCust:number;
   standartDivisor:number;
   salePrice:number;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
     this.date = new Date().toLocaleDateString('pt-BR');
     this.firestore = firebase.firestore();
     this.firestore.collection('Clients').onSnapshot((snapshot) => {
@@ -46,17 +46,17 @@ export class CadastroFichaPage {
 
       this.clientCode = this.clients[0].code;
       this.clientPhone = this.clients[0].phone;
-      
+
     })
   }
 
   ionViewDidLoad() {
-    
+
   }
 
 
   push(){
-    this.navCtrl.push(TabsPage);
+    this.viewCtrl.dismiss();
   }
 
   changeClient() {

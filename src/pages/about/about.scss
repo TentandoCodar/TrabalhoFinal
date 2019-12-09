@@ -1,3 +1,45 @@
 page-about {
+  .ladoesquerdo{
+    float: left;
+    width: 50%;
+    padding-left: 3%;
+    padding-right: 3%;
+  }
 
+  .ladodireito{
+    float: right;
+    width: 50%;
+    padding-left: 3%;
+    padding-right: 3%;
+  }
+
+  .card{
+    height: 50%;
+  }
+
+  .preco{
+    text-align: center;
+    font-family: 'Poppins';
+  }
+
+  .introducao_produtos{
+    height: 25%;
+    width: 95%;
+    margin-right: 2.5%;
+    margin-left: 2.5%;
+    margin-top: 0px;
+    background-color: #a3c8e6;
+  }
+
+  .titulo_produtos{
+    font-family: 'Poppins';
+    font-size: 20px;
+    float: center;
+  }
+
+  .titulo_produtos2{
+    font-family: 'Poppins';
+    font-size: 18px;
+    float: center;
+  }
 }

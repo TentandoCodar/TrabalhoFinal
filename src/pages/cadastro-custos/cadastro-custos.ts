@@ -57,6 +57,6 @@ export class CadastroCustosPage {
 
 
   push(){
-    this.navCtrl.push(TabsPage);
+    this.navCtrl.push(TabsPage);  
   }
 }

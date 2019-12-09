@@ -23,23 +23,23 @@
 
       <ion-item></ion-item>
         <div *ngIf="isLoggedIn">
-          <button menuClose ion-item (click)="push('CadastroFuncPage')">
+          <button menuClose ion-item (click)="pushList('CadastroFuncPage')">
             Cadastrar Funcionário
           </button>
-          <button menuClose ion-item (click)="push('CadastroFichaPage')">
+          <button menuClose ion-item (click)="pushList('CadastroFichaPage')">
             Cadastrar Ficha Técnica
+          </button>
+          <button menuClose ion-item (click)="pushList('CadastroInsumoPage')">
+            Cadastrar Insumo
+          </button>
+          <button menuClose ion-item (click)="pushList('CadastroLojasPage')">
+            Cadastrar Franquia
+          </button>
+          <button menuClose ion-item (click)="pushList('CadastroFornecPage')">
+            Cadastrar Fornecedor
           </button>
           <button menuClose ion-item (click)="push('CadastroCustosPage')">
             Cadastrar Custo
-          </button>
-          <button menuClose ion-item (click)="push('CadastroInsumoPage')">
-            Cadastrar Insumo
-          </button>
-          <button menuClose ion-item (click)="push('CadastroLojasPage')">
-            Cadastrar Franquia
-          </button>
-          <button menuClose ion-item (click)="push('CadastroFornecPage')">
-            Cadastrar Fornecedor
           </button>
 
 

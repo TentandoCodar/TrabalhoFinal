@@ -29,7 +29,7 @@
     <ion-item>
       <ion-select style="height: 20px;"  (ionChange)="changeProvider()" [(ngModel)]="providerId">
         <ion-option *ngFor="let provider of providers" [value]="provider.id">{{provider.name}}</ion-option>
-        
+
       </ion-select>
     </ion-item>
     <div class="formulario">
@@ -38,5 +38,5 @@
   </div>
 
   <button (click)="signUpProduct()" type="button" name="button" class="button_style">CADASTRAR</button>
-
+    <button (click)="push()" class="button_style" style="background-color: #000; color: #fff">CANCELAR</button>
 </ion-content>

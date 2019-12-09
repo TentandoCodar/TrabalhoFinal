@@ -38,7 +38,7 @@ export class MyApp {
       firebase.initializeApp(firebaseConfig);
     }
     catch {
-      
+
     }
 
 
@@ -89,5 +89,9 @@ export class MyApp {
 
     push(page: string){
       this.nav.setRoot(page);
+    }
+
+    pushList(classToList: string){
+      this.nav.setRoot('ListPage',{ classToList: classToList });
     }
 }

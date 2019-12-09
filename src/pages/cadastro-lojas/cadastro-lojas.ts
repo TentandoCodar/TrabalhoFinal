@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import firebase from 'firebase';
 import { TabsPage } from '../tabs/tabs';
 
@@ -20,7 +20,7 @@ export class CadastroLojasPage {
   email:string;
   phone:number;
   cnpj:number;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
   }
 
   ionViewDidLoad() {
@@ -53,11 +53,11 @@ export class CadastroLojasPage {
 
       })
     }).catch((err) => {
-      
+
     })
   }
 
   push(){
-    this.navCtrl.push(TabsPage);
+    this.viewCtrl.dismiss();
   }
 }

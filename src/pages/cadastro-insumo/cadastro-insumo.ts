@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import firebase from 'firebase';
 import { TabsPage } from '../tabs/tabs';
 
@@ -22,21 +22,21 @@ export class CadastroInsumoPage {
   providers = [{}];
   providerId:number;
   providerCode:string;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
     const firestore = firebase.firestore();
 
     firestore.collection('Providers').onSnapshot((snapshot) => {
       this.providers = [];
       let count = 0;
       snapshot.forEach(doc => {
-        
+
         this.providers.push({id:count, name:doc.data().name, code: doc.data().code})
         count++;
       })
 
       this.providerCode = this.providers[0].code;
-      
-      
+
+
     })
   }
 
@@ -46,7 +46,7 @@ export class CadastroInsumoPage {
   changeProvider() {
     this.providerCode = this.providers[this.providerId + 1].code;
     console.log(this.providers[this.providerId + 1])
-    
+
   }
 
   signUpProduct() {
@@ -55,7 +55,7 @@ export class CadastroInsumoPage {
     let unity = this.unity;
     let price = this.price;
     let providerCode = this.providerCode;
-    
+
     firestore.collection('Products').add({
       description,
       unity,
@@ -70,7 +70,7 @@ export class CadastroInsumoPage {
         code:resp.id
       }).then(() => {
         this.unity = "";
-        
+
         this.price = 0;
         this.description = "";
       }).catch(() => {
@@ -82,6 +82,6 @@ export class CadastroInsumoPage {
   }
 
   push(){
-    this.navCtrl.push(TabsPage);
+    this.viewCtrl.dismiss();
   }
 }

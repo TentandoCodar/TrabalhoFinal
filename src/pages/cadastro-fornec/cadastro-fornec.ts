@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController  } from 'ionic-angular';
 import firebase from 'firebase';
 import { TabsPage } from '../tabs/tabs';
 
@@ -20,7 +20,7 @@ export class CadastroFornecPage {
   name:string;
   cnpj:number;
   phone:number;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
   }
 
   ionViewDidLoad() {
@@ -48,7 +48,7 @@ export class CadastroFornecPage {
       }).then((resp) => {
 
       }).catch((err) => {
-        
+
       })
     }).catch((err) => {
 
@@ -56,6 +56,6 @@ export class CadastroFornecPage {
   }
 
   push(){
-    this.navCtrl.push(TabsPage);
+    this.viewCtrl.dismiss();
   }
 }
