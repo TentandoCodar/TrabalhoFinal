@@ -34,7 +34,7 @@ export class CadastroInsumoPage {
         count++;
       })
 
-      this.providerCode = this.providers[0].code;
+      //this.providerCode = this.providers[0].code;
 
 
     })
@@ -44,7 +44,7 @@ export class CadastroInsumoPage {
     console.log('ionViewDidLoad CadastroInsumoPage');
   }
   changeProvider() {
-    this.providerCode = this.providers[this.providerId + 1].code;
+    //this.providerCode = this.providers[this.providerId + 1].code;
     console.log(this.providers[this.providerId + 1])
 
   }

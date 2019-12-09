@@ -23,23 +23,25 @@ page-about {
   }
 
   .introducao_produtos{
-    height: 25%;
     width: 95%;
     margin-right: 2.5%;
     margin-left: 2.5%;
-    margin-top: 0px;
-    background-color: #a3c8e6;
+    padding-top: 2%;
+    font-weight: 700;
+
   }
 
   .titulo_produtos{
-    font-family: 'Poppins';
+    font-family: 'Raleway';
     font-size: 20px;
     float: center;
   }
 
   .titulo_produtos2{
-    font-family: 'Poppins';
+    font-family: 'Raleway';
     font-size: 18px;
     float: center;
+    font-weight: 700;
+
   }
 }

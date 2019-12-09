@@ -44,8 +44,8 @@ export class CadastroFichaPage {
         count++;
       })
 
-      this.clientCode = this.clients[0].code;
-      this.clientPhone = this.clients[0].phone;
+      /**this.clientCode = this.clients[0].code;
+      this.clientPhone = this.clients[0].phone;*/
 
     })
   }
@@ -60,8 +60,8 @@ export class CadastroFichaPage {
   }
 
   changeClient() {
-    this.clientCode = this.clients[this.clientIndex].code;
-    this.clientPhone = this.clients[this.clientIndex].phone;
+    /*this.clientCode = this.clients[this.clientIndex].code;
+    this.clientPhone = this.clients[this.clientIndex].phone;*/
   }
 
   signUp() {

@@ -8,48 +8,52 @@
   <ion-content>
     <ion-list>
 
-      <button menuClose ion-item (click)="push('PerfilPage')">
+
+
+    <div *ngIf="isLoggedIn">
+      <button menuClose ion-item (click)="pushList('CadastroFuncPage')">
+        Funcionários
+      </button>
+      <button menuClose ion-item (click)="pushList('CadastroFichaPage')">
+        Fichas Técnicas
+      </button>
+      <button menuClose ion-item (click)="pushList('CadastroInsumoPage')">
+        Insumos
+      </button>
+      <button menuClose ion-item (click)="pushList('CadastroLojasPage')">
+        Franquias
+      </button>
+      <button menuClose ion-item (click)="pushList('CadastroFornecPage')">
+        Fornecedors
+      </button>
+      <button menuClose ion-item (click)="push('CadastroCustosPage')">
+        Cadastrar Custos
+      </button>
+
+
+
+        <ion-item>
+        <br><br><br><br><br>
+        </ion-item>
+
+      <button menuClose ion-item (click)="push('SobrePage')">
         Sobre
       </button>
 
       <a  href="#" class="cadastrar" onclick="window.open('https://www.youtube.com/watch?v=Hof1dOoqbz0', '_system', 'location=yes'); return false;" >
         <button menuClose ion-item>
-          Contato
+          Contato   <ion-icon style="font-size: 1.0em; color: #aaa; margin-left: 2px;" name="ios-link"></ion-icon>
         </button>
       </a>
-
-
-      <ion-item *ngIf="isLoggedIn">-------------- Logged Only --------------</ion-item>
-
-      <ion-item></ion-item>
-        <div *ngIf="isLoggedIn">
-          <button menuClose ion-item (click)="pushList('CadastroFuncPage')">
-            Cadastrar Funcionário
-          </button>
-          <button menuClose ion-item (click)="pushList('CadastroFichaPage')">
-            Cadastrar Ficha Técnica
-          </button>
-          <button menuClose ion-item (click)="pushList('CadastroInsumoPage')">
-            Cadastrar Insumo
-          </button>
-          <button menuClose ion-item (click)="pushList('CadastroLojasPage')">
-            Cadastrar Franquia
-          </button>
-          <button menuClose ion-item (click)="pushList('CadastroFornecPage')">
-            Cadastrar Fornecedor
-          </button>
-          <button menuClose ion-item (click)="push('CadastroCustosPage')">
-            Cadastrar Custo
-          </button>
-
-
-
-      <ion-item>
-      </ion-item>
 
       <button *ngIf="isLoggedIn" menuClose ion-item (click)="logout()">
         Logout
       </button>
+
+      <ion-item>
+
+      </ion-item>
+
 
       <button class="stats-container" menuClose ion-item (click)="push('AlmoxarifadoPage')">
         <span class="stats-header" >  Almoxarifado </span>

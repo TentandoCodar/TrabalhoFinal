@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { TabsPage } from '../tabs/tabs';
+
 
 /**
  * Generated class for the ListPage page.
@@ -50,6 +52,10 @@ export class ListPage {
     console.log('ionViewDidLoad ListPage');
   }
 
+
+  back(){
+    this.navCtrl.push(TabsPage);
+  }
 
   cadModal(itemClass:string, itemId: string) {
    let profileModal = this.modalCtrl.create(this.classToList, { itemId: itemId });
