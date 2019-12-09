@@ -48,23 +48,18 @@
 
 
       <div class="topo_perfil" style="text-align: center; padding-top: 30px">
-        <img src="../assets/imgs/leticia1.jpeg" alt="" height="100px" width="100px" class="img_perfil">
-        <h4>@juliamartins</h4>
+        <img [src]="imageUrl" alt="" height="100px" width="100px" class="img_perfil">
+        <h4>@{{name}}</h4>
       </div>
 
       <div class="corpo_perfil" style="text-align: center; padding-top: 30px">
         <h2 style="font-family: 'Poppins'; font-weight: 700">INFORMAÇÕES GERAIS</h2>
         <div style="text-align: left; padding-left: 35px">
-          <p class="texto_perfil">Nome: {{Name}}</p>
+          <p class="texto_perfil">Nome: {{name}}</p>
           <p class="texto_perfil">Email: {{email}}</p>
-          <p class="texto_perfil">Telefone: {{Phone}}</p>
-          <p class="texto_perfil">Endereço: {{Address}}</p>
-          <p class="texto_perfil">Cidade: {{City}}</p>
-          <p class="texto_perfil">CEP: {{Zip}}</p>
-          <p class="texto_perfil">Número do cartão: {{CardNumber}}</p>
         </div>
       </div>
-        <button type="button" name="button" class="button_style"><span style="color: #000">CADASTRAR</span></button>
+      
 
 
 

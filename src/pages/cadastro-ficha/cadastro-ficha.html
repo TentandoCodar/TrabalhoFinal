@@ -21,7 +21,7 @@
       <input type="text" class="input_form" placeholder="Referência">
     </div>
     <div class="formulario">
-      <input type="text" class="input_form" placeholder="Data">
+      <input disabled [(ngModel)]="date" type="text" class="input_form" placeholder="Data">
     </div>
     <div class="formulario">
       <input type="text" class="input_form" placeholder="Descrição da Peça">
@@ -33,52 +33,56 @@
       <h3 class="titulo_form">CLIENTE</h3>
     </div>
     <div class="formulario">
-      <input type="number" class="input_form" placeholder="Codigo">
+      <input disabled [(ngModel)]="clientCode" type="text" class="input_form" placeholder="Codigo">
     </div>
     <div class="formulario">
-      <select class="" name="">
-<option value="[object Object]">Selecione um cliente</option>
-      </select>
+      <ion-item>
+        <ion-select style="height: 20px;"  (ionChange)="changeClient()" [(ngModel)]="clientIndex">
+          <ion-option *ngFor="let client of clients" [value]="client.id">{{client.name}}</ion-option>
+          
+        </ion-select>
+      </ion-item>
     </div>
     <div class="formulario">
-      <input type="text" class="input_form" placeholder="Telefone">
+      <input disabled [(ngModel)]="clientPhone" type="text" class="input_form" placeholder="Telefone">
     </div>
     <div class="formulario">
-      <input type="text" class="input_form" placeholder="Lacre 1">
+      <input [(ngModel)]="seal1" type="text" class="input_form" placeholder="Lacre 1">
     </div>
     <div class="formulario">
-      <input type="text" class="input_form" placeholder="Lacre 2">
+      <input [(ngModel)]="seal2" type="text" class="input_form" placeholder="Lacre 2">
     </div>
     <div class="formulario">
-      <input type="text" class="input_form" placeholder="Lacre 3">
+      <input [(ngModel)]="seal3" type="text" class="input_form" placeholder="Lacre 3">
     </div>
     <div class="formulario">
-      <input type="text" class="input_form" placeholder="Modelista">
+      <input [(ngModel)]="modelist" type="text" class="input_form" placeholder="Modelista">
     </div>
     <div class="formulario">
-      <input type="text" class="input_form" placeholder="Número de Produtos">
+      <input [(ngModel)]="productAmount" type="text" class="input_form" placeholder="Número de Produtos">
     </div>
     <div class="formulario">
-      <input type="text" class="input_form" placeholder="Observações">
+      <input [(ngModel)]="observations" type="text" class="input_form" placeholder="Observações">
     </div>
     <div class="formulario">
-      <input type="text" class="input_form" placeholder="Quantidade a ser Produzida">
+      <input [(ngModel)]="productionAmount" type="text" class="input_form" placeholder="Quantidade a ser Produzida">
     </div>
     <div class="formulario">
-      <input type="text" class="input_form" placeholder="Custo da Mão-de-Obra (Por Peça)">
+      <input [(ngModel)]="laborCust" type="text" class="input_form" placeholder="Custo da Mão-de-Obra (Por Peça)">
     </div>
     <div class="formulario">
-      <input type="text" class="input_form" placeholder="Preço do Custo">
+      <input [(ngModel)]="priceCust" type="text" class="input_form" placeholder="Preço do Custo">
     </div>
     <div class="formulario">
-      <input type="text" class="input_form" placeholder="Divisor Padrão">
+      <input [(ngModel)]="standartDivisor" type="text" class="input_form" placeholder="Divisor Padrão">
     </div>
     <div class="formulario">
-      <input type="text" class="input_form" placeholder="Preço de Venda">
+      <input [(ngModel)]="salePrice" type="text" class="input_form" placeholder="Preço de Venda">
     </div>
+    <button (click)="signUp()" type="submit" class="button_style">CADASTRAR</button>
   </div>
 
-  <div class="planilha">
+  <!--<div class="planilha">
     <div class="lugardotitulo_form">
       <h3 class="titulo_form">CLIENTE</h3>
     </div>
@@ -87,7 +91,7 @@
         <option value="[object Object]">Descrição</option>
       </select>
     </div>
-  </div>
+  </div> 
 
 
 
@@ -101,7 +105,7 @@
 
 
 
-  <!-- <form class="border p-4 mb-4" id="formft">
+   <form class="border p-4 mb-4" id="formft">
                     <div class="row"> -->
                       <!-- <div class="col-md-10">
                         <div class="form-group">

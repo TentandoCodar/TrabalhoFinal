@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import firebase from 'firebase';
 import { TabsPage } from '../tabs/tabs';
 
 /**
@@ -16,14 +16,70 @@ import { TabsPage } from '../tabs/tabs';
   templateUrl: 'cadastro-insumo.html',
 })
 export class CadastroInsumoPage {
-
+  description:string;
+  unity:string;
+  price:number;
+  providers = [{}];
+  providerId:number;
+  providerCode:string;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    const firestore = firebase.firestore();
+
+    firestore.collection('Providers').onSnapshot((snapshot) => {
+      this.providers = [];
+      let count = 0;
+      snapshot.forEach(doc => {
+        
+        this.providers.push({id:count, name:doc.data().name, code: doc.data().code})
+        count++;
+      })
+
+      this.providerCode = this.providers[0].code;
+      
+      
+    })
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CadastroInsumoPage');
   }
+  changeProvider() {
+    this.providerCode = this.providers[this.providerId + 1].code;
+    console.log(this.providers[this.providerId + 1])
+    
+  }
 
+  signUpProduct() {
+    const firestore = firebase.firestore();
+    let description = this.description;
+    let unity = this.unity;
+    let price = this.price;
+    let providerCode = this.providerCode;
+    
+    firestore.collection('Products').add({
+      description,
+      unity,
+      price,
+      providerCode
+    }).then((resp) => {
+      firestore.collection('Products').doc(resp.id).set({
+        name:description,
+        unity,
+        price,
+        providerCode,
+        code:resp.id
+      }).then(() => {
+        this.unity = "";
+        
+        this.price = 0;
+        this.description = "";
+      }).catch(() => {
+        console.log("Error")
+      })
+    }).catch((err) => {
+      console.log(err)
+    })
+  }
 
   push(){
     this.navCtrl.push(TabsPage);

@@ -18,21 +18,19 @@
       <h2 class="titulo_form">CADASTRAR FRANQUIA</h2>
     </div>
     <div class="formulario">
-      <input type="text" class="input_form" placeholder="Nome" required="">
+      <input [(ngModel)]="name" type="text" class="input_form" placeholder="Nome" required="">
     </div>
     <div class="formulario">
-      <input type="text" class="input_form" placeholder="Email" required="">
+      <input [(ngModel)]="email" type="text" class="input_form" placeholder="Email" required="">
     </div>
     <div class="formulario">
-      <input type="text" class="input_form" placeholder="Telefone" required="">
+      <input [(ngModel)]="phone" type="text" class="input_form" placeholder="Telefone" required="">
     </div>
     <div class="formulario">
-      <input type="text" class="input_form" placeholder="Telefone" required="">
+      <input [(ngModel)]="cnpj" type="text" class="input_form" placeholder="CNPJ" required="">
     </div>
-    <div class="formulario">
-      <input type="text" class="input_form" placeholder="Codigo do Fornecedor" required="">
-    </div>
+    
   </div>
 
-  <button type="button" name="button" class="button_style">CADASTRAR</button>
+  <button (click)="signUpClient()" type="button" name="button" class="button_style">CADASTRAR</button>
 </ion-content>

@@ -5,9 +5,13 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar>
-      <ion-icon class="nav-back-arrow" name="md-arrow-back" (click)="push()"></ion-icon>
-    <ion-title>Cadastro de Funcionário</ion-title>
+  <ion-navbar style="background: #000;" class="NavBar">
+    <ion-buttons>
+      <button>
+        <ion-icon (click)="push()" name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title class="Title">Cadastro de Funcionário</ion-title>
   </ion-navbar>
 </ion-header>
 

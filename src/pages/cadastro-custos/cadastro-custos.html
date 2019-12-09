@@ -7,7 +7,7 @@
 <ion-header>
   <ion-navbar>
       <ion-icon class="nav-back-arrow" name="md-arrow-back" (click)="push()"></ion-icon>
-    <ion-title>Cadastro de Custos</ion-title>
+    <ion-title>Recuperar Custos</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -16,43 +16,43 @@
 
     <div class="planilha">
       <div class="lugardotitulo_form">
-        <h3 class="titulo_form">CADASTRAR CUSTOS</h3>
+        <h3 class="titulo_form">Recuperar Custos</h3>
       </div>
       <div class="formulario">
-        <input type="number" class="input_form" placeholder="Retirada (%)">
+        <input [(ngModel)]="withdrawal" type="number" class="input_form" placeholder="Retirada (%)">
       </div>
       <div class="formulario">
-        <input type="number" class="input_form" placeholder="Impostos (%)">
+        <input [(ngModel)]="theft" type="number" class="input_form" placeholder="Impostos (%)">
       </div>
       <div class="formulario">
-        <input type="number" class="input_form" placeholder="Despesas Operacionais (%)">
+        <input [(ngModel)]="operationalExpenses" type="number" class="input_form" placeholder="Despesas Operacionais (%)">
       </div>
       <div class="formulario">
-        <input type="number" class="input_form" placeholder="Despesas Administrativas (%)">
+        <input [(ngModel)]="administrativeExpenses" type="number" class="input_form" placeholder="Despesas Administrativas (%)">
       </div>
       <div class="formulario">
-        <input type="number" class="input_form" placeholder="Despesas Financeiras (%)">
+        <input [(ngModel)]="financialExpenses" type="number" class="input_form" placeholder="Despesas Financeiras (%)">
       </div>
       <div class="formulario">
-        <input type="number" class="input_form" placeholder="Despesas Diversas (%)">
+        <input [(ngModel)]="miscellaneousExpenses" type="number" class="input_form" placeholder="Despesas Diversas (%)">
       </div>
       <div class="formulario">
-        <input type="number" class="input_form" placeholder="Comissões (%)">
+        <input [(ngModel)]="comissions" type="number" class="input_form" placeholder="Comissões (%)">
       </div>
       <div class="formulario">
-        <input type="number" class="input_form" placeholder="Investimentos (%)">
+        <input [(ngModel)]="investment" type="number" class="input_form" placeholder="Investimentos (%)">
       </div>
       <div class="formulario">
-        <input type="number" class="input_form" placeholder="Transportes/Fretes (%)">
+        <input [(ngModel)]="freight" type="number" class="input_form" placeholder="Transportes/Fretes (%)">
       </div>
       <div class="formulario">
-        <input type="number" class="input_form" placeholder="Custos Fixos (%)">
+        <input [(ngModel)]="fixedCosts" type="number" class="input_form" placeholder="Custos Fixos (%)">
       </div>
       <div class="formulario">
-        <input type="number" class="input_form" placeholder="Margem de Lucro (%)">
+        <input [(ngModel)]="profitMargin" type="number" class="input_form" placeholder="Margem de Lucro (%)">
       </div>
       <div class="formulario">
-        <input type="number" class="input_form" placeholder="Total">
+        <input [(ngModel)]="total" type="number" class="input_form" placeholder="Total">
       </div>
     </div>
 

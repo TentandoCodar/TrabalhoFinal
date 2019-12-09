@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import firebase from 'firebase';
 import { TabsPage } from '../tabs/tabs';
 
 /**
@@ -16,12 +16,45 @@ import { TabsPage } from '../tabs/tabs';
   templateUrl: 'cadastro-lojas.html',
 })
 export class CadastroLojasPage {
-
+  name:string;
+  email:string;
+  phone:number;
+  cnpj:number;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CadastroLojasPage');
+  }
+
+  signUpClient() {
+    const name = this.name;
+    const email = this.email;
+    const phone = this.phone;
+    const cnpj = this.cnpj;
+
+    const firestore = firebase.firestore();
+
+    firestore.collection('Clients').add({
+      name,
+      email,
+      phone,
+      cnpj
+    }).then((resp) => {
+      firestore.collection('Clients').doc(resp.id).set({
+        name,
+        email,
+        phone,
+        cnpj,
+        code:resp.id
+      }).then((resp) => {
+
+      }).catch((err) => {
+
+      })
+    }).catch((err) => {
+      
+    })
   }
 
   push(){

@@ -3,6 +3,7 @@ import { Nav, Platform, NavController, App } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {AngularFireAuth} from 'angularfire2/auth';
+import firebase from 'firebase';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { Observable } from 'rxjs';
@@ -23,7 +24,22 @@ export class MyApp {
     app.viewDidEnter.subscribe((e) => {
       this.isAuth();
     })
-
+    try {
+      const firebaseConfig = {
+        apiKey: "AIzaSyCLRhF3Ffsun4v-AfArooB47Eeha7EyWTU",
+        authDomain: "tccwave.firebaseapp.com",
+        databaseURL: "https://tccwave.firebaseio.com",
+        projectId: "tccwave",
+        storageBucket: "tccwave.appspot.com",
+        messagingSenderId: "47170140012",
+        appId: "1:47170140012:web:a1f9377ff3223c1235a549"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    }
+    catch {
+      
+    }
 
 
   }

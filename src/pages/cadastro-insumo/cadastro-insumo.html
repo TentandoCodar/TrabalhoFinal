@@ -18,24 +18,25 @@
       <h2 class="titulo_form">CADASTRAR INSUMO</h2>
     </div>
     <div class="formulario">
-      <input type="text" class="input_form" placeholder="Descrição" required="">
+      <input [(ngModel)]="description" type="text" class="input_form" placeholder="Descrição" required="">
     </div>
     <div class="formulario">
-      <input type="text" class="input_form" placeholder="Unidade" required="">
+      <input [(ngModel)]="unity" type="text" class="input_form" placeholder="Unidade" required="">
     </div>
     <div class="formulario">
-      <input type="text" class="input_form" placeholder="Preço Unitário" required="">
+      <input [(ngModel)]="price"  type="text" class="input_form" placeholder="Preço Unitário" required="">
     </div>
+    <ion-item>
+      <ion-select style="height: 20px;"  (ionChange)="changeProvider()" [(ngModel)]="providerId">
+        <ion-option *ngFor="let provider of providers" [value]="provider.id">{{provider.name}}</ion-option>
+        
+      </ion-select>
+    </ion-item>
     <div class="formulario">
-      <select class="" name="">
-<option value="[object Object]">Fornecedor</option>
-      </select>
-    </div>
-    <div class="formulario">
-<input type="text" class="input_form" placeholder="Codigo do Fornecedor" required="">
+      <input [(ngModel)]="providerCode" type="text" class="input_form" placeholder="Codigo do Fornecedor" required="">
     </div>
   </div>
 
-  <button type="button" name="button" class="button_style">CADASTRAR</button>
+  <button (click)="signUpProduct()" type="button" name="button" class="button_style">CADASTRAR</button>
 
 </ion-content>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, PopoverController, NavParams } from 'ionic-angular';
 import {AngularFireAuth} from 'angularfire2/auth';
+import firebase from 'firebase';
 
 @Component({
   selector: 'page-contact',
@@ -9,7 +10,9 @@ import {AngularFireAuth} from 'angularfire2/auth';
 export class ContactPage {
   email:string;
   password:string;
+  name:string;
   isLoggedIn: boolean = false;
+  imageUrl = "";
 
   constructor(public popoverCtrl: PopoverController, public navCtrl: NavController, public navParams: NavParams, public afAuth: AngularFireAuth) {
   }
@@ -30,11 +33,27 @@ export class ContactPage {
     })
   }
   ionViewWillEnter() {
+    
     this.afAuth.authState.subscribe(user => {
+      
       try {
         if(user.email) {
+          
           this.email = user.email;
           this.isLoggedIn = true;
+          const firestore = firebase.firestore();
+          firestore.collection('Users').where("email", "==", this.email).onSnapshot(snapshot => {
+            snapshot.forEach(doc => {
+              
+              this.name = doc.data().name
+              if(doc.data().image) {
+                this.imageUrl = doc.data().image;
+              }
+              else {
+                this.imageUrl = "https://firebasestorage.googleapis.com/v0/b/tccwave.appspot.com/o/personImage.png?alt=media&token=29eb68fc-bc53-4f52-ad37-45d09306fbab";
+              }
+            })
+          })
         }
         else {
           this.isLoggedIn = false;
