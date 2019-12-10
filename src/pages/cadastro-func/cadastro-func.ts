@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ViewController  } from 'ionic-angu
 import {AngularFireAuth} from 'angularfire2/auth';
 import { TabsPage } from '../tabs/tabs';
 import firebase from 'firebase';
+import {ListPage} from '../list/list';
 /**
  * Generated class for the CadastroFuncPage page.
  *
@@ -30,6 +31,7 @@ export class CadastroFuncPage {
       
       this.state = "edit";
       this.firestore.collection('Users').doc(this.code).get().then((resp) => {
+        
         const data = resp.data();
 
         this.email = data.email;
@@ -86,5 +88,7 @@ export class CadastroFuncPage {
         })
       })
     }
+    this.navCtrl.push(ListPage, {classToList: "CadastroFuncPage"});
   }
+  
 }

@@ -46,7 +46,18 @@
       <input [(ngModel)]="modelist" type="text" class="input_form" placeholder="Modelista">
     </div>
     <div class="formulario">
-      <input [(ngModel)]="productAmount" type="text" class="input_form" placeholder="Número de Produtos">
+      <input   [(ngModel)]="productAmount" type="text" class="input_form" placeholder="Número de Produtos">
+    </div>
+    <button (click)="onProductAmountChange()">
+      Aperte
+    </button>
+    <div class="formulario">
+      <ion-item *ngFor="let i of productAmountArray">
+        <ion-select  style="height: 20px;"  (ionChange)="changeClient()" [(ngModel)]="clientIndex">
+          <ion-option value="Ola">Ola</ion-option>
+
+        </ion-select>
+      </ion-item>
     </div>
     <div class="formulario">
       <input [(ngModel)]="observations" type="text" class="input_form" placeholder="Observações">

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import firebase from 'firebase';
 import { TabsPage } from '../tabs/tabs';
-
+import {ListPage} from '../list/list';
 /**
  * Generated class for the CadastroInsumoPage page.
  *
@@ -116,6 +116,8 @@ export class CadastroInsumoPage {
         console.log("Error")
       })
     }
+
+    this.navCtrl.push(ListPage, {classToList: "CadastroInsumoPage"});
   }
 
   push(){

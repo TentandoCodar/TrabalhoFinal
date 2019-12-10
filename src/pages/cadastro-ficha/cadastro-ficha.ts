@@ -27,6 +27,7 @@ export class CadastroFichaPage {
   date:string;
   modelist:string;
   productAmount:number;
+  productAmountArray:any = [];
   observations:string;
   productionAmount:string;
   laborCust:number;
@@ -54,6 +55,14 @@ export class CadastroFichaPage {
 
   }
 
+  onProductAmountChange() {
+    console.log("Mudou")
+    for(let i = 0; i < this.productAmount;i++) {
+      this.productAmountArray.push(i);
+    }
+    console.log(this.productAmountArray)
+  }
+
 
   push(){
     this.viewCtrl.dismiss();
@@ -65,60 +74,6 @@ export class CadastroFichaPage {
   }
 
   signUp() {
-    let clientCode = this.clientCode;
-    let clientPhone = this.clientPhone;
-    let seal1 = this.seal1;
-    let seal2 = this.seal2;
-    let seal3 = this.seal3;
-    let date = this.date;
-    let modelist = this.modelist;
-    let productAmount = this.productAmount;
-    let observations = this.observations;
-    let productionAmount = this.productionAmount;
-    let laborCust = this.laborCust;
-    let priceCust = this.priceCust;
-    let standartDivisor = this.standartDivisor;
-    let salePrice = this.salePrice;
-    this.firestore.collection("Datasheet").add({
-      clientCode,
-      clientPhone,
-      seal1,
-      seal2,
-      seal3,
-      date,
-      modelist,
-      productAmount,
-      observations,
-      productionAmount,
-      laborCust,
-      priceCust,
-      standartDivisor,
-      salePrice,
-      code: "",
-    }).then((resp) => {
-      this.firestore.collection('Datasheet').doc(resp.id).set({
-        clientCode,
-        clientPhone,
-        seal1,
-        seal2,
-        seal3,
-        date,
-        modelist,
-        productAmount,
-        observations,
-        productionAmount,
-        laborCust,
-        priceCust,
-        standartDivisor,
-        salePrice,
-        code: resp.id,
-      }).then((resp) => {
-        console.log("Cadastrado")
-      }).catch((err) => {
-        console.log(err)
-      })
-    }).catch((err) => {
-      console.log(err)
-    })
+    
   }
 }

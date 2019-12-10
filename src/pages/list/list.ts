@@ -61,10 +61,10 @@ export class ListPage {
   getData() {
     console.log("Chamou")
     const firestore = firebase.firestore();
-    this.data = [];
+    
     if(this.collection) {
       firestore.collection(this.collection).onSnapshot((snapshot) => {
-      
+        this.data = [];
         snapshot.docChanges()
         snapshot.forEach(doc => {
   
