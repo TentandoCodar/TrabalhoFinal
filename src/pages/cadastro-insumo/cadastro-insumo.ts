@@ -22,10 +22,13 @@ export class CadastroInsumoPage {
   providers:{id,name,code}[] = [];
   providerId:number;
   providerCode:string;
+  code:string;
+  firestore:any;
+  state:string;
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
-    const firestore = firebase.firestore();
-    
-    firestore.collection('Providers').onSnapshot((snapshot) => {
+    this.firestore = firebase.firestore();
+    this.code = navParams.get('itemId');
+    this.firestore.collection('Providers').onSnapshot((snapshot) => {
       this.providers = [];
       let count = 0;
       snapshot.forEach(doc => {
@@ -38,13 +41,29 @@ export class CadastroInsumoPage {
 
 
     })
+
+    if(this.code) {
+      this.state = "edit";
+      this.firestore.collection('Products').doc(this.code).get().then((resp) => {
+        const data = resp.data();
+
+        this.description = data.name;
+        this.unity = data.unity;
+        this.price = data.price;
+      }).catch((err) => {
+        
+      })
+    }
+    else {
+      this.state = "create";
+    }
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CadastroInsumoPage');
   }
   changeProvider() {
-    this.providerCode = this.providers[this.providerId + 1].code;
+    this.providerCode = this.providers[this.providerId].code;
     
 
   }
@@ -56,18 +75,38 @@ export class CadastroInsumoPage {
     let price = this.price;
     let providerCode = this.providerCode;
 
-    firestore.collection('Products').add({
-      description,
-      unity,
-      price,
-      providerCode
-    }).then((resp) => {
-      firestore.collection('Products').doc(resp.id).set({
+    if(this.state != 'edit') {
+      firestore.collection('Products').add({
+        description,
+        unity,
+        price,
+        providerCode
+      }).then((resp) => {
+        firestore.collection('Products').doc(resp.id).set({
+          name:description,
+          unity,
+          price,
+          providerCode,
+          code:resp.id
+        }).then(() => {
+          this.unity = "";
+  
+          this.price = 0;
+          this.description = "";
+        }).catch(() => {
+          console.log("Error")
+        })
+      }).catch((err) => {
+        console.log(err)
+      })
+    }
+    else {
+      firestore.collection('Products').doc(this.code).set({
         name:description,
         unity,
         price,
         providerCode,
-        code:resp.id
+        code:this.code
       }).then(() => {
         this.unity = "";
 
@@ -76,9 +115,7 @@ export class CadastroInsumoPage {
       }).catch(() => {
         console.log("Error")
       })
-    }).catch((err) => {
-      console.log(err)
-    })
+    }
   }
 
   push(){

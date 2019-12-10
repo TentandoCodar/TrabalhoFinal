@@ -31,7 +31,7 @@ export class CadastroCustosPage {
   total:number;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     const firestore = firebase.firestore();
-
+    
     firestore.collection('Costs').doc('kJEJcageHISuAcRqBVnB').get().then((resp) => {
       const data = resp.data();
       

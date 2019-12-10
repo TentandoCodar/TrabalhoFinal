@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import firebase from 'firebase';
 import { TabsPage } from '../tabs/tabs';
-
+import {ListPage} from '../list/list';
 /**
  * Generated class for the CadastroLojasPage page.
  *
@@ -36,6 +36,9 @@ export class CadastroLojasPage {
         this.phone = data.phone;
         this.cnpj = data.cnpj;
       })
+    }
+    else {
+      this.code = "create";
     }
   }
 
@@ -86,6 +89,8 @@ export class CadastroLojasPage {
   
         })
     }
+
+    this.navCtrl.push(ListPage, {classToList: "CadastroLojasPage"});
   }
 
   push(){

@@ -26,7 +26,7 @@ export class ListPage {
   constructor(public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams) {
     console.log('classToList', navParams.get('classToList'));
     this.classToList = navParams.get('classToList');
-    const firestore = firebase.firestore();
+    
     switch(this.classToList) {
       case 'CadastroFuncPage' : {
         this.title = 'Funcionários';
@@ -54,10 +54,18 @@ export class ListPage {
         break;
       }
     }
+    this.getData();
+
+  }
+
+  getData() {
+    console.log("Chamou")
+    const firestore = firebase.firestore();
+    this.data = [];
     if(this.collection) {
       firestore.collection(this.collection).onSnapshot((snapshot) => {
       
-      
+        snapshot.docChanges()
         snapshot.forEach(doc => {
   
           this.data.push(doc.data());
@@ -68,8 +76,9 @@ export class ListPage {
   
       })
     }
-
   }
+
+  
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ListPage');

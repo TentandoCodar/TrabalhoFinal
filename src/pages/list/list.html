@@ -35,14 +35,14 @@
   </div>
 
   <div *ngIf="getTypeOfReturn() == 'Type 4'">
-      <div *ngFor="let product of data">
+      <div (click)="showModal('add', 'Products', product.code)" *ngFor="let product of data">
         <p>{{product.name}}</p>
         <p>{{product.price}}</p>
         <p>{{product.unity}}</p>
         <p>{{product.code}}</p>
       </div>
   </div>
-  
+
   <div  *ngIf="getTypeOfReturn() == 'Type 5'">
     <div (click)="showModal('add', 'Clients', provider.code)" *ngFor="let provider of data">
       <p>{{provider.name}}</p>
