@@ -16,8 +16,10 @@
     </div>
   </div>
 
+  
+
   <div *ngIf="getTypeOfReturn() == 'Type 2'">
-      <div *ngFor="let user of data">
+      <div (click)="showModal('add', 'Users', user.code)" *ngFor="let user of data">
         <p>{{user.name}}</p>
         <p>{{user.email}}</p>
         <p>{{user.code}}</p>
@@ -40,7 +42,15 @@
         <p>{{product.code}}</p>
       </div>
   </div>
-
+  
+  <div  *ngIf="getTypeOfReturn() == 'Type 5'">
+    <div (click)="showModal('add', 'Clients', provider.code)" *ngFor="let provider of data">
+      <p>{{provider.name}}</p>
+      <p>{{provider.email}}</p>
+      <p>{{provider.cnpj}}</p>
+      <p>{{provider.code}}</p>
+    </div>
+  </div>
   
 
   <ion-fab right bottom>

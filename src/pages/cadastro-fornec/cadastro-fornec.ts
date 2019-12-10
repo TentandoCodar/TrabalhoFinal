@@ -24,11 +24,10 @@ export class CadastroFornecPage {
   collection:string;
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, ) {
     this.code = navParams.get('itemId');
-    this.collection = navParams.get("collection");
     const firestore = firebase.firestore();
 
     if(this.code) {
-      firestore.collection(this.collection).doc(this.code).get().then(snapshot => {
+      firestore.collection("Providers").doc(this.code).get().then(snapshot => {
         const data = snapshot.data();
         this.email = data.email;
         this.name = data.name;

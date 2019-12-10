@@ -34,18 +34,7 @@ export class CadastroCustosPage {
 
     firestore.collection('Costs').doc('kJEJcageHISuAcRqBVnB').get().then((resp) => {
       const data = resp.data();
-      this.withdrawal = data.withdrawal;
-      this.comissions = data.comissions;
-      this.financialExpenses = data.financialExpenses;
-      this.administrativeExpenses = data.administrativeExpenses;
-      this.fixedCosts = data.fixedCosts;
-      this.freight = data.freight;
-      this.investment = data.investment;
-      this.miscellaneousExpenses = data.miscellaneousExpenses;
-      this.operationalExpenses = data.operationalExpenses;
-      this.profitMargin = data.profitMargin;
-      this.theft = data.theft;
-      this.total = data.total;
+      
     }).catch((err) => {
       console.log(err);
     })

@@ -5,17 +5,17 @@
       <h3 class="titulo_form">CADASTRAR FUNCIONÁRIO</h3>
     </div>
     <div class="formulario">
-      <input type="text" class="input_form" placeholder="Nome Completo" required="">
+      <input [(ngModel)]="name" type="text" class="input_form" placeholder="Nome Completo" required="">
     </div>
     <div class="formulario">
-      <input type="email" class="input_form" placeholder="Email" required="">
+      <input [(ngModel)]="email" type="email" class="input_form" placeholder="Email" required="">
     </div>
     <div class="formulario">
-      <input type="password" class="input_form" placeholder="Senha" required="">
+      <input [(ngModel)]="password"  type="password" class="input_form" placeholder="Senha" required="">
     </div>
   </div>
 
 <button (click)="push()" class="button_style" style="background-color: #000; color: #fff">CANCELAR</button>
-  <button type="submit" class="button_style">CADASTRAR</button>  <br/>
+  <button (click)="signUp()" type="submit" class="button_style">CADASTRAR</button>  <br/>
 
 </ion-content>

@@ -116,6 +116,10 @@ export class ListPage {
      return "Type 4";
    }
 
+   else if(this.collection == "Providers" || this.collection == "Clients") {
+    return "Type 5";
+  }
+
  }
 
  
