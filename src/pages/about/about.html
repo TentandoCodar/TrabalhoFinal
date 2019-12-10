@@ -1,18 +1,25 @@
 
 
 <ion-content padding class="ficarnomeio">
-    <ion-searchbar style="width: 90%;" [(ngModel)]="searchTerm" class="input_form" center (ionChange)="getItems()"></ion-searchbar>
+    <ion-searchbar style="width: 90%;" [(ngModel)]="searchTerm" class="input_form"></ion-searchbar>
   <div class="introducao_produtos">
     <br>
 
 
-    <div *ngIf="banner == false" >
+    <div *ngIf="searchActive == false" >
       <span style="font-family: 'Raleway'; font-weight: 700; font-size: 25px; color: #242424">lançamento</span><br>
       <span style="font-family: 'Raleway'; font-size: 25px; font-weight: 400; color: #242424">coleção de verão</span><br>
       <span style="font-family: 'Raleway'; font-size: 25px; font-weight: 400; color: #242424">------------------</span><br>
       <span style="font-family: 'Alatsi'; font-size: 30px; color: #242424">Areia <br>e sal</span><br>
       <br>
     </div>
+
+    <div *ngIf="searchActive == true" >
+        <h2  class="ficarnomeio" style="font-family: 'Raleway'; background-color: #0000; font-weight: bold;">{{searchTermDisplay}}</h2>
+        <br>
+      </div>
+
+
 
   </div>
   <br><br>

@@ -7,20 +7,18 @@ import { NavController } from 'ionic-angular';
 })
 export class AboutPage {
 
+  searchTerm:string = "";
+  searchActive: boolean = false;
+
   constructor(public navCtrl: NavController) {
 
   }
 
-  pesquisa: string = '';
+  
 
+  search() {
 
-  getItems(ev: any) {
-    if(ev.target.value.length >= 20) {
-      this.pesquisa = ('\" ' + ev.target.value.substring(0, 17) + '...' + '\ "');
-    }else{
-        this.pesquisa = ('\" ' + ev.target.value + '\ "') ;
-    }
-
+ 
   }
 
 }
