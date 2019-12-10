@@ -22,11 +22,13 @@ export class CadastroFornecPage {
   phone:number;
   code:string;
   collection:string;
+  state:string;
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, ) {
     this.code = navParams.get('itemId');
     const firestore = firebase.firestore();
 
     if(this.code) {
+      this.state = "edit";
       firestore.collection("Providers").doc(this.code).get().then(snapshot => {
         const data = snapshot.data();
         this.email = data.email;
@@ -34,6 +36,9 @@ export class CadastroFornecPage {
         this.cnpj = data.cnpj;
         this.phone = data.phone;
       })
+    }
+    else {
+      this.state = "create";
     }
   }
 
@@ -47,26 +52,41 @@ export class CadastroFornecPage {
     let name = this.name;
     let cnpj = this.cnpj;
     let phone = this.phone;
-    firestore.collection('Providers').add({
-      email,
-      name,
-      cnpj,
-      phone
-    }).then((resp) => {
-      firestore.collection('Providers').doc(resp.id).set({
+    if(this.state !== "edit") {
+      firestore.collection('Providers').add({
+        email,
+        name,
+        cnpj,
+        phone
+      }).then((resp) => {
+        firestore.collection('Providers').doc(resp.id).set({
+          email,
+          name,
+          cnpj,
+          phone,
+          code:resp.id
+        }).then((resp) => {
+  
+        }).catch((err) => {
+  
+        })
+      }).catch((err) => {
+  
+      })
+    }
+    else {
+      firestore.collection('Providers').doc(this.code).set({
         email,
         name,
         cnpj,
         phone,
-        code:resp.id
+        code:this.code
       }).then((resp) => {
 
       }).catch((err) => {
 
       })
-    }).catch((err) => {
-
-    })
+    }
   }
 
   push(){
