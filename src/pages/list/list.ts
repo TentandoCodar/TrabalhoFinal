@@ -83,6 +83,7 @@ export class ListPage {
   showModal(itemClass:string, collection:string = "", itemId:string = "") {
    let profileModal = this.modalCtrl.create(this.classToList, { itemId: itemId, collection: collection });
    profileModal.present();
+   console.log("disaidsijoajio")
  }
 
  pesquisa: string = '';
@@ -100,7 +101,7 @@ export class ListPage {
  }
 
  getTypeOfReturn() {
-   if(this.collection == "Providers" || this.collection == "Clients") {
+   if(this.collection == "Providers") {
      return "Type 1";
    }
 
@@ -116,7 +117,8 @@ export class ListPage {
      return "Type 4";
    }
 
-   else if(this.collection == "Providers" || this.collection == "Clients") {
+   else if(this.collection == "Clients") {
+    
     return "Type 5";
   }
 
