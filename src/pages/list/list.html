@@ -3,54 +3,59 @@
   <br>
 <br>
 
+
+
+
   
       <ion-searchbar style="width: 90%;" [(ngModel)]="searchTerm" class="input_form" center (ionChange)="getItems()"></ion-searchbar>
   <h2  class="ficarnomeio" style="font-family: 'Raleway'; background-color: #0000; font-weight: bold;">{{searchTermDisplay}}</h2>
-  <div  *ngIf="getTypeOfReturn() == 'Type 1'">
-    <div (click)="showModal('add', 'Providers', provider.code)" *ngFor="let provider of data">
-      <p>{{provider.name}}</p>
-      <p>{{provider.email}}</p>
-      <p>{{provider.cnpj}}</p>
-      <p>{{provider.code}}</p>
+
+    
+    <div  *ngIf="getTypeOfReturn() == 'Type 1'">
+      <div class="planilha" (click)="showModal('add', 'Providers', provider.code)" *ngFor="let provider of data">     
+          <p>{{provider.name}}</p>
+          <p>{{provider.email}}</p>
+          <p>{{provider.cnpj}}</p>
+          <p>{{provider.code}}</p>
+      </div>
     </div>
-  </div>
 
-  
+    
 
-  <div *ngIf="getTypeOfReturn() == 'Type 2'">
-      <div (click)="showModal('add', 'Users', user.code)" *ngFor="let user of data">
-        <p>{{user.name}}</p>
-        <p>{{user.email}}</p>
-        <p>{{user.code}}</p>
-      </div>
-  </div>
-
-  <div *ngIf="getTypeOfReturn() == 'Type 3'">
-      <div *ngFor="let files of data">
-        <p>{{files.name}}</p>
-        <p>{{files.email}}</p>
-        <p>{{files.code}}</p>
-      </div>
-  </div>
-
-  <div *ngIf="getTypeOfReturn() == 'Type 4'">
-      <div (click)="showModal('add', 'Products', product.code)" *ngFor="let product of data">
-        <p>{{product.name}}</p>
-        <p>{{product.price}}</p>
-        <p>{{product.unity}}</p>
-        <p>{{product.code}}</p>
-      </div>
-  </div>
-
-  <div  *ngIf="getTypeOfReturn() == 'Type 5'">
-    <div (click)="showModal('add', 'Clients', provider.code)" *ngFor="let provider of data">
-      <p>{{provider.name}}</p>
-      <p>{{provider.email}}</p>
-      <p>{{provider.cnpj}}</p>
-      <p>{{provider.code}}</p>
+    <div  *ngIf="getTypeOfReturn() == 'Type 2'">
+        <div class="planilha" (click)="showModal('add', 'Users', user.code)" *ngFor="let user of data">
+          <p>{{user.name}}</p>
+          <p>{{user.email}}</p>
+          <p>{{user.code}}</p>
+        </div>
     </div>
+
+    <div  *ngIf="getTypeOfReturn() == 'Type 3'">
+        <div class="planilha" *ngFor="let files of data">
+          <p>{{files.name}}</p>
+          <p>{{files.email}}</p>
+          <p>{{files.code}}</p>
+        </div>
+    </div>
+
+    <div *ngIf="getTypeOfReturn() == 'Type 4'">
+        <div class="planilha" (click)="showModal('add', 'Products', product.code)" *ngFor="let product of data">
+          <p>{{product.name}}</p>
+          <p>{{product.price}}</p>
+          <p>{{product.unity}}</p>
+          <p>{{product.code}}</p>
+        </div>
+    </div>
+
+    <div *ngIf="getTypeOfReturn() == 'Type 5'">
+      <div class="planilha" (click)="showModal('add', 'Clients', provider.code)" *ngFor="let provider of data">
+        <p>{{provider.name}}</p>
+        <p>{{provider.email}}</p>
+        <p>{{provider.cnpj}}</p>
+        <p>{{provider.code}}</p>
+      </div>
   </div>
-  
+    
 
   <ion-fab right bottom>
       <button ion-fab color="primary" (click)='showModal("add")' ><ion-icon name="add"></ion-icon></button>
