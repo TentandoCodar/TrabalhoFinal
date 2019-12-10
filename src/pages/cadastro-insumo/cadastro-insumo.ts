@@ -19,12 +19,12 @@ export class CadastroInsumoPage {
   description:string;
   unity:string;
   price:number;
-  providers = [{}];
+  providers:{id,name,code}[] = [];
   providerId:number;
   providerCode:string;
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
     const firestore = firebase.firestore();
-
+    
     firestore.collection('Providers').onSnapshot((snapshot) => {
       this.providers = [];
       let count = 0;
@@ -34,7 +34,7 @@ export class CadastroInsumoPage {
         count++;
       })
 
-      //this.providerCode = this.providers[0].code;
+      this.providerCode = this.providers[0].code;
 
 
     })
@@ -44,8 +44,8 @@ export class CadastroInsumoPage {
     console.log('ionViewDidLoad CadastroInsumoPage');
   }
   changeProvider() {
-    //this.providerCode = this.providers[this.providerId + 1].code;
-    console.log(this.providers[this.providerId + 1])
+    this.providerCode = this.providers[this.providerId + 1].code;
+    
 
   }
 

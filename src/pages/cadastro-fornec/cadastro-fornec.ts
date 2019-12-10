@@ -20,7 +20,22 @@ export class CadastroFornecPage {
   name:string;
   cnpj:number;
   phone:number;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
+  code:string;
+  collection:string;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, ) {
+    this.code = navParams.get('itemId');
+    this.collection = navParams.get("collection");
+    const firestore = firebase.firestore();
+
+    if(this.code) {
+      firestore.collection(this.collection).doc(this.code).get().then(snapshot => {
+        const data = snapshot.data();
+        this.email = data.email;
+        this.name = data.name;
+        this.cnpj = data.cnpj;
+        this.phone = data.phone;
+      })
+    }
   }
 
   ionViewDidLoad() {

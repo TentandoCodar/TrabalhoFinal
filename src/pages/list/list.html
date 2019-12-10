@@ -4,12 +4,47 @@
 <br>
 
   <div class="ficarnomeio">
-      <ion-searchbar class="input_form" center (ionInput)="getItems($event)"></ion-searchbar>
-    <h2 style="font-family: 'Raleway'">{{pesquisa}}</h2>
+      <ion-searchbar [(ngModel)]="searchTerm" class="input_form" center (ionChange)="getItems()"></ion-searchbar>
+    <h2 style="font-family: 'Raleway'">{{searchTermDisplay}}</h2>
+  </div>
+  <div  *ngIf="getTypeOfReturn() == 'Type 1'">
+    <div (click)="showModal('add', 'Providers', provider.code)" *ngFor="let provider of data">
+      <p>{{provider.name}}</p>
+      <p>{{provider.email}}</p>
+      <p>{{provider.cnpj}}</p>
+      <p>{{provider.code}}</p>
+    </div>
   </div>
 
+  <div *ngIf="getTypeOfReturn() == 'Type 2'">
+      <div *ngFor="let user of data">
+        <p>{{user.name}}</p>
+        <p>{{user.email}}</p>
+        <p>{{user.code}}</p>
+      </div>
+  </div>
+
+  <div *ngIf="getTypeOfReturn() == 'Type 3'">
+      <div *ngFor="let files of data">
+        <p>{{files.name}}</p>
+        <p>{{files.email}}</p>
+        <p>{{files.code}}</p>
+      </div>
+  </div>
+
+  <div *ngIf="getTypeOfReturn() == 'Type 4'">
+      <div *ngFor="let product of data">
+        <p>{{product.name}}</p>
+        <p>{{product.price}}</p>
+        <p>{{product.unity}}</p>
+        <p>{{product.code}}</p>
+      </div>
+  </div>
+
+  
+
   <ion-fab right bottom>
-      <button ion-fab color="primary" (click)='cadModal("add", "none")' ><ion-icon name="add"></ion-icon></button>
+      <button ion-fab color="primary" (click)='showModal("add")' ><ion-icon name="add"></ion-icon></button>
   </ion-fab>
 
 </ion-content>
