@@ -34,6 +34,7 @@ export class CadastroFichaPage {
   priceCust:number;
   standartDivisor:number;
   salePrice:number;
+  products:{id,name}[] = []
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
     this.date = new Date().toLocaleDateString('pt-BR');
     this.firestore = firebase.firestore();
@@ -49,6 +50,21 @@ export class CadastroFichaPage {
       this.clientPhone = this.clients[0].phone;
 
     })
+
+    this.firestore.collection('Products').onSnapshot((snapshot) => {
+      this.products = [];
+     
+      snapshot.forEach(doc => {
+        const data = doc.data();
+        console.log(data.code)
+        //this.products.push({id:data.code, name:data.name})
+      })
+
+      
+
+      
+
+    })
   }
 
   ionViewDidLoad() {
@@ -56,11 +72,9 @@ export class CadastroFichaPage {
   }
 
   onProductAmountChange() {
-    console.log("Mudou")
-    for(let i = 0; i < this.productAmount;i++) {
-      this.productAmountArray.push(i);
-    }
-    console.log(this.productAmountArray)
+    this.productAmountArray.push(1);
+    
+    
   }
 
 
