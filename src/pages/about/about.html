@@ -1,20 +1,19 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
 
-    </ion-title>
-  </ion-navbar>
-</ion-header>
 
-<ion-content class="ficarnomeio">
+<ion-content padding class="ficarnomeio">
+    <ion-searchbar style="width: 90%;" [(ngModel)]="searchTerm" class="input_form" center (ionChange)="getItems()"></ion-searchbar>
   <div class="introducao_produtos">
     <br>
-    <span style="font-family: 'Raleway'; font-weight: 700; font-size: 25px; color: #242424">lançamento</span><br>
-    <span style="font-family: 'Raleway'; font-size: 25px; font-weight: 400; color: #242424">coleção de verão</span><br>
-    <span style="font-family: 'Raleway'; font-size: 25px; font-weight: 400; color: #242424">------------------</span><br>
-    <span style="font-family: 'Alatsi'; font-size: 30px; color: #242424">Areia <br>e sal</span><br>
-    <br>
+
+
+    <div *ngIf="banner == false" >
+      <span style="font-family: 'Raleway'; font-weight: 700; font-size: 25px; color: #242424">lançamento</span><br>
+      <span style="font-family: 'Raleway'; font-size: 25px; font-weight: 400; color: #242424">coleção de verão</span><br>
+      <span style="font-family: 'Raleway'; font-size: 25px; font-weight: 400; color: #242424">------------------</span><br>
+      <span style="font-family: 'Alatsi'; font-size: 30px; color: #242424">Areia <br>e sal</span><br>
+      <br>
+    </div>
+
   </div>
   <br><br>
   <div class="ladodireito">

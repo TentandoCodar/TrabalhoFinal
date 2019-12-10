@@ -6,11 +6,26 @@
   </ion-header>
 
   <ion-content>
-    <ion-list>
 
 
 
-    <div *ngIf="isLoggedIn">
+    <ion-list *ngIf="isLoggedIn == false" style="border: none;">
+        <button menuClose ion-item (click)="push('SobrePage')">
+            Sobre
+          </button>
+    
+          <a  href="#" class="cadastrar" onclick="window.open('https://www.youtube.com/watch?v=Hof1dOoqbz0', '_system', 'location=yes'); return false;" >
+            <button menuClose ion-item>
+              Contato   <ion-icon style="font-size: 1.0em; color: #aaa; margin-left: 2px;" name="ios-link"></ion-icon>
+            </button>
+          </a>
+    </ion-list>
+
+    <ion-list *ngIf="isLoggedIn" style="border: none;">
+
+
+
+    <div>
       <button menuClose ion-item (click)="pushList('CadastroFuncPage')">
         Funcionários
       </button>
@@ -24,17 +39,20 @@
         Franquias
       </button>
       <button menuClose ion-item (click)="pushList('CadastroFornecPage')">
-        Fornecedors
+        Fornecedores
       </button>
       <button menuClose ion-item (click)="push('CadastroCustosPage')">
         Cadastrar Custos
       </button>
 
+    
+
+    </div>
 
 
-        <ion-item>
-        <br><br><br><br><br>
-        </ion-item>
+
+  <div class="stats-container">
+
 
       <button menuClose ion-item (click)="push('SobrePage')">
         Sobre
@@ -46,16 +64,14 @@
         </button>
       </a>
 
-      <button *ngIf="isLoggedIn" menuClose ion-item (click)="logout()">
+      <button  menuClose ion-item (click)="logout()">
         Logout
       </button>
 
-      <ion-item>
+     
 
-      </ion-item>
-
-
-      <button class="stats-container" menuClose ion-item (click)="push('AlmoxarifadoPage')">
+    
+        <button class="item-inner" menuClose ion-item (click)="push('AlmoxarifadoPage')">
         <span class="stats-header" >  Almoxarifado </span>
         <ion-row class="stats-group">
 
@@ -64,10 +80,13 @@
                   <div class="stats-item"> <img width="20px" src="../assets/icon/sun.svg" alt="">         <p> 213 lm</p> </div>
         </ion-row>
       </button>
-  </div>
+    </div>
 
     </ion-list>
 
+
+
+  
 
 
   </ion-content>

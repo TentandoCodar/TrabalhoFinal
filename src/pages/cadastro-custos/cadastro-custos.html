@@ -1,9 +1,10 @@
 <ion-content padding class="ficarnomeio">
 
-
+    <ion-icon class="nav-back-arrow" name="md-arrow-back" (click)="push(TabsPage)"> <h1 style="font-family: 'Poppins'; font-weight: 700; margin-left: 10px;">Atualizar Custos</h1></ion-icon>
+<br><br>
     <div class="planilha">
       <div class="lugardotitulo_form">
-        <h3 class="titulo_form">Recuperar Custos</h3>
+        <h3 class="titulo_form">Custos</h3>
       </div>
       <div class="formulario">
         <input [(ngModel)]="withdrawal" type="number" class="input_form" placeholder="Retirada (%)">
@@ -61,7 +62,7 @@
       </div>
     </div>
 
-    <button (click)="push()" class="button_style" style="background-color: #000; color: #fff; margin-bottom: 80px;">CANCELAR</button>
-    <button (click)="signUpProvider()" type="button" name="button" class="button_style">CADASTRAR</button>
+  
+    <button style="margin-bottom:80px;" (click)="signUpProvider()" type="button" name="button" class="button_style">ATUALIZAR</button>
 
 </ion-content>

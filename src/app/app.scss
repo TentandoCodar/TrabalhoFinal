@@ -108,7 +108,10 @@ padding-top: 10px;
 }
 
 .stats-container{
-  margin-bottom: 0px;
+  bottom: 0px;
+  position: absolute;
+  margin-bottom: 10px;
+  width: 100%;
 }
 
 .stats-unit{
@@ -135,3 +138,4 @@ padding-top: 10px;
 .texto_perfil{
   font-family: 'Poppins';
 }
+

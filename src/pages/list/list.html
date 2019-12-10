@@ -3,10 +3,9 @@
   <br>
 <br>
 
-  <div class="ficarnomeio">
-      <ion-searchbar [(ngModel)]="searchTerm" class="input_form" center (ionChange)="getItems()"></ion-searchbar>
-    <h2 style="font-family: 'Raleway'">{{searchTermDisplay}}</h2>
-  </div>
+  
+      <ion-searchbar style="width: 90%;" [(ngModel)]="searchTerm" class="input_form" center (ionChange)="getItems()"></ion-searchbar>
+  <h2  class="ficarnomeio" style="font-family: 'Raleway'; background-color: #0000; font-weight: bold;">{{searchTermDisplay}}</h2>
   <div  *ngIf="getTypeOfReturn() == 'Type 1'">
     <div (click)="showModal('add', 'Providers', provider.code)" *ngFor="let provider of data">
       <p>{{provider.name}}</p>

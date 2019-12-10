@@ -101,10 +101,10 @@ export class ListPage {
  getItems() {
    console.log(this.searchTerm)
    if(this.searchTerm.length >= 20) {
-     this.searchTermDisplay = `${this.searchTerm.substring(0,17)}...`; 
+     this.searchTermDisplay = `"${this.searchTerm.substring(0,17)}..."`; 
    }
    else {
-     this.searchTermDisplay = this.searchTerm;
+     this.searchTermDisplay = `"${this.searchTerm}"`;
    }
 
  }
