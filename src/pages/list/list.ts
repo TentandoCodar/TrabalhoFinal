@@ -34,7 +34,7 @@ export class ListPage {
         break;
       }case 'CadastroFichaPage' : {
         this.title = 'Fichas';
-        this.collection = "Files";
+        this.collection = "Datasheet";
         break;
       }case 'CadastroInsumoPage' : {
         this.title = 'Insumos';
@@ -59,20 +59,20 @@ export class ListPage {
   }
 
   getData() {
-    console.log("Chamou")
+    
     const firestore = firebase.firestore();
     
     if(this.collection) {
       firestore.collection(this.collection).onSnapshot((snapshot) => {
         this.data = [];
-        snapshot.docChanges()
+        
         snapshot.forEach(doc => {
-  
+          console.log(doc.data());
           this.data.push(doc.data());
         })
   
         
-        console.log(this.data);
+        
   
       })
     }
@@ -92,7 +92,7 @@ export class ListPage {
   showModal(itemClass:string, collection:string = "", itemId:string = "") {
    let profileModal = this.modalCtrl.create(this.classToList, { itemId: itemId, collection: collection });
    profileModal.present();
-   console.log("disaidsijoajio")
+   
  }
 
  pesquisa: string = '';
@@ -118,7 +118,7 @@ export class ListPage {
     return "Type 2";
    }
    
-   else if(this.collection == "Files") {
+   else if(this.collection == "Datasheet") {
     return "Type 3";
    }
 

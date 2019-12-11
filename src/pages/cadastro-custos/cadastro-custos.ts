@@ -29,18 +29,36 @@ export class CadastroCustosPage {
   profitMargin:number;
   theft:number;
   total:number;
+  charge:number;
+  chargePercentage:number;
+  paymentSheetBrute:number;
+  laborCostBrute:number;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     const firestore = firebase.firestore();
     
     firestore.collection('Costs').onSnapshot(snapshot => {
       snapshot.forEach(doc => {
-        console.log(doc.data());
+        const data = doc.data();
+        this.administrativeExpenses = data.AdministrativeExpenses;
+        this.comissions = data.Comissions;
+        this.operationalExpenses = data.OperationalExpenses;
+        this.theft = data.Theft;
+        this.freight = data.Transportation;
+        this.fixedCosts = data.FixedCosts;
+        this.profitMargin = data.ProfitMargin;
+        this.investment = data.Investments;
+        this.financialExpenses = data.FinancialExpenses;
+        this.miscellaneousExpenses = data.DiverseExpenses;
+        this.withdrawal = data.Withdraw;
+        this.charge = data.Charge;
+        this.chargePercentage = data.ChargePercentage;
+        this.paymentSheetBrute = data.PaymentSheetBrute;
+        this.laborCostBrute  = data.LaborCostBrute;
       })
     })
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CadastroCustosPage');
   }
 
 

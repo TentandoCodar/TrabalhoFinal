@@ -31,10 +31,9 @@
     </div>
 
     <div  *ngIf="getTypeOfReturn() == 'Type 3'">
-        <div class="planilha" *ngFor="let files of data">
-          <p>{{files.name}}</p>
-          <p>{{files.email}}</p>
-          <p>{{files.code}}</p>
+        <div class="planilha" *ngFor="let files of data" (click)="showModal('add', 'Datasheet', files.code)">
+          <p>{{files.description}}</p>
+          <p>{{files.clientCode}}</p>
         </div>
     </div>
 
