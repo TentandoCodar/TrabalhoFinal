@@ -1,0 +1,40 @@
+<ion-content padding class="fundo" style="background-color: #0000;" >
+
+    <h1 style="font-family: 'Poppins'; font-weight: 700; width: 100%; text-align: center;">Visualizar Item</h1>
+ 
+
+    <ion-card class="planilha" >
+        <ion-card-header>
+          Nome da Peça   
+        </ion-card-header>
+        <ion-card-content >
+          <div class="container">
+            <ion-slides centeredSlides  pager>
+
+                <ion-slide>
+                  <img width="100%"  src="../../assets/imgs/fotos/imagem.jpg" alt="">
+                </ion-slide>
+              
+                <ion-slide >
+                  <img width="100%"  src="../../assets/imgs/fotos/imagem2.jpg" alt="">
+                </ion-slide>
+              
+              </ion-slides>
+            </div>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card class="planilha" >
+          <ion-card-header>
+            Dados da Peça   
+          </ion-card-header>
+          <ion-card-content >
+              <div class="ficarnomeio" style="font-family: 'Poppins'; font-weight: 700; margin-left: 10px;"> </div>
+          </ion-card-content>
+        </ion-card>
+
+        <div class="ficarnomeio"><button (click)="push()" class="button_style">FECHAR</button> </div>
+
+  
+</ion-content>
+

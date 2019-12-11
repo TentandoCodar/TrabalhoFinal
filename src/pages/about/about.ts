@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController , ModalController} from 'ionic-angular';
 
 @Component({
   selector: 'page-about',
@@ -10,7 +10,7 @@ export class AboutPage {
   searchTerm:string = "";
   searchActive: boolean = false;
 
-  constructor(public navCtrl: NavController) {
+  constructor(public modalCtrl: ModalController,public navCtrl: NavController) {
 
   }
 
@@ -19,6 +19,13 @@ export class AboutPage {
   search() {
 
  
+  }
+
+
+
+  pushItem(itemID: string){
+    let itemModal = this.modalCtrl.create('ItemPage',{ itemID: itemID })
+    itemModal.present();
   }
 
 }
