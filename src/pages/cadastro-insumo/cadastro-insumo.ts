@@ -37,7 +37,9 @@ export class CadastroInsumoPage {
         count++;
       })
 
-      this.providerCode = this.providers[0].code;
+      if(!this.code) {
+        this.providerCode = this.providers[0].code;
+      }
 
 
     })
@@ -50,6 +52,7 @@ export class CadastroInsumoPage {
         this.description = data.name;
         this.unity = data.unity;
         this.price = data.price;
+        this.providerCode = data.providerCode;
       }).catch((err) => {
         
       })

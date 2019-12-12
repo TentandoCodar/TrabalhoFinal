@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
 import firebase from 'firebase';
-
+import {AngularFireAuth} from 'angularfire2/auth';
 /**
  * Generated class for the ListPage page.
  *
@@ -23,7 +23,8 @@ export class ListPage {
   searchTermDisplay = "";
   data = [];
   collection = "";
-  constructor(public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams) {
+  searchWhere:string = "";
+  constructor(public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, public afAuth: AngularFireAuth) {
     console.log('classToList', navParams.get('classToList'));
     this.classToList = navParams.get('classToList');
     
@@ -130,7 +131,33 @@ export class ListPage {
     
     return "Type 5";
   }
+  console.log(this.collection)
 
+ }
+ search(term, where = "email") {
+  const firestore = firebase.firestore();
+  firestore.collection(this.collection).orderBy(this.searchWhere).startAt(this.searchTerm).endAt(this.searchTerm+'\uf8ff').onSnapshot((snapshot) => {
+    this.data = [];
+    snapshot.forEach(doc => {
+      
+      this.data.push(doc.data());
+    })
+  })
+ }
+
+ 
+
+ getWhereOfSearch() {
+
+ }
+ delete(id) {
+  const firestore = firebase.firestore();
+  if(this.collection == "Users"){
+    return null;
+  }
+  else {
+    firestore.collection(this.collection).doc(id).delete();
+  }
  }
 
  

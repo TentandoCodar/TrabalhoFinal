@@ -24,7 +24,7 @@
         <input disabled [(ngModel)]="date" type="text" class="input_form" placeholder="Data">
       </div>
       <div class="formulario">
-        <input [(ngModel)]="description" type="text" class="input_form" placeholder="Descrição da Peça">
+        <input disabled [(ngModel)]="description" type="text" class="input_form" placeholder="Descrição da Peça">
       </div>
     </div>
 
@@ -69,7 +69,7 @@
     <div *ngIf="!code"  class="formulario">
       <ion-item *ngFor="let i of productsArray">
         <ion-select style="height: 20px;"  [(ngModel)]="productsIndexes[i]">
-          <ion-option *ngFor="let product of products" [value]="product.id">{{product.name}}</ion-option>
+          <ion-option *ngFor="let product of products;let index = index" [value]="index">{{product.name}}</ion-option>
 
         </ion-select>
       </ion-item>
@@ -79,20 +79,20 @@
       <input [disabled]="code != ''" [(ngModel)]="observations" type="text" class="input_form" placeholder="Observações">
     </div>
     <div class="formulario">
-      <input  [disabled]="code != ''" (ngModelChange)="changeLaborHour()"  [(ngModel)]="hourAmount" type="text" class="input_form" placeholder="Hora trabalhada">
+      <input [(ngModel)]="hourAmount" type="text" class="input_form" placeholder="Hora trabalhada">
     </div>
     
     <div class="formulario">
       <input disabled  [(ngModel)]="laborCust" type="text" class="input_form" placeholder="Custo da Mão-de-Obra (Por Peça)">
     </div>
     <div class="formulario">
-      <input  [(ngModel)]="priceCust" type="text" class="input_form" placeholder="Preço do Custo">
+      <input  disabled [(ngModel)]="priceCust" type="text" class="input_form" placeholder="Preço do Custo">
     </div>
     <div class="formulario">
-      <input  [(ngModel)]="standartDivisor" type="text" class="input_form" placeholder="Divisor Padrão">
+      <input disabled [(ngModel)]="standartDivisor" type="text" class="input_form" placeholder="Divisor Padrão">
     </div>
     <div class="formulario">
-      <input  [(ngModel)]="salePrice" type="text" class="input_form" placeholder="Preço de Venda">
+      <input disabled [(ngModel)]="salePrice" type="text" class="input_form" placeholder="Preço de Venda">
     </div>
     <!-- <button (click)="signUp()" type="submit" class="button_style">CADASTRAR</button> -->
         <button (click)="push()" class="button_style" style="background-color: #000; color: #fff">CANCELAR</button>

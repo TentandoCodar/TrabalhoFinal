@@ -66,7 +66,7 @@ export class CadastroFuncPage {
             name:this.name,
             code:resp.id,
           }).then(() => {
-           
+            
           })
         }).catch((err) => {
 

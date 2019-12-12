@@ -28,12 +28,22 @@ export class ItemPage {
   Date: string;
   OwnerImage: string;
 
-  precocru: number;
-
+  
+  price:number;
+  modelist:number;
   Key: string;
-
+  firestore:any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
-     this.itemID = navParams.get('itemID');
+    this.itemID = navParams.get('itemID');
+    this.firestore = firebase.firestore();
+    this.firestore.collection("Datasheet").doc(this.itemID).get().then(resp => {
+      const data = resp.data();
+      this.ProductName = data.description;
+      this.price = data.salePrice;
+      this.modelist = data.modelist
+    }).catch((err) => {
+
+    })
     //  this.Key = navParams.get('Key');
     //  console.log(navParams.get('Key'))
     //  this.ProductName = navParams.get('ProductName');

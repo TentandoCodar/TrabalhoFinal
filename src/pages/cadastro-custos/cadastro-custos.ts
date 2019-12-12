@@ -50,10 +50,12 @@ export class CadastroCustosPage {
         this.financialExpenses = data.FinancialExpenses;
         this.miscellaneousExpenses = data.DiverseExpenses;
         this.withdrawal = data.Withdraw;
-        this.charge = data.Charge;
         this.chargePercentage = data.ChargePercentage;
         this.paymentSheetBrute = data.PaymentSheetBrute;
-        this.laborCostBrute  = data.LaborCostBrute;
+        this.charge = this.paymentSheetBrute * (this.chargePercentage / 100);
+        
+        
+        this.laborCostBrute  = this.paymentSheetBrute + this.charge;
       })
     })
   }

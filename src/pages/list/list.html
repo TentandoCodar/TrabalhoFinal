@@ -8,50 +8,97 @@
 
   
       <ion-searchbar style="width: 90%;" [(ngModel)]="searchTerm" class="input_form" center (ionChange)="getItems()"></ion-searchbar>
-  <h2  class="ficarnomeio" style="font-family: 'Raleway'; background-color: #0000; font-weight: bold;">{{searchTermDisplay}}</h2>
+      
+      <h2  class="ficarnomeio" style="font-family: 'Raleway'; background-color: #0000; font-weight: bold;">{{searchTermDisplay}}</h2>
+      <div *ngIf="getTypeOfReturn() == 'Type 1' || getTypeOfReturn() == 'Type 2' || getTypeOfReturn() == 'Type 5'"  class="formulario">
+        <ion-item>
+          <ion-select style="height: 20px;"  [(ngModel)]="searchWhere">
+            <ion-option value="email">Email</ion-option>
+            <ion-option value="code">Codigo</ion-option>
+            <ion-option value="name">Nome</ion-option>
+          </ion-select>
+        </ion-item>
+      </div>
+      <div *ngIf="getTypeOfReturn() == 'Type 4'"  class="formulario">
+        <ion-item>
+          <ion-select style="height: 20px;"  [(ngModel)]="searchWhere">
+            <ion-option value="name">Nome</ion-option>
+            <ion-option value="code">Codigo</ion-option>
+            
+          </ion-select>
+        </ion-item>
+      </div>
+      <div *ngIf="getTypeOfReturn() == 'Type 3'"  class="formulario">
+        <ion-item>
+          <ion-select style="height: 20px;"  [(ngModel)]="searchWhere">
+            <ion-option value="code">Codigo</ion-option>
+            <ion-option value="modelist">Modelista</ion-option>
+            <ion-option value="description">Descrição</ion-option>
+          </ion-select>
+        </ion-item>
+      </div>
+      
+      
+      
+      <button style="margin-bottom:10px;"  type="button" name="button" class="button_style">PESQUISAR</button>
 
     
     <div  *ngIf="getTypeOfReturn() == 'Type 1'">
-      <div class="planilha" (click)="showModal('add', 'Providers', provider.code)" *ngFor="let provider of data">     
+      <div class="planilha"  *ngFor="let provider of data">     
+          
           <p>{{provider.name}}</p>
           <p>{{provider.email}}</p>
           <p>{{provider.cnpj}}</p>
           <p>{{provider.code}}</p>
+          <button (click)="delete(provider.code)">Delete</button>
+          <button (click)="showModal('add', 'Providers', provider.code)">Abrir</button>
       </div>
     </div>
 
     
 
     <div  *ngIf="getTypeOfReturn() == 'Type 2'">
-        <div class="planilha" (click)="showModal('add', 'Users', user.code)" *ngFor="let user of data">
+        <div class="planilha"  *ngFor="let user of data">
+          
           <p>{{user.name}}</p>
           <p>{{user.email}}</p>
           <p>{{user.code}}</p>
+          <button (click)="delete(user.code)">Delete</button>
+          <button (click)="showModal('add', 'Users', user.code)">Abrir</button>
         </div>
     </div>
 
     <div  *ngIf="getTypeOfReturn() == 'Type 3'">
-        <div class="planilha" *ngFor="let files of data" (click)="showModal('add', 'Datasheet', files.code)">
+        <div class="planilha" *ngFor="let files of data" >
+          
           <p>{{files.description}}</p>
           <p>{{files.clientCode}}</p>
+          <button (click)="delete(files.code)">Delete</button>
+          <button (click)="showModal('add', 'Datasheet', files.code)">Abrir</button>
         </div>
     </div>
 
     <div *ngIf="getTypeOfReturn() == 'Type 4'">
-        <div class="planilha" (click)="showModal('add', 'Products', product.code)" *ngFor="let product of data">
+        <div class="planilha"  *ngFor="let product of data">
+          
           <p>{{product.name}}</p>
           <p>{{product.price}}</p>
           <p>{{product.unity}}</p>
           <p>{{product.code}}</p>
+          <button (click)="delete(product.code)">Delete</button>
+          <button (click)="showModal('add', 'Products', product.code)">Abrir</button>
         </div>
     </div>
 
     <div *ngIf="getTypeOfReturn() == 'Type 5'">
-      <div class="planilha" (click)="showModal('add', 'Clients', provider.code)" *ngFor="let provider of data">
+      <div class="planilha"  *ngFor="let provider of data">
+        
         <p>{{provider.name}}</p>
         <p>{{provider.email}}</p>
         <p>{{provider.cnpj}}</p>
         <p>{{provider.code}}</p>
+        <button (click)="delete(provider.code)">Delete</button>
+        <button (click)="showModal('add', 'Clients', provider.code)">Abrir</button>
       </div>
   </div>
     

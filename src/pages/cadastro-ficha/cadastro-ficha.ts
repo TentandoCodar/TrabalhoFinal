@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 import firebase from 'firebase';
 import { TabsPage } from '../tabs/tabs';
 import { threadId } from 'worker_threads';
+import { ListPage } from '../list/list';
 
 /**
  * Generated class for the CadastroFichaPage page.
@@ -37,17 +38,20 @@ export class CadastroFichaPage {
   standartDivisor:number;
   salePrice:number;
   products:{id,name, price}[] = [];
-  productsIndexes = [];
+  productsIndexes= [];
+  productsPrices = [];
+  productsIds = [];
   productsArray = [];
   materialCost:number = 0;
-  
+  laborCustFinal:number = 0;
+  profitMargin:number = 0;
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
     this.date = new Date().toLocaleDateString('pt-BR');
     this.firestore = firebase.firestore();
     this.code = navParams.get('itemId');
     let sc = this.code != "";
 
-    console.log(sc)
+    
     if(!this.code) {
       this.firestore.collection('Clients').onSnapshot((snapshot) => {
         this.clients = [];
@@ -73,6 +77,14 @@ export class CadastroFichaPage {
         
   
       })
+
+      this.firestore.collection('Costs').onSnapshot(snapshot => {
+        snapshot.forEach(doc => {
+          const data = doc.data();
+          this.profitMargin = data.ProfitMargin;
+          this.laborCust = data.LaborCostBrute + data.PaymentSheetBrute;
+        });
+      })
     }
     else {
       this.firestore.collection('Datasheet').doc(this.code).get().then((snapshot) => {
@@ -85,7 +97,13 @@ export class CadastroFichaPage {
         this.modelist = data.modelist;
         this.productAmount = data.productAmount;
         this.observations = data.observations;
-        
+        this.hourAmount = data.hourAmount;
+        this.laborCust = data.laborCust;
+        this.priceCust = data.priceCust;
+        this.standartDivisor = data.standartDivisor;
+        this.salePrice = data.salePrice;
+        this.productsIds = data.rawMaterial;
+        this.productsPrices = data.rawPrice;
         this.description = data.description;
       })
       
@@ -104,7 +122,7 @@ export class CadastroFichaPage {
       this.productsArray.push(i);
       this.productsIndexes.push("");
     }
-    console.log(this.productsArray)
+    
   }
 
   printArray() {
@@ -120,18 +138,24 @@ export class CadastroFichaPage {
     this.clientPhone = this.clients[this.clientIndex].phone;
   }
 
-  changeLaborHour(term) {
-    console.log(term)
-    this.laborCust = this.hourAmount * 13
-  }
+  
 
   signUp() {
-    this.products.forEach(value => {
+    
+    this.productsIndexes.forEach(value => {
       
-      this.materialCost += parseFloat(value.price);
+      this.productsPrices.push(this.products[value].price);
+      this.productsIds.push(this.products[value].id);
+    })
+    this.productsPrices.forEach(value => {
+      this.materialCost += parseFloat(value);
     })
     
-    /*let clientCode = this.clientCode;
+    this.priceCust = this.materialCost + (this.hourAmount * this.laborCust);
+    this.standartDivisor = 1 - (this.profitMargin / 100 + 0.30);
+    this.salePrice =this.priceCust / this.standartDivisor;
+    this.salePrice = Math.ceil(this.salePrice);
+    let clientCode = this.clientCode;
     let clientPhone = this.clientPhone;
     let seal1 = this.seal1;
     let seal2 = this.seal2;
@@ -144,23 +168,86 @@ export class CadastroFichaPage {
     let priceCust = this.priceCust;
     let standartDivisor = this.standartDivisor;
     let salePrice = this.salePrice;
-    this.firestore.collection("Datasheet").add({
-      clientCode,
-      clientPhone,
-      seal1,
-      seal2,
-      seal3,
-      date,
-      modelist,
-      productAmount,
-      observations,
-      productionAmount,
-      laborCust,
-      priceCust,
-      standartDivisor,
-      salePrice,
-      rawMaterial: this.productsIndexes,
-    })*/
+    let description = this.description;
+    
+    if(!this.code) {
+      
+      this.firestore.collection("Datasheet").add({
+        clientCode,
+        clientPhone,
+        seal1,
+        seal2,
+        seal3,
+        date,
+        modelist,
+        productAmount,
+        observations,
+        hourAmount: this.hourAmount,
+        laborCust,
+        priceCust,
+        standartDivisor,
+        salePrice,
+        rawMaterial: this.productsIds,
+        rawPrice: this.productsPrices,
+        image: "",
+        description
+      }).then((resp) => {
+        this.firestore.collection("Datasheet").doc(resp.id).set({
+          clientCode,
+          clientPhone,
+          seal1,
+          seal2,
+          seal3,
+          date,
+          modelist,
+          productAmount,
+          observations,
+          hourAmount: this.hourAmount,
+          laborCust,
+          priceCust,
+          standartDivisor,
+          salePrice,
+          rawMaterial: this.productsIds,
+          rawPrice: this.productsPrices,
+          image: "",
+          code:resp.id,
+          description
+        }).then((resp) => {
+          this.navCtrl.push(ListPage, {classToList: "CadastroFichaPage"});
+        }).catch((err) => {
+          
+        })
+      }).catch((err) => {
+
+      })
+    }
+    else {
+      this.firestore.collection("Datasheet").doc(this.code).set({
+        clientCode,
+        clientPhone,
+        seal1,
+        seal2,
+        seal3,
+        date,
+        modelist,
+        productAmount,
+        observations,
+        hourAmount: this.hourAmount,
+        laborCust,
+        priceCust,
+        standartDivisor,
+        salePrice,
+        rawMaterial: this.productsIds,
+        rawPrice: this.productsPrices,
+        image: "",
+        code:this.code,
+        description
+      }).then((resp) => {
+
+      }).catch((err) => {
+        
+      })
+    }
       
   }
 }

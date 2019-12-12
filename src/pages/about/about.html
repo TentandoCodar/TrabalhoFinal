@@ -19,29 +19,13 @@
   <br><br>
   <ion-row>
 
-    <div (click)="pushItem( 'ITEM ID' )" class="planilha shop-item">
+    <div *ngFor="let data of productData" (click)="pushItem( data.code )" class="planilha shop-item">
       <img src="../../assets/imgs/leticia4.jpeg" alt="">
-      <span class="preco">1000,00</span>
+      <span class="preco">R$:{{data.salePrice}}</span>
       <br><br>
     </div>
 
-    <div (click)="pushItem( 'ITEM ID' )" class="planilha shop-item">
-        <img src="../../assets/imgs/leticia4.jpeg" alt="">
-        <span class="preco">1000,00</span>
-        <br><br>
-      </div>
-
-      <div (click)="pushItem( 'ITEM ID' )" class="planilha shop-item">
-          <img src="../../assets/imgs/leticia4.jpeg" alt="">
-          <span class="preco">1000,00</span>
-          <br><br>
-        </div>
     
-        <div (click)="pushItem( 'ITEM ID' )" class="planilha shop-item">
-            <img src="../../assets/imgs/leticia4.jpeg" alt="">
-            <span class="preco">1000,00</span>
-            <br><br>
-          </div>
           
   </ion-row> 
 </ion-content>
