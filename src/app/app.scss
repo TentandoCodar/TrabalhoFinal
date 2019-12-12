@@ -47,6 +47,18 @@ ion-content{
   padding-bottom: 5px;
 }
 
+.button_style_card{
+  border: 2px solid rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0);
+  font-family: 'Poppins';
+  font-weight: 600;
+  font-size: 15px;
+  padding-left: 7px;
+  padding-right: 7px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
 .corpo_perfil{
   margin-left: 5%;
   margin-right: 5%;
@@ -106,7 +118,8 @@ padding-top: 10px;
 }
 
 .stats-header{
-  font-size: 17px;
+  font-size: 16px;
+  font-family: "Roboto", "Helvetica Neue", sans-serif;
 }
 
 .stats-container{
@@ -141,3 +154,69 @@ padding-top: 10px;
   font-family: 'Poppins';
 }
 
+
+.to-be-changed {
+	color: black;
+}
+
+
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+
+
+.to-be-changed:active {
+  color: #8ca8c0;
+  -webkit-animation-name: spin;
+  -webkit-animation-duration: 400ms;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-name: spin;
+  -moz-animation-duration: 400ms;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
+  -ms-animation-name: spin;
+  -ms-animation-duration: 400ms;
+  -ms-animation-iteration-count: infinite;
+  -ms-animation-timing-function: linear;
+  -o-transition: rotate(36000deg);
+}
+
+.select-text{
+  background-color: rgba(0, 0, 0, 0 ) !important;
+  border-top: none  !important;
+  border-left: none  !important;
+  border-right: none  !important;
+  border-bottom: rgba(0, 0, 0, 1) solid 1px  !important;
+  width: 100px  !important;
+  color: #000 !important;
+  overflow: visible  !important;
+
+}
+select{
+  height: 20px !important;
+}
+
+
+
+label{
+  text-align: left !important;
+}
+
+
+.searchbar-input{
+  background-color: #0000;
+}
+
+.searchbar-search-icon{
+  display: none;
+}

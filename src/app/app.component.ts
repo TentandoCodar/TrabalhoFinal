@@ -9,6 +9,7 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { Observable } from 'rxjs';
 
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -17,10 +18,23 @@ import { Observable } from 'rxjs';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
+   values: any[] = [0, 0, 0, 0];
+   urls: string[] = ["https://api.thingspeak.com/channels/756771/fields/1/last", "https://api.thingspeak.com/channels/756771/fields/2/last", "https://api.thingspeak.com/channels/756771/fields/3/last", "https://api.thingspeak.com/channels/756771/fields/4/last"];
+
+
+    // url1:string = "https://api.thingspeak.com/channels/756771/fields/1/last";
+    // url2:string = "https://api.thingspeak.com/channels/756771/fields/2/last";
+    // url3:string = "https://api.thingspeak.com/channels/756771/fields/3/last";
+
+
   rootPage: any = 'SplashScreenPage';
   isLoggedIn: boolean = false;
 
-  constructor(app: App, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public afAuth: AngularFireAuth) {
+  constructor(app: App, public platform: Platform,private http: HttpClient, public statusBar: StatusBar, public splashScreen: SplashScreen, public afAuth: AngularFireAuth) {
+
+
+
+
     this.initializeApp();
     app.viewDidEnter.subscribe((e) => {
       this.isAuth();
@@ -43,9 +57,36 @@ export class MyApp {
     }
 
 
+
+
+    for(let i in this.urls){
+      this.getData(this.urls[i]).then((resp) => {
+        this.values[i] = resp;
+        console.log(resp)
+        console.log(this.values[i]);
+        console.log("Refreshing Almoxarifado stats")
+      }).catch((err) => {
+
+      })
+    }
   }
 
 
+  refresh(){
+    for(let i in this.urls){
+      this.getData(this.urls[i]).then((resp) => {
+        this.values[i] = Number(resp);
+        console.log(this.values[i]);
+
+      }).catch((err) => {
+
+      })
+    }
+  }
+
+  getData(url: string) {
+    return this.http.get(url).toPromise();
+  }
 
 
   isAuth() {
@@ -63,6 +104,7 @@ export class MyApp {
       }
     })
   }
+
 
 
   login(){

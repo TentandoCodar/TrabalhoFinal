@@ -2,17 +2,14 @@
   <ion-icon class="nav-back-arrow" name="md-arrow-back" (click)="back()"> <h1 style="font-family: 'Poppins'; font-weight: 700; margin-left: 10px;">{{title}}</h1></ion-icon>
   <br>
 <br>
+      <ion-row style="width: 100%;">
+        <ion-searchbar   class="input_form" center (ionChange)="getItems()" style="width: 90%;"> </ion-searchbar>  <button type="button" name="button" class="button_style" style="width: 10%; border: none" ><ion-icon name="search"></ion-icon> </button>
 
-
-
-
-  
-      <ion-searchbar style="width: 90%;" [(ngModel)]="searchTerm" class="input_form" center (ionChange)="getItems()"></ion-searchbar>
-      
+      </ion-row>
       <h2  class="ficarnomeio" style="font-family: 'Raleway'; background-color: #0000; font-weight: bold;">{{searchTermDisplay}}</h2>
       <div *ngIf="getTypeOfReturn() == 'Type 1' || getTypeOfReturn() == 'Type 2' || getTypeOfReturn() == 'Type 5'"  class="formulario">
         <ion-item>
-          <ion-select style="height: 20px;"  [(ngModel)]="searchWhere">
+          <ion-select [(ngModel)]="searchWhere">
             <ion-option value="email">Email</ion-option>
             <ion-option value="code">Codigo</ion-option>
             <ion-option value="name">Nome</ion-option>
@@ -21,87 +18,87 @@
       </div>
       <div *ngIf="getTypeOfReturn() == 'Type 4'"  class="formulario">
         <ion-item>
-          <ion-select style="height: 20px;"  [(ngModel)]="searchWhere">
+          <ion-select  [(ngModel)]="searchWhere">
             <ion-option value="name">Nome</ion-option>
             <ion-option value="code">Codigo</ion-option>
-            
+
           </ion-select>
         </ion-item>
       </div>
       <div *ngIf="getTypeOfReturn() == 'Type 3'"  class="formulario">
         <ion-item>
-          <ion-select style="height: 20px;"  [(ngModel)]="searchWhere">
+          <ion-select [(ngModel)]="searchWhere">
             <ion-option value="code">Codigo</ion-option>
             <ion-option value="modelist">Modelista</ion-option>
             <ion-option value="description">Descrição</ion-option>
           </ion-select>
         </ion-item>
       </div>
-      
-      
-      
-      <button style="margin-bottom:10px;"  type="button" name="button" class="button_style">PESQUISAR</button>
 
-    
+
+
+
+
+
     <div  *ngIf="getTypeOfReturn() == 'Type 1'">
-      <div class="planilha"  *ngFor="let provider of data">     
-          
-          <p>{{provider.name}}</p>
-          <p>{{provider.email}}</p>
-          <p>{{provider.cnpj}}</p>
-          <p>{{provider.code}}</p>
-          <button (click)="delete(provider.code)">Delete</button>
-          <button (click)="showModal('add', 'Providers', provider.code)">Abrir</button>
+      <div class="planilha"  *ngFor="let provider of data">
+
+          <h1 class="card-title">{{provider.name}}</h1>
+          <h2 class="card-label"></h2> <p class="card-stats">{{provider.email}}</p>
+          <h2 class="card-label"></h2> <p class="card-stats">{{provider.cnpj}}</p>
+          <h2 class="card-label"></h2> <p class="card-stats">{{provider.code}}</p>
+          <button  class="button_style_card" style="color: white; background-color: black;" (click)="delete(provider.code)">Delete</button>
+          <button class="button_style_card" (click)="showModal('add', 'Providers', provider.code)">Abrir</button>
       </div>
     </div>
 
-    
+
 
     <div  *ngIf="getTypeOfReturn() == 'Type 2'">
         <div class="planilha"  *ngFor="let user of data">
-          
-          <p>{{user.name}}</p>
-          <p>{{user.email}}</p>
-          <p>{{user.code}}</p>
-          <button (click)="delete(user.code)">Delete</button>
-          <button (click)="showModal('add', 'Users', user.code)">Abrir</button>
+
+          <h1 class="card-title" >{{user.name}}</h1>
+          <h2 class="card-label"></h2> <p class="card-stats">{{user.email}}</p>
+          <h2 class="card-label"></h2> <p class="card-stats">{{user.code}}</p>
+          <button  class="button_style_card" style="color: white; background-color: black;" (click)="delete(user.code)">Delete</button>
+          <button class="button_style_card" (click)="showModal('add', 'Users', user.code)">Abrir</button>
         </div>
     </div>
 
     <div  *ngIf="getTypeOfReturn() == 'Type 3'">
         <div class="planilha" *ngFor="let files of data" >
-          
-          <p>{{files.description}}</p>
-          <p>{{files.clientCode}}</p>
-          <button (click)="delete(files.code)">Delete</button>
-          <button (click)="showModal('add', 'Datasheet', files.code)">Abrir</button>
+
+          <h1 class="card-title">{{files.description}}</h1>
+          <h2 class="card-label"></h2> <p class="card-stats">{{files.clientCode}}</p>
+          <button  class="button_style_card" style="color: white; background-color: black;" (click)="delete(files.code)">Delete</button>
+          <button class="button_style_card" (click)="showModal('add', 'Datasheet', files.code)">Abrir</button>
         </div>
     </div>
 
     <div *ngIf="getTypeOfReturn() == 'Type 4'">
         <div class="planilha"  *ngFor="let product of data">
-          
-          <p>{{product.name}}</p>
-          <p>{{product.price}}</p>
-          <p>{{product.unity}}</p>
-          <p>{{product.code}}</p>
-          <button (click)="delete(product.code)">Delete</button>
-          <button (click)="showModal('add', 'Products', product.code)">Abrir</button>
+
+          <h1 class="card-title">{{product.name}}</h1>
+          <h2 class="card-label"></h2> <p class="card-stats">{{product.price}}</p>
+          <h2 class="card-label"></h2> <p class="card-stats">{{product.unity}}</p>
+          <h2 class="card-label"></h2> <p class="card-stats">{{product.code}}</p>
+          <button  class="button_style_card" style="color: white; background-color: black;" (click)="delete(product.code)">Delete</button>
+          <button class="button_style_card" (click)="showModal('add', 'Products', product.code)">Abrir</button>
         </div>
     </div>
 
     <div *ngIf="getTypeOfReturn() == 'Type 5'">
       <div class="planilha"  *ngFor="let provider of data">
-        
-        <p>{{provider.name}}</p>
-        <p>{{provider.email}}</p>
-        <p>{{provider.cnpj}}</p>
-        <p>{{provider.code}}</p>
-        <button (click)="delete(provider.code)">Delete</button>
-        <button (click)="showModal('add', 'Clients', provider.code)">Abrir</button>
+
+        <h1 class="card-title">{{provider.name}}</h1>
+        <h2 class="card-label"></h2> <p class="card-stats">{{provider.email}}</p>
+        <h2 class="card-label"></h2> <p class="card-stats">{{provider.cnpj}}</p>
+        <h2 class="card-label"></h2> <p class="card-stats">{{provider.code}}</p>
+        <button  class="button_style_card" style="color: white; background-color: black;" (click)="delete(provider.code)">Delete</button>
+        <button class="button_style_card" (click)="showModal('add', 'Clients', provider.code)">Abrir</button>
       </div>
   </div>
-    
+
 
   <ion-fab right bottom>
       <button ion-fab color="primary" (click)='showModal("add")' ><ion-icon name="add"></ion-icon></button>
