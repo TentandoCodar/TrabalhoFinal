@@ -32,17 +32,8 @@
     <div class="lugardotitulo_form">
       <h3 class="titulo_form">CLIENTE</h3>
     </div>
-    <div class="formulario">
-      <input disabled [(ngModel)]="clientCode" type="text" class="input_form" placeholder="Codigo">
-    </div>
-    <div *ngIf="!code" class="formulario">
-      <ion-item>
-        <ion-select style="height: 20px;"  (ionChange)="changeClient()" [(ngModel)]="clientIndex">
-          <ion-option *ngFor="let client of clients" [value]="client.id">{{client.name}}</ion-option>
-
-        </ion-select>
-      </ion-item>
-    </div>
+    
+    
 
     
     

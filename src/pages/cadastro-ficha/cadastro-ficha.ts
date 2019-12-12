@@ -173,8 +173,7 @@ export class CadastroFichaPage {
     if(!this.code) {
       
       this.firestore.collection("Datasheet").add({
-        clientCode,
-        clientPhone,
+        
         seal1,
         seal2,
         seal3,
@@ -193,8 +192,7 @@ export class CadastroFichaPage {
         description
       }).then((resp) => {
         this.firestore.collection("Datasheet").doc(resp.id).set({
-          clientCode,
-          clientPhone,
+          
           seal1,
           seal2,
           seal3,

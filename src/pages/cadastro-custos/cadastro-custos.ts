@@ -34,8 +34,13 @@ export class CadastroCustosPage {
   paymentSheetBrute:number;
   laborCostBrute:number;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    const firestore = firebase.firestore();
     
+    this.getData();
+    
+  }
+
+  getData() {
+    const firestore = firebase.firestore();
     firestore.collection('Costs').onSnapshot(snapshot => {
       snapshot.forEach(doc => {
         const data = doc.data();
@@ -63,6 +68,32 @@ export class CadastroCustosPage {
   ionViewDidLoad() {
   }
 
+  update() {
+    const firestore = firebase.firestore();
+    this.charge = this.paymentSheetBrute * (this.chargePercentage / 100);
+    this.laborCostBrute  = this.paymentSheetBrute + this.charge;
+    firestore.collection('Costs').doc("kJEJcageHISuAcRqBVnB").update({
+      AdministrativeExpenses: this.administrativeExpenses,
+      Comissions: this.comissions,
+      OperationalExpenses: this.operationalExpenses,
+      Theft: this.theft,
+      Transportation: this.freight,
+      FixedCosts: this.fixedCosts,
+      ProfitMargin: this.profitMargin,
+      Investments: this.investment,
+      FinancialExpenses: this.financialExpenses,
+      DiverseExpenses: this.miscellaneousExpenses,
+      Withdraw: this.withdrawal,
+      PaymentSheetBrute: this.paymentSheetBrute,
+      ChargePercentage: this.chargePercentage,
+      Charge: this.charge,
+      laborCostBrute: this.laborCostBrute,
+    }).then((resp) => {
+
+    }).catch((resp) => {
+
+    })
+  }
 
   push(){
     this.navCtrl.push(TabsPage);  
