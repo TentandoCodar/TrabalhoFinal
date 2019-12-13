@@ -4,14 +4,14 @@
     <div class="lugardotitulo_form">
       <h2 class="titulo_form">CADASTRAR INSUMO</h2>
     </div>
-    <div class="formulario">
-      <input [(ngModel)]="description" type="text" class="input_form" placeholder="Descrição" required="">
+    <div class="formulario"><ion-label class="plan-label"  >Descrição:</ion-label> <br>
+      <input [(ngModel)]="description" type="text" class="input_form" placeholder=" " required="">
     </div>
-    <div class="formulario">
-      <input [(ngModel)]="unity" type="text" class="input_form" placeholder="Unidade" required="">
+    <div class="formulario"><ion-label class="plan-label"  >Unidade:</ion-label> <br>
+      <input [(ngModel)]="unity" type="text" class="input_form" placeholder=" " required="">
     </div>
-    <div class="formulario">
-      <input [(ngModel)]="price"  type="text" class="input_form" placeholder="Preço Unitário" required="">
+    <div class="formulario"><ion-label class="plan-label"  >Preço Unitário:</ion-label> <br>
+      <input [(ngModel)]="price"  type="text" class="input_form" placeholder=" " required="">
     </div>
     <ion-item>
       <ion-select style="height: 20px;"  (ionChange)="changeProvider()" [(ngModel)]="providerId">
@@ -19,8 +19,8 @@
 
       </ion-select>
     </ion-item>
-    <div class="formulario">
-      <input [(ngModel)]="providerCode" type="text" class="input_form" placeholder="Codigo do Fornecedor" required="">
+    <div class="formulario"><ion-label class="plan-label"  >Codigo do Fornecedor:</ion-label> <br>
+      <input [(ngModel)]="providerCode" type="text" class="input_form" placeholder=" " required="">
     </div>
   </div>
 

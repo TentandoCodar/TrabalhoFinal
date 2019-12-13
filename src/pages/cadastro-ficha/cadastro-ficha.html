@@ -5,11 +5,11 @@
       <h3 class="titulo_form">CADASTRAR FICHA TÉCNICA</h3>
     </div>
 
-    <div class="formulario">
-      <input disabled [(ngModel)]="date" type="text" class="input_form" placeholder="Data">
+    <div class="formulario"><ion-label class="plan-label"  >Data:</ion-label> <br>
+      <input disabled [(ngModel)]="date" type="text" class="input_form" placeholder=" ">
     </div>
-    <div class="formulario">
-      <input [(ngModel)]="description" type="text" class="input_form" placeholder="Descrição da Peça">
+    <div class="formulario"><ion-label class="plan-label"  >Descrição da Peça:</ion-label> <br>
+      <input [(ngModel)]="description" type="text" class="input_form" placeholder=" ">
     </div>
   </div>
 
@@ -17,41 +17,31 @@
       <div class="lugardotitulo_form">
         <h3 class="titulo_form">CADASTRAR FICHA TÉCNICA</h3>
       </div>
-      <div class="formulario">
-        <input disabled [(ngModel)]="code" type="text" class="input_form" placeholder="Referência">
+      <div class="formulario"><ion-label class="plan-label"  >Referência:</ion-label> <br>
+        <input disabled [(ngModel)]="code" type="text" class="input_form" placeholder=" ">
       </div>
-      <div class="formulario">
-        <input disabled [(ngModel)]="date" type="text" class="input_form" placeholder="Data">
+      <div class="formulario"><ion-label class="plan-label"  >Data:</ion-label> <br>
+        <input disabled [(ngModel)]="date" type="text" class="input_form" placeholder=" ">
       </div>
-      <div class="formulario">
-        <input disabled [(ngModel)]="description" type="text" class="input_form" placeholder="Descrição da Peça">
+      <div class="formulario"><ion-label class="plan-label"  >Descrição da Peça:</ion-label> <br>
+        <input disabled [(ngModel)]="description" type="text" class="input_form" placeholder=" ">
       </div>
     </div>
 
   <div  class="planilha">
-    <div class="lugardotitulo_form">
-      <h3 class="titulo_form">CLIENTE</h3>
+
+
+    <div class="formulario"><ion-label class="plan-label"  >Lacre 1:</ion-label> <br>
+      <input [disabled]="code != ''" [(ngModel)]="seal1" type="text" class="input_form" placeholder=" ">
     </div>
-
-
-
-
-
-
-    <div  class="formulario">
-      <input disabled [(ngModel)]="clientPhone" type="text" class="input_form" placeholder="Telefone">
+    <div class="formulario"><ion-label class="plan-label"  >Lacre 2:</ion-label> <br>
+      <input [disabled]="code != ''" [(ngModel)]="seal2" type="text" class="input_form" placeholder=" ">
     </div>
-    <div class="formulario">
-      <input [disabled]="code != ''" [(ngModel)]="seal1" type="text" class="input_form" placeholder="Lacre 1">
+    <div class="formulario"><ion-label class="plan-label"  >Lacre 3:</ion-label> <br>
+      <input [disabled]="code != ''" [(ngModel)]="seal3" type="text" class="input_form" placeholder=" ">
     </div>
-    <div class="formulario">
-      <input [disabled]="code != ''" [(ngModel)]="seal2" type="text" class="input_form" placeholder="Lacre 2">
-    </div>
-    <div class="formulario">
-      <input [disabled]="code != ''" [(ngModel)]="seal3" type="text" class="input_form" placeholder="Lacre 3">
-    </div>
-    <div class="formulario">
-      <input [disabled]="code != ''" [(ngModel)]="modelist" type="text" class="input_form" placeholder="Modelista">
+    <div class="formulario"><ion-label class="plan-label"  >Modelista:</ion-label> <br>
+      <input [disabled]="code != ''" [(ngModel)]="modelist" type="text" class="input_form" placeholder=" ">
     </div>
 
 
@@ -61,8 +51,8 @@
       <div class="lugardotitulo_form">
         <h3 class="titulo_form">PRODUTOS</h3>
       </div>
-      <div class="formulario">
-        <input [disabled]="code != ''" [(ngModel)]="productAmount" type="text" class="input_form" placeholder="Número de Produtos">
+      <div class="formulario"><ion-label class="plan-label"  >Número de Produtos:</ion-label> <br>
+        <input [disabled]="code != ''" [(ngModel)]="productAmount" type="text" class="input_form" placeholder=" ">
       </div>
     <button *ngIf="!code" (click)="setProductAmount()" class="button_style">Criar</button>
     <div *ngIf="!code"  class="formulario" style="width: 100%; border: none;">
@@ -80,24 +70,24 @@
 
 
 
-    <div class="formulario">
-      <input [disabled]="code != ''" [(ngModel)]="observations" type="text" class="input_form" placeholder="Observações">
+    <div class="formulario"><ion-label class="plan-label"  >Observações:</ion-label> <br>
+      <input [disabled]="code != ''" [(ngModel)]="observations" type="text" class="input_form" placeholder=" ">
     </div>
-    <div class="formulario">
-      <input [(ngModel)]="hourAmount" type="text" class="input_form" placeholder="Hora trabalhada">
+    <div class="formulario"><ion-label class="plan-label"  >Hora trabalhada:</ion-label> <br>
+      <input [(ngModel)]="hourAmount" type="text" class="input_form" placeholder="Hr">
     </div>
 
-    <div class="formulario">
-      <input disabled  [(ngModel)]="laborCust" type="text" class="input_form" placeholder="Custo da Mão-de-Obra (Por Peça)">
+    <div class="formulario"><ion-label class="plan-label"  >Custo da Mão-de-Obra (Por Peça):</ion-label> <br>
+      <input disabled  [(ngModel)]="laborCust" type="text" class="input_form" placeholder="R$">
     </div>
-    <div class="formulario">
-      <input  disabled [(ngModel)]="priceCust" type="text" class="input_form" placeholder="Preço do Custo">
+    <div class="formulario"><ion-label class="plan-label"  >Preço do Custo:</ion-label> <br>
+      <input  disabled [(ngModel)]="priceCust" type="text" class="input_form" placeholder="R$">
     </div>
-    <div class="formulario">
-      <input disabled [(ngModel)]="standartDivisor" type="text" class="input_form" placeholder="Divisor Padrão">
+    <div class="formulario"><ion-label class="plan-label"  >Divisor Padrão:</ion-label> <br>
+      <input disabled [(ngModel)]="standartDivisor" type="text" class="input_form" placeholder=" ">
     </div>
-    <div class="formulario">
-      <input disabled [(ngModel)]="salePrice" type="text" class="input_form" placeholder="Preço de Venda">
+    <div class="formulario"><ion-label class="plan-label"  >Preço de Venda:</ion-label> <br>
+      <input disabled [(ngModel)]="salePrice" type="text" class="input_form" placeholder="R$">
     </div>
     <!-- <button (click)="signUp()" type="submit" class="button_style">CADASTRAR</button> -->
 
