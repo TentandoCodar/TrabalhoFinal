@@ -1,5 +1,5 @@
 <ion-content padding class="ficarnomeio">
-  <br><br><br>
+  <br><br>
   <div class="planilha">
     <div class="lugardotitulo_form">
       <h2 class="titulo_form">CADASTRAR INSUMO</h2>
@@ -15,11 +15,11 @@
     </div>
     <div class="plan-label2">Nome do Fornecedor:</div><br>
     <ion-item>
-      <ion-select style="height: 20px;"  (ionChange)="changeProvider()" [(ngModel)]="providerId" >
-        <ion-option class="nome_fornec" *ngFor="let provider of providers" [value]="provider.id">{{provider.name}}</ion-option>
+      <ion-select style="height: 50px;"  (ionChange)="changeProvider()" [(ngModel)]="providerId" >
+        <ion-option *ngFor="let provider of providers" [value]="provider.id">{{provider.name}}</ion-option>
       </ion-select>
     </ion-item>
-    <div class="formulario"><ion-label class="plan-label"  >Codigo do Fornecedor:</ion-label> <br><br>
+    <div class="formulario"><ion-label class="plan-label">Codigo do Fornecedor:</ion-label> <br><br>
       <input [(ngModel)]="providerCode" type="text" class="input_form" placeholder=" " required="">
     </div>
   </div>

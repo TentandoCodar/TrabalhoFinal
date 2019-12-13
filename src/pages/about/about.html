@@ -21,16 +21,17 @@
 
   </div>
   <br><br>
-  <ion-row>
 
-    <div *ngFor="let data of productData" (click)="pushItem( data.code )" class="planilha shop-item">
-      <img src="../../assets/imgs/leticia4.jpeg" alt="">
-      <span class="card-label">{{data.name}}</span>
-      <span class="preco">R$:{{data.salePrice}}</span>
-      <br><br>
+    <div *ngFor="let data of productData" (click)="pushItem( data.code )" class="planilha" style="padding: 0px;">
+      <ion-row>
+        <img src="../../assets/imgs/leticia4.jpeg" alt="" class="shop-item">
+        <div class="product-stats-container">
+          <span class="shop-item-label">{{data.name}}</span><br>
+          <span class="shop-item-price"> <span class="shop-item-price-tag">R$:</span>{{data.salePrice}}</span>
+              <br>
+        </div>
+      </ion-row>
+
     </div>
 
-
-
-  </ion-row>
 </ion-content>

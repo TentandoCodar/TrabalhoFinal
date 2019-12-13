@@ -49,8 +49,41 @@ page-about {
 
   .shop-item{
     width: 48%;
-    margin-left: 2%;
+    // margin-left: 2%;
 
     padding: 0px;
   }
+
+  .product-stats-container{
+    padding: 5px;
+    width: 52%;
+    text-align: left;
+  }
+
+  .shop-item-label{
+    width: 100%;
+    font-family: 'Raleway';
+    font-size: 20px;
+
+  }
+
+  .shop-item-price{
+    // position:;
+    // bottom: 0px;
+    margin-left: 10px;
+    margin-top: 5px;
+    width: 100%;
+    font-family: 'Raleway';
+    font-size: 40px;
+    font-weight: 600;
+  }
+  .shop-item-price-tag{
+    margin-left: 10px;
+    margin-top: 5px;
+    width: 100%;
+    font-family: 'Raleway';
+    font-size: 20px;
+    font-weight: 600;
+  }
+
 }

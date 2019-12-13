@@ -5,7 +5,7 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-content >
+  <ion-content class="menu-style">
 
 
 
@@ -19,13 +19,22 @@
               Contato   <ion-icon style="font-size: 1.0em; color: #aaa; margin-left: 2px;" name="ios-link"></ion-icon>
             </button>
           </a>
+          <a  href="#" class="cadastrar" onclick="window.open('https://www.luxcolor.com.br/', '_system', 'location=yes'); return false;" >
+            <button menuClose ion-item>
+              Visite o Site   <ion-icon style="font-size: 1.0em; color: #aaa; margin-left: 2px;  -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;" name="ios-link"></ion-icon>
+            </button>
+          </a>
+
     </ion-list>
 
     <ion-list *ngIf="isLoggedIn" style="border: none;">
 
+      <button  menuClose ion-item (click)="logout()">
+        Logout
+      </button>
 
-
-    <div>
+    <div style="margin-top: 10px">
       <button menuClose ion-item (click)="pushList('CadastroFuncPage')">
         Funcionários
       </button>
@@ -60,13 +69,17 @@
 
       <a  href="#" class="cadastrar" onclick="window.open('https://www.youtube.com/watch?v=Hof1dOoqbz0', '_system', 'location=yes'); return false;" >
         <button menuClose ion-item>
-          Contato   <ion-icon style="font-size: 1.0em; color: #aaa; margin-left: 2px;" name="ios-link"></ion-icon>
+          Contato   <ion-icon style="font-size: 1.0em; color: #aaa; margin-left: 2px;  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;" name="ios-link"></ion-icon>
+        </button>
+      </a>
+      <a  href="#" class="cadastrar" onclick="window.open('https://www.luxcolor.com.br/', '_system', 'location=yes'); return false;" >
+        <button menuClose ion-item>
+          Visite o Site   <ion-icon style="font-size: 1.0em; color: #aaa; margin-left: 2px;  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;" name="ios-link"></ion-icon>
         </button>
       </a>
 
-      <button  menuClose ion-item (click)="logout()">
-        Logout
-      </button>
 
 
 
