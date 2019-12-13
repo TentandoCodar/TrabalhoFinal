@@ -7,42 +7,58 @@
     <ion-icon class="nav-back-arrow" name="md-arrow-back" style="position:fixed" (click)="back()"><h1 style="font-family: 'Poppins'; font-weight: 700; margin-left: 10px;">{{title}}</h1></ion-icon>
 
   </div>
-  
+
     <br>
-<br>
-      <ion-row style="width: 100%;">
+<br>  <ion-row>
+          <button  class="button_search"  style="border:none" class="selected" >Nome</button>
+          <button class="button_search"   style="border:none" class="" >Código</button>
+          <button  class="button_search"  style="border:none" class="" >Email</button>
+      </ion-row>
+
+      <ion-row style="width: 100%; margin-bottom:-10px;">
         <ion-searchbar class="input_form" center (ionChange)="getItems()" style="width: 90%;"> </ion-searchbar>
 
         <button type="button" name="button" class="button_style" style="width: 10%; border: none" ><ion-icon name="search"></ion-icon></button>
 
 
 
-      <div *ngIf="getTypeOfReturn() == 'Type 1' || getTypeOfReturn() == 'Type 2' || getTypeOfReturn() == 'Type 5'"   >
-  <ion-item class="type-select">
-          <ion-select class="select-box"  [(ngModel)]="searchWhere">
-            <ion-option value="email">Email</ion-option>
-            <ion-option value="code">Codigo</ion-option>
-            <ion-option value="name">Nome</ion-option>
-          </ion-select>
-  </ion-item>
+      <div *ngIf="getTypeOfReturn() == 'Type 1' || getTypeOfReturn() == 'Type 2' || getTypeOfReturn() == 'Type 5'"  class="formulario" style="width: 60%; border: none;  margin-top: 0px; ">
+        <ion-item class="type-select">
+          <select class="select-box"  [(ngModel)]="searchWhere">
+            <option disabled selected>Pesquisar por</option>
+            <option value="email">Email</option>
+            <option value="code">Codigo</option>
+            <option value="name">Nome</option>
+          </select>
+        </ion-item>
       </div>
-      <div *ngIf="getTypeOfReturn() == 'Type 4'"  class="formulario">
-  <ion-item class="type-select">
-          <ion-select class="select-box"  [(ngModel)]="searchWhere">
-            <ion-option value="name">Nome</ion-option>
-            <ion-option value="code">Codigo</ion-option>
-          </ion-select>
-</ion-item>
+    <!-- </ion-row>
+
+    <ion-row><span style="width: 40%">Pesquisar por:</span> -->
+      <div *ngIf="getTypeOfReturn() == 'Type 4'"  class="formulario" style="width: 60%; border: none; margin-top: 0px;">
+        <ion-item class="type-select">
+          <select class="select-box"  [(ngModel)]="searchWhere">
+            <option disabled selected>Pesquisar por</option>
+            <option value="name">Nome</option>
+            <option value="code">Codigo</option>
+          </select>
+        </ion-item>
       </div>
-      <div *ngIf="getTypeOfReturn() == 'Type 3'"  class="formulario">
-  <ion-item class="type-select">
-          <ion-select class="select-box" [(ngModel)]="searchWhere">
-            <ion-option value="code">Codigo</ion-option>
-            <ion-option value="modelist">Modelista</ion-option>
-            <ion-option value="description">Descrição</ion-option>
-          </ion-select>
-  </ion-item>
+      <!-- </ion-row>
+
+    <ion-row><span style="width: 40%">Pesquisar por:</span> -->
+      <div *ngIf="getTypeOfReturn() == 'Type 3'"  class="formulario" style="width: 60%; border: none; margin-top: 0px;">
+        <ion-item class="type-select">
+          <select class="select-box" [(ngModel)]="searchWhere">
+            <option disabled selected>Pesquisar por</option>
+            <option value="code">Codigo</option>
+            <option value="modelist">Modelista</option>
+            <option value="description">Descrição</option>
+          </select>
+        </ion-item>
       </div>
+
+
 
 
 </ion-row>

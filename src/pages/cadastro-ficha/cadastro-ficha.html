@@ -67,8 +67,8 @@
     <button *ngIf="!code" (click)="setProductAmount()" class="button_style">Criar</button>
     <div *ngIf="!code"  class="formulario" style="width: 100%; border: none;">
       <ion-item *ngFor="let i of productsArray">
-        <select value="Selecionar" [(ngModel)]="productsIndexes[i]" style="width: 100%; border: none;">
-          <option value="" disabled selected>Selecionar</option>
+        <select value="Selecionar" [(ngModel)]="productsIndexes[i]" style="width: 100%; border: none;color: black">
+          <option disabled selected>Selecionar</option>
           <option *ngFor="let product of products;let index = index" [value]="index" style="color: black">{{product.name}}</option>
 
         </select>
