@@ -1,14 +1,14 @@
 <ion-content padding class="ficarnomeio">
 
-    <ion-icon class="nav-back-arrow" name="md-arrow-back" (click)="push(TabsPage)"> <h1 style="font-family: 'Poppins'; font-weight: 700; margin-left: 10px;">Atualizar Custos</h1></ion-icon>
-<br><br>
+    <ion-icon class="nav-back-arrow" name="md-arrow-back" (click)="push(TabsPage)"><span class= "titulo_header">Atualizar Custos</span></ion-icon>
+        <br><br>
     <div class="planilha">
       <div class="lugardotitulo_form">
-        <h3 class="titulo_form">Custos</h3>
+        <h3 class="titulo_form">CUSTOS</h3>
       </div>
 
 
-      <div class="formulario"> <ion-label class="plan-label"  >Retirada:</ion-label> <br>
+      <div class="formulario"> <ion-label class="plan-label" >Retirada:</ion-label> <br>
         <input [(ngModel)]="withdrawal" type="number" class="input_form" placeholder="Retirada (%)">
       </div>
 
@@ -24,7 +24,7 @@
 
 
       <div class="formulario"> <ion-label class="plan-label"  >Despesas Administrativas:</ion-label> <br>
-        <input [(ngModel)]="administrativeExpenses" type="number" class="input_form" placeholder="Despesas Administrativas (%)">
+        <input [(ngModel)]="administrativeExpenses" type="number" class="input_form" placeholder="(%)">
       </div>
       <div class="formulario"> <ion-label class="plan-label"  >Despesas Financeiras:</ion-label> <br>
         <input [(ngModel)]="financialExpenses" type="number" class="input_form" placeholder="Despesas Financeiras (%)">
@@ -51,6 +51,8 @@
         <input [(ngModel)]="total" type="number" class="input_form" placeholder="Total">
       </div>
     </div>
+
+
 
     <div class="planilha">
       <div class="lugardotitulo_form">

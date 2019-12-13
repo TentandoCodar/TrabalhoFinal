@@ -22,12 +22,17 @@ export class ListPage {
   searchTerm:string = "";
   searchTermDisplay = "";
   data = [];
+
+
+  selected: string[] = ["selected","","",""];
+
+
   collection = "";
   searchWhere:string = "";
   constructor(public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, public afAuth: AngularFireAuth) {
     console.log('classToList', navParams.get('classToList'));
     this.classToList = navParams.get('classToList');
-    
+
     switch(this.classToList) {
       case 'CadastroFuncPage' : {
         this.title = 'Funcionários';
@@ -51,7 +56,7 @@ export class ListPage {
         break;
       }default: {
         this.title = 'Undefined';
-        
+
         break;
       }
     }
@@ -59,27 +64,37 @@ export class ListPage {
 
   }
 
+  searchWhereButtons(who: string){
+    for(let i in this.selected){
+      if(who == i){
+        this.selected[i] = "selected";
+      }else{
+        this.selected[i] = "";
+      }
+    }
+  }
+
   getData() {
-    
+
     const firestore = firebase.firestore();
-    
+
     if(this.collection) {
       firestore.collection(this.collection).onSnapshot((snapshot) => {
         this.data = [];
-        
+
         snapshot.forEach(doc => {
           console.log(doc.data());
           this.data.push(doc.data());
         })
-  
-        
-        
-  
+
+
+
+
       })
     }
   }
 
-  
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ListPage');
@@ -93,7 +108,7 @@ export class ListPage {
   showModal(itemClass:string, collection:string = "", itemId:string = "") {
    let profileModal = this.modalCtrl.create(this.classToList, { itemId: itemId, collection: collection });
    profileModal.present();
-   
+
  }
 
  pesquisa: string = '';
@@ -102,7 +117,7 @@ export class ListPage {
  getItems() {
    console.log(this.searchTerm)
    if(this.searchTerm.length >= 20) {
-     this.searchTermDisplay = `"${this.searchTerm.substring(0,17)}..."`; 
+     this.searchTermDisplay = `"${this.searchTerm.substring(0,17)}..."`;
    }
    else {
      this.searchTermDisplay = `"${this.searchTerm}"`;
@@ -118,7 +133,7 @@ export class ListPage {
    else if(this.collection == "Users") {
     return "Type 2";
    }
-   
+
    else if(this.collection == "Datasheet") {
     return "Type 3";
    }
@@ -128,7 +143,7 @@ export class ListPage {
    }
 
    else if(this.collection == "Clients") {
-    
+
     return "Type 5";
   }
   console.log(this.collection)
@@ -139,13 +154,13 @@ export class ListPage {
   firestore.collection(this.collection).orderBy(this.searchWhere).startAt(this.searchTerm).endAt(this.searchTerm+'\uf8ff').onSnapshot((snapshot) => {
     this.data = [];
     snapshot.forEach(doc => {
-      
+
       this.data.push(doc.data());
     })
   })
  }
 
- 
+
 
  getWhereOfSearch() {
 
@@ -160,5 +175,5 @@ export class ListPage {
   }
  }
 
- 
+
 }
