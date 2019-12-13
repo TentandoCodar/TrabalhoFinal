@@ -7,19 +7,19 @@
     <div class="formulario"><ion-label class="plan-label"  >Descrição:</ion-label> <br>
       <input [(ngModel)]="description" type="text" class="input_form" placeholder=" " required="">
     </div>
-    <div class="formulario"><ion-label class="plan-label"  >Unidade:</ion-label> <br>
+    <div class="formulario"><ion-label class="plan-label" >Unidade:</ion-label> <br>
       <input [(ngModel)]="unity" type="text" class="input_form" placeholder=" " required="">
     </div>
     <div class="formulario"><ion-label class="plan-label"  >Preço Unitário:</ion-label> <br>
       <input [(ngModel)]="price"  type="text" class="input_form" placeholder=" " required="">
     </div>
+    <div class="plan-label2">Nome do Fornecedor:</div><br>
     <ion-item>
-      <ion-select style="height: 20px;"  (ionChange)="changeProvider()" [(ngModel)]="providerId">
-        <ion-option *ngFor="let provider of providers" [value]="provider.id">{{provider.name}}</ion-option>
-
+      <ion-select style="height: 20px;"  (ionChange)="changeProvider()" [(ngModel)]="providerId" >
+        <ion-option class="nome_fornec" *ngFor="let provider of providers" [value]="provider.id">{{provider.name}}</ion-option>
       </ion-select>
     </ion-item>
-    <div class="formulario"><ion-label class="plan-label"  >Codigo do Fornecedor:</ion-label> <br>
+    <div class="formulario"><ion-label class="plan-label"  >Codigo do Fornecedor:</ion-label> <br><br>
       <input [(ngModel)]="providerCode" type="text" class="input_form" placeholder=" " required="">
     </div>
   </div>

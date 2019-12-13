@@ -8,62 +8,34 @@
 
   </div>
 
-    <br>
-<br>  <ion-row style="width: 100%; align-items: center;">
-          <button (click)="searchWhereButtons(0)" class="button_search {{selected[0]}}"   >Nome</button>
-          <button (click)="searchWhereButtons(1)" class="button_search {{selected[1]}}"  >Email</button>
-          <button (click)="searchWhereButtons(2)" class="button_search {{selected[2]}}"  >Código</button>
-      </ion-row>
+    <br><br>
+ <ion-row style="width: 100%; align-items: left;">
+      <div *ngIf="getTypeOfReturn() == 'Type 1' || getTypeOfReturn() == 'Type 2' || getTypeOfReturn() == 'Type 5'"  style=" border: none;  margin-top: 0px; ">
+
+                  <button (click)="searchWhereButtons(0)" class="button_search {{selected[0]}}"   >Nome</button>
+                  <button (click)="searchWhereButtons(1)" class="button_search {{selected[1]}}"  >Email</button>
+                  <button (click)="searchWhereButtons(2)" class="button_search {{selected[2]}}"  >Código</button>
+          </div>
+      <div *ngIf="getTypeOfReturn() == 'Type 4'"   style=" border: none; margin-top: 0px;">
+                  <button (click)="searchWhereButtons(0)" class="button_search {{selected[0]}}"   >Nome</button>
+                  <button (click)="searchWhereButtons(1)" class="button_search {{selected[1]}}"  >Código</button>
+          </div>
+      <div *ngIf="getTypeOfReturn() == 'Type 3'"  style=" border: none; margin-top: 0px;">
+                  <button (click)="searchWhereButtons(0)" class="button_search {{selected[0]}}"   >Código</button>
+                  <button (click)="searchWhereButtons(1)" class="button_search {{selected[1]}}"  >Modelista</button>
+                  <button (click)="searchWhereButtons(2)" class="button_search {{selected[2]}}"  >Descrição</button>
+
+      </div>
+  </ion-row>
+
+
 
       <ion-row style="width: 100%; margin-top: 5px;">
-        <input class="input_form" style="width: 90%; padding-left: 10px;" placeholder="Pesquisar">
+        <input [(ngModel)]="searchTerm" class="input_form" style="width: 90%; padding-left: 10px; font-size: 17px;" placeholder="Pesquisar">
 
-        <button type="button" name="button" class="button_style" style="width: 10%; border: none" ><ion-icon name="search"></ion-icon></button>
+        <button type="button" name="button" class="button_style" style="width: 10%; border: none"  ><ion-icon name="search"></ion-icon></button>
+      </ion-row>
 
-
-
-      <!-- <div *ngIf="getTypeOfReturn() == 'Type 1' || getTypeOfReturn() == 'Type 2' || getTypeOfReturn() == 'Type 5'"  class="formulario" style="width: 60%; border: none;  margin-top: 0px; ">
-        <ion-item class="type-select">
-          <select class="select-box"  [(ngModel)]="searchWhere">
-            <option disabled selected>Pesquisar por</option>
-            <option value="email">Email</option>
-            <option value="code">Codigo</option>
-            <option value="name">Nome</option>
-          </select>
-        </ion-item>
-      </div> -->
-    <!-- </ion-row>
-
-    <ion-row><span style="width: 40%">Pesquisar por:</span> -->
-      <!-- <div *ngIf="getTypeOfReturn() == 'Type 4'"  class="formulario" style="width: 60%; border: none; margin-top: 0px;">
-        <ion-item class="type-select">
-          <select class="select-box"  [(ngModel)]="searchWhere">
-            <option disabled selected>Pesquisar por</option>
-            <option value="name">Nome</option>
-            <option value="code">Codigo</option>
-          </select>
-        </ion-item>
-      </div> -->
-      <!-- </ion-row>
-
-    <ion-row><span style="width: 40%">Pesquisar por:</span> -->
-      <!-- <div *ngIf="getTypeOfReturn() == 'Type 3'"  class="formulario" style="width: 60%; border: none; margin-top: 0px;">
-        <ion-item class="type-select">
-          <select class="select-box" [(ngModel)]="searchWhere">
-            <option disabled selected>Pesquisar por</option>
-            <option value="code">Codigo</option>
-            <option value="modelist">Modelista</option>
-            <option value="description">Descrição</option>
-          </select>
-        </ion-item>
-      </div> -->
-
-
-
-
-</ion-row>
-
-<br><br>
 
 
     <div  *ngIf="getTypeOfReturn() == 'Type 1'">
@@ -95,7 +67,7 @@
         <div class="planilha" *ngFor="let files of data" >
 
           <h1 class="card-title">{{files.description}}</h1>
-            <label class="card-label">Código:</label> <span class="card-stats">{{files.clientCode}}</span>   <br/> <br/>
+            <label class="card-label">Código:</label> <span class="card-stats">{{files.code}}</span>   <br/> <br/>
           <button  class="button_style_card" style="color: white; background-color: black;" (click)="delete(files.code)">Excluir</button>
           <button class="button_style_card" (click)="showModal('add', 'Datasheet', files.code)">Abrir</button>
         </div>

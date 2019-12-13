@@ -150,14 +150,15 @@ export class ListPage {
 
  }
  search(term, where = "email") {
-  const firestore = firebase.firestore();
+   console.log(term)
+  /*const firestore = firebase.firestore();
   firestore.collection(this.collection).orderBy(this.searchWhere).startAt(this.searchTerm).endAt(this.searchTerm+'\uf8ff').onSnapshot((snapshot) => {
     this.data = [];
     snapshot.forEach(doc => {
 
       this.data.push(doc.data());
     })
-  })
+  })*/
  }
 
 
