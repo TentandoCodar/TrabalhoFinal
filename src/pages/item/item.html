@@ -1,11 +1,11 @@
 <ion-content padding class="fundo" style="background-color: #0000;" >
 
     <h1 style="font-family: 'Poppins'; font-weight: 700; width: 100%; text-align: center;">Visualizar Item</h1>
- 
+
 
     <ion-card class="planilha" >
-        <ion-card-header>
-          Nome: {{ProductName}}   
+        <ion-card-header style="text-align: center">
+          {{ProductName}}
         </ion-card-header>
         <ion-card-content >
           <div class="container">
@@ -14,29 +14,25 @@
                 <ion-slide>
                   <img width="100%"  [src]="image1" alt="">
                 </ion-slide>
-              
+
                 <ion-slide >
                   <img width="100%"  [src]="image2" alt="">
                 </ion-slide>
-              
+
               </ion-slides>
             </div>
         </ion-card-content>
       </ion-card>
 
-      <ion-card class="planilha" >
+      <ion-card class="planilha" style="text-align: center">
           <ion-card-header>
-            Dados da Peça:    
+            <p style="font-family: 'Poppins'; font-size: 16px;">R${{price}}</p>
           </ion-card-header>
-          <ion-card-content >
-              <div class="ficarnomeio" style="font-family: 'Poppins'; font-weight: 700; margin-left: 10px;">
-                <p>Preço:{{price}}</p>
-              </div>
-          </ion-card-content>
-        </ion-card>
+      </ion-card>
+      <div style="text-align: center">
+        <div class=""><button (click)="push()" class="button_style">FECHAR</button> </div>
 
-        <div class="ficarnomeio"><button (click)="push()" class="button_style">FECHAR</button> </div>
+      </div>
 
-  
+
 </ion-content>
-

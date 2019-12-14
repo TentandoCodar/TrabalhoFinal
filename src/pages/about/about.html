@@ -11,11 +11,7 @@
 
 
     <div *ngIf="searchActive == false" >
-      <span style="font-family: 'Raleway'; font-weight: 700; font-size: 25px; color: #242424">lançamento</span><br>
-      <span style="font-family: 'Raleway'; font-size: 25px; font-weight: 400; color: #242424">coleção de verão</span><br>
-      <span style="font-family: 'Raleway'; font-size: 25px; font-weight: 400; color: #242424">------------------</span><br>
-      <span style="font-family: 'Alatsi'; font-size: 30px; color: #242424">Areia <br>e sal</span><br>
-      <br>
+    
     </div>
 
 
@@ -23,15 +19,12 @@
   <br><br>
 
     <div *ngFor="let data of productData" (click)="pushItem( data.code )" class="planilha" style="padding: 0px;">
-      <ion-row>
+      <div class="card_colecao">
         <img src="../../assets/imgs/leticia4.jpeg" alt="" class="shop-item">
-        <div class="product-stats-container">
-          <span class="shop-item-label">{{data.name}}</span><br>
-          <span class="shop-item-price"> <span class="shop-item-price-tag">R$:</span>{{data.salePrice}}</span>
-              <br>
-        </div>
-      </ion-row>
-
+        <span class="shop-item-label">{{data.name}}</span><br>
+        <span class="shop-item-price"><span class="shop-item-price-tag">R$</span>{{data.salePrice}}</span>
+        <br>
+      </div>
     </div>
 
 </ion-content>
