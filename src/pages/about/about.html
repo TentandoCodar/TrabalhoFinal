@@ -35,7 +35,9 @@
       </div>
       <div *ngIf="hasFilter == true"> 
         <div *ngIf="searching == true"> 
+          <div *ngIf="searchTerm != ''"> 
           {{searchPlaceholder}}
+          </div>
         </div>
       </div>
 
