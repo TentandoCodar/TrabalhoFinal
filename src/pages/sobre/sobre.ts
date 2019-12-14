@@ -25,6 +25,10 @@ export class SobrePage {
     console.log('ionViewDidLoad SobrePage');
   }
 
+  back(){
+    this.navCtrl.push(TabsPage);
+  }
+
 
   push(page: string){
     this.navCtrl.push(page);

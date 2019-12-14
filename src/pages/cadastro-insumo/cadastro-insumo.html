@@ -13,12 +13,25 @@
     <div class="formulario"><ion-label class="plan-label"  >Preço Unitário:</ion-label> <br>
       <input [(ngModel)]="price"  type="text" class="input_form" placeholder=" " required="">
     </div>
-    <div class="plan-label2">Nome do Fornecedor:</div><br>
-    <ion-item>
-      <ion-select style="height: 50px;"  (ionChange)="changeProvider()" [(ngModel)]="providerId" >
-        <ion-option *ngFor="let provider of providers" [value]="provider.id">{{provider.name}}</ion-option>
-      </ion-select>
-    </ion-item>
+    
+
+    <div class="formulario" style="width: 100%; border: none;"><div class="plan-label2">Nome do Fornecedor:</div><br>
+      <ion-item>
+        <select (ionChange)="changeProvider()" value="Selecionar" [(ngModel)]="providerId" style="width: 100%; border: none;color: black">
+          <option disabled selected>Selecionar</option>
+          <option *ngFor="let provider of providers" [value]="provider.id" style="color: black">{{provider.name}}</option>
+
+        </select>
+        
+      </ion-item>
+    </div>
+
+
+
+
+
+
+
     <div class="formulario"><ion-label class="plan-label">Codigo do Fornecedor:</ion-label> <br><br>
       <input [(ngModel)]="providerCode" type="text" class="input_form" placeholder=" " required="">
     </div>

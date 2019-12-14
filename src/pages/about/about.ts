@@ -6,11 +6,17 @@ import firebase from 'firebase';
   templateUrl: 'about.html'
 })
 export class AboutPage {
+  selected: string[] = ["","","","","","","","",""];
 
   searchTerm:string = "";
   searchActive: boolean = false;
   productData = [];
   firestore:any;
+  searching: boolean = false;
+  searchType: any;
+  searchPlaceholder: string = "Pesquisar";
+  hasFilter: boolean = false;
+
   constructor(public modalCtrl: ModalController,public navCtrl: NavController) {
     this.firestore = firebase.firestore();
     this.getData();
@@ -31,11 +37,47 @@ export class AboutPage {
 
   
 
-  search() {
+  search(term, where = "email") {
 
  
+   if(this.searching == false){
+    this.searching = true;
+  }else{
+    this.searching = false;
   }
+  
+ }
 
+ clear(){
+   this.searchTerm = "";
+   this.search("","");
+ }
+
+ searchMode(){
+  this.searching = false;
+}
+searchWhereButtons(who: string, where, placeholder :string){
+  this.searchType = where;
+  for(let i in this.selected){
+    if(who == i){
+      if(who == i && this.selected[i] == "selected"){
+        this.selected[i] = "";
+        this.searchType = "";
+        this.searchPlaceholder = "Pesquisar";
+        this.hasFilter = false;
+      }else{
+        this.selected[i] = "selected";
+        this.searchPlaceholder = ("Pesquisando em " + placeholder);
+        this.hasFilter = true;
+      }
+    }else{
+      this.selected[i] = "";
+    }
+
+    
+  }
+  // this.searchPlaceholder = placeholder;
+}
 
 
   pushItem(itemID: string){

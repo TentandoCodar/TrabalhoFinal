@@ -13,6 +13,25 @@
     <div class="formulario"><ion-label class="plan-label"  >Descrição da Peça:</ion-label> <br>
       <input [(ngModel)]="description" type="text" class="input_form" placeholder=" ">
     </div>
+
+    
+    <div class="formulario" style="width: 100%; border: none;"><ion-label class="plan-label"  >Tipo da Peça:</ion-label> <br>
+      <ion-item>
+        <select value="Selecionar" [(ngModel)]="productsType" style="width: 100%; border: none;color: black">
+          <option disabled selected style="color: black">Selecionar</option>
+          <option value="index" style="color: black">Camisa</option>
+          <option value="index" style="color: black">Body</option>
+          <option value="index" style="color: black">Casaco</option>
+          <option value="index" style="color: black">Vestido</option>
+          <option value="index" style="color: black">Macacão</option>
+          <option value="index" style="color: black">Saia</option>
+          <option value="index" style="color: black">Bermuda</option>
+          <option value="index" style="color: black">Calça</option>
+          <option value="index" style="color: black">Calçado</option>
+
+        </select>
+      </ion-item>
+    </div>
   </div>
 
   <div *ngIf="code" class="planilha">
@@ -64,13 +83,9 @@
           <option *ngFor="let product of products;let index = index" [value]="index" style="color: black">{{product.name}}</option>
 
         </select>
-        <input placeholder="Numero produto" [(ngModel)]="productsAmount[indice]" />
+        
       </ion-item>
     </div>
-    <ion-item *ngFor="let i of productsArray; let indice = index">
-      
-      <input placeholder="Numero produto" [(ngModel)]="productsAmount[indice]" />
-    </ion-item>
 
   </div>
       <div  class="planilha">
@@ -102,7 +117,7 @@
   </div>
 
   <button (click)="push()" class="button_style" style="background-color: #000; color: #fff">CANCELAR</button>
-<button (click)="signUp()" type="submit" class="button_style" >CADASTRAR</button> <br/>
+<button (click)="signUp()" type="submit" class="button_style" >CADASTRAR</button> <br><br><br><br><br><br>
 
   <!--<div class="planilha">
     <div class="lugardotitulo_form">

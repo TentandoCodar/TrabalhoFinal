@@ -1,17 +1,55 @@
 
 
 <ion-content padding class="ficarnomeio">
-  <ion-row style="width: 100%; margin-top: 5px;">
-    <input [(ngModel)]="searchTerm" class="input_form" style="width: 90%; padding-left: 10px; font-size: 17px;" placeholder="Pesquisar">
 
-    <button type="button" name="button" class="button_style" style="width: 10%; border: none"  ><ion-icon name="search"></ion-icon></button>
-  </ion-row>
+  <div padding style="box-shadow: 3px 3px 14px rgba(0, 0, 0, 0.1); position: fixed; top: 0; left: 0; right: 0; z-index: 100000; background-color: rgb(248, 249, 250);">
+
+ 
+      <ion-row style="width: 100%; margin-top: 5px;">
+        <ion-input (ionChange)="searchMode()" [(ngModel)]="searchTerm" class="input_form" style="width: 90%; padding-left: 10px; font-size: 17px;" placeholder="{{searchPlaceholder}}"></ion-input>
+
+        <div *ngIf="searching == false" style="width: 10%">
+         <button type="button" name="button" class="button_style" style="width: 100%; border: none; display: block;" (click)="search(searchTerm, searchWhere)" ><ion-icon class="search-button" name="ios-search"></ion-icon></button>
+        </div>
+        <div *ngIf="searching == true" style="width: 10%">
+         <button type="button" name="button" class="button_style" style="width: 100%; border: none; display: block;" (click)="clear()" >                        <ion-icon class="search-button" name="md-close"></ion-icon></button>
+        </div>
+      </ion-row> <br>
+
+
+      <div *ngIf="searching == false">
+      <h2>Filtre por:</h2>
+      <ion-row style="width: 100%; display: block;">
+        <button (click)="searchWhereButtons(0,'shirt','camisas')" class="button_search {{selected[0]}}"   >Camisas</button>
+        <button (click)="searchWhereButtons(1,'body','bodyes')" class="button_search {{selected[1]}}"  >Bodyes</button>
+        <button (click)="searchWhereButtons(2,'coat','casacos')" class="button_search {{selected[2]}}"  >Casacos</button>
+        <button (click)="searchWhereButtons(3,'dress','vestidos')" class="button_search {{selected[3]}}"  >Vestidos</button>
+        <button (click)="searchWhereButtons(4,'overall','macacões')" class="button_search {{selected[4]}}"   >Macacões</button>
+        <button (click)="searchWhereButtons(5,'skirt','saias')" class="button_search {{selected[5]}}"  >Saias</button>
+        <button (click)="searchWhereButtons(6,'short','bermudas')" class="button_search {{selected[6]}}"  >Bermudas</button>
+        <button (click)="searchWhereButtons(7,'pants','calças')" class="button_search {{selected[7]}}"  >Calças</button>
+        <button (click)="searchWhereButtons(8,'shoe','calçados')" class="button_search {{selected[8]}}"  >Calçados</button>
+      </ion-row>
+
+      
+      </div>
+      <div *ngIf="hasFilter == true"> 
+        <div *ngIf="searching == true"> 
+          {{searchPlaceholder}}
+        </div>
+      </div>
+
+
+
+
+      </div>
+
   <div class="introducao_produtos">
-    <br>
+    <br><br><br>
 
 
-    <div *ngIf="searchActive == false" >
-    
+    <div *ngIf="searching == false" >
+    <br><br><br><br> <br>
     </div>
 
 

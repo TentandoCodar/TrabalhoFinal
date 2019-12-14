@@ -22,6 +22,8 @@ export class ListPage {
   searchTerm:string = "";
   searchTermDisplay = "";
   data = [];
+  searching: boolean = false;
+  searchPlaceholder: string;
 
 
   selected: string[] = ["selected","","",""];
@@ -37,22 +39,32 @@ export class ListPage {
       case 'CadastroFuncPage' : {
         this.title = 'Funcionários';
         this.collection = "Users";
+        this.searchPlaceholder = "nome";
+        this.searchWhere = "name";
         break;
       }case 'CadastroFichaPage' : {
         this.title = 'Fichas';
         this.collection = "Datasheet";
+        this.searchPlaceholder = "código";
+        this.searchWhere = "code";
         break;
       }case 'CadastroInsumoPage' : {
         this.title = 'Insumos';
         this.collection = "Products";
+        this.searchPlaceholder = "nome";
+        this.searchWhere = "name";
         break;
       }case 'CadastroLojasPage' : {
         this.title = 'Franquias';
         this.collection = "Clients";
+        this.searchPlaceholder = "nome";
+        this.searchWhere = "name";
         break;
       }case 'CadastroFornecPage' : {
         this.title = 'Fornecedores';
         this.collection = "Providers";
+        this.searchPlaceholder = "nome";
+        this.searchWhere = "name";
         break;
       }default: {
         this.title = 'Undefined';
@@ -64,7 +76,7 @@ export class ListPage {
 
   }
 
-  searchWhereButtons(who: string, where){
+  searchWhereButtons(who: string, where, placeholder :string){
     this.searchWhere = where;
     for(let i in this.selected){
       if(who == i){
@@ -73,6 +85,7 @@ export class ListPage {
         this.selected[i] = "";
       }
     }
+    this.searchPlaceholder = placeholder;
   }
 
   getData() {
@@ -169,8 +182,23 @@ export class ListPage {
   }catch {
 
   }
+
+  if(this.searching == false){
+    this.searching = true;
+  }else{
+    this.searching = false;
+  }
+  
  }
 
+ clear(){
+   this.searchTerm = "";
+   this.search("",this.searchWhere);
+ }
+
+ searchMode(){
+  this.searching = false;
+}
 
 
  getWhereOfSearch() {
