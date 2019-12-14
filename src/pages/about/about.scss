@@ -71,6 +71,10 @@ page-about {
     font-size: 14px;
     color: black;
   }
+  
+ion-scroll .scroll-content{
+  overflow-y: scroll;
+}
 
   .shop-item-price-tag{
     font-family: 'Poppins';
