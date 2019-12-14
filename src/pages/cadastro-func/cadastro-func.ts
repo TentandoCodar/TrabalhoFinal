@@ -27,6 +27,7 @@ export class CadastroFuncPage {
     this.code = navParams.get('itemId');
     this.firestore = firebase.firestore();
     
+    
     if(this.code) {
       
       this.state = "edit";
@@ -54,8 +55,9 @@ export class CadastroFuncPage {
 
   signUp() {
     if(this.state !== "edit") {
-      
+    
       this.afAuth.auth.createUserWithEmailAndPassword(this.email,this.password).then((resp:any) => {
+        this.afAuth.auth.currentUser.sendEmailVerification();
         this.firestore.collection("Users").add({
           email:this.email,
           name:this.name,

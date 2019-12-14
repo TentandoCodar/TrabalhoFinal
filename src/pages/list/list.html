@@ -12,18 +12,18 @@
  <ion-row style="width: 100%; align-items: left;">
       <div *ngIf="getTypeOfReturn() == 'Type 1' || getTypeOfReturn() == 'Type 2' || getTypeOfReturn() == 'Type 5'"  style=" border: none;  margin-top: 0px; ">
 
-                  <button (click)="searchWhereButtons(0)" class="button_search {{selected[0]}}"   >Nome</button>
-                  <button (click)="searchWhereButtons(1)" class="button_search {{selected[1]}}"  >Email</button>
-                  <button (click)="searchWhereButtons(2)" class="button_search {{selected[2]}}"  >Código</button>
+                  <button (click)="searchWhereButtons(0,'name')" class="button_search {{selected[0]}}"   >Nome</button>
+                  <button (click)="searchWhereButtons(1,'email')" class="button_search {{selected[1]}}"  >Email</button>
+                  <button (click)="searchWhereButtons(2,'code')" class="button_search {{selected[2]}}"  >Código</button>
           </div>
       <div *ngIf="getTypeOfReturn() == 'Type 4'"   style=" border: none; margin-top: 0px;">
-                  <button (click)="searchWhereButtons(0)" class="button_search {{selected[0]}}"   >Nome</button>
-                  <button (click)="searchWhereButtons(1)" class="button_search {{selected[1]}}"  >Código</button>
+                  <button (click)="searchWhereButtons(0,'name')" class="button_search {{selected[0]}}"   >Nome</button>
+                  <button (click)="searchWhereButtons(1,'code')" class="button_search {{selected[1]}}"  >Código</button>
           </div>
       <div *ngIf="getTypeOfReturn() == 'Type 3'"  style=" border: none; margin-top: 0px;">
-                  <button (click)="searchWhereButtons(0)" class="button_search {{selected[0]}}"   >Código</button>
-                  <button (click)="searchWhereButtons(1)" class="button_search {{selected[1]}}"  >Modelista</button>
-                  <button (click)="searchWhereButtons(2)" class="button_search {{selected[2]}}"  >Descrição</button>
+                  <button (click)="searchWhereButtons(0,'code')" class="button_search {{selected[0]}}"   >Código</button>
+                  <button (click)="searchWhereButtons(1,'modelist')" class="button_search {{selected[1]}}"  >Modelista</button>
+                  <button (click)="searchWhereButtons(2,'description')" class="button_search {{selected[2]}}"  >Descrição</button>
 
       </div>
   </ion-row>
@@ -33,7 +33,7 @@
       <ion-row style="width: 100%; margin-top: 5px;">
         <input [(ngModel)]="searchTerm" class="input_form" style="width: 90%; padding-left: 10px; font-size: 17px;" placeholder="Pesquisar">
 
-        <button type="button" name="button" class="button_style" style="width: 10%; border: none"  ><ion-icon name="search"></ion-icon></button>
+        <button type="button" name="button" class="button_style" style="width: 10%; border: none" (click)="search(searchTerm, searchWhere)" ><ion-icon name="search"></ion-icon></button>
       </ion-row>
 
 

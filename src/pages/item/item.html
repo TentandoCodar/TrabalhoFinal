@@ -12,11 +12,11 @@
             <ion-slides centeredSlides  pager>
 
                 <ion-slide>
-                  <img width="100%"  src="../../assets/imgs/fotos/imagem.jpg" alt="">
+                  <img width="100%"  [src]="image1" alt="">
                 </ion-slide>
               
                 <ion-slide >
-                  <img width="100%"  src="../../assets/imgs/fotos/imagem2.jpg" alt="">
+                  <img width="100%"  [src]="image2" alt="">
                 </ion-slide>
               
               </ion-slides>
@@ -26,10 +26,12 @@
 
       <ion-card class="planilha" >
           <ion-card-header>
-            Dados da Peça   
+            Dados da Peça:    
           </ion-card-header>
           <ion-card-content >
-              <div class="ficarnomeio" style="font-family: 'Poppins'; font-weight: 700; margin-left: 10px;"> </div>
+              <div class="ficarnomeio" style="font-family: 'Poppins'; font-weight: 700; margin-left: 10px;">
+                <p>Preço:{{price}}</p>
+              </div>
           </ion-card-content>
         </ion-card>
 

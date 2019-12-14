@@ -20,7 +20,10 @@ export class AboutPage {
     this.firestore.collection("Datasheet").onSnapshot(snapshot => {
       this.productData = [];
       snapshot.forEach(doc => {
-        this.productData.push(doc.data());
+        const data = doc.data();
+        data.salePrice = parseFloat(data.salePrice);
+        data.salePrice = data.salePrice.toFixed(2);
+        this.productData.push(data);
         
       });
     })

@@ -42,9 +42,12 @@ export class CadastroFichaPage {
   productsPrices = [];
   productsIds = [];
   productsArray = [];
+  productsAmount = [];
   materialCost:number = 0;
   laborCustFinal:number = 0;
   profitMargin:number = 0;
+  name:string = "";
+  totalComercializationCost:number = 0;
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
     this.date = new Date().toLocaleDateString('pt-BR');
     this.firestore = firebase.firestore();
@@ -81,8 +84,23 @@ export class CadastroFichaPage {
       this.firestore.collection('Costs').onSnapshot(snapshot => {
         snapshot.forEach(doc => {
           const data = doc.data();
+          const totalComercializationCostPlaceholder = (
+            parseFloat(data.AdministrativeExpenses) + 
+            parseFloat(data.Comissions) + 
+            parseFloat(data.DiverseExpenses) + 
+            parseFloat(data.FinancialExpenses) + 
+            parseFloat(data.FixedCosts) + 
+            parseFloat(data.Investments) + 
+            parseFloat(data.LaborCostBrute) + 
+            parseFloat(data.OperationalExpenses) + 
+            parseFloat(data.PaymentSheetBrute) + 
+            parseFloat(data.Theft) +
+            parseFloat(data.Transportation) +
+            parseFloat(data.WithDraw)
+        );
+          this.totalComercializationCost = totalComercializationCostPlaceholder;
           this.profitMargin = data.ProfitMargin;
-          this.laborCust = data.LaborCostBrute + data.PaymentSheetBrute;
+          this.laborCust = data.LaborCostBrute;
         });
       })
     }
@@ -98,7 +116,6 @@ export class CadastroFichaPage {
         this.productAmount = data.productAmount;
         this.observations = data.observations;
         this.hourAmount = data.hourAmount;
-        this.laborCust = data.laborCust;
         this.priceCust = data.priceCust;
         this.standartDivisor = data.standartDivisor;
         this.salePrice = data.salePrice;
@@ -106,7 +123,28 @@ export class CadastroFichaPage {
         this.productsPrices = data.rawPrice;
         this.description = data.description;
       })
-      
+      this.firestore.collection('Costs').onSnapshot(snapshot => {
+        
+        snapshot.forEach(doc => {
+          const data = doc.data();
+          const totalComercializationCostPlaceholder = (
+            parseFloat(data.AdministrativeExpenses) + 
+            parseFloat(data.Comissions) + 
+            parseFloat(data.DiverseExpenses) + 
+            parseFloat(data.FinancialExpenses) + 
+            parseFloat(data.FixedCosts) + 
+            parseFloat(data.Investments) + 
+            parseFloat(data.LaborCostBrute) + 
+            parseFloat(data.OperationalExpenses) + 
+            parseFloat(data.PaymentSheetBrute) + 
+            parseFloat(data.Theft) +
+            parseFloat(data.Transportation) +
+            parseFloat(data.WithDraw)
+        )
+          this.profitMargin = data.ProfitMargin;
+          this.laborCust = data.LaborCostBrute;
+        });
+      })
     }
     
   }
@@ -142,19 +180,29 @@ export class CadastroFichaPage {
 
   signUp() {
     
-    this.productsIndexes.forEach(value => {
-      
-      this.productsPrices.push(this.products[value].price);
-      this.productsIds.push(this.products[value].id);
-    })
-    this.productsPrices.forEach(value => {
-      this.materialCost += parseFloat(value);
-    })
+    try {
+      if(this.productsIndexes.length > 0 && !this.code) {
+        this.productsIndexes.forEach(value => {
+        
+          this.productsPrices.push(this.products[value].price * this.productsAmount[value]);
+          this.productsIds.push(this.products[value].id);
+        })
+    
+        
+        this.productsPrices.forEach(value => {
+          this.materialCost += parseFloat(value);
+        })
+      }
+    }
+    catch {
+      return null;
+    }
     
     this.priceCust = this.materialCost + (this.hourAmount * this.laborCust);
-    this.standartDivisor = 1 - (this.profitMargin / 100 + 0.30);
+    this.standartDivisor = 1 - (this.profitMargin / 100 + this.totalComercializationCost / 100);
     this.salePrice =this.priceCust / this.standartDivisor;
-    this.salePrice = Math.ceil(this.salePrice);
+    
+    this.salePrice = parseFloat(this.salePrice.toFixed(2));
     let clientCode = this.clientCode;
     let clientPhone = this.clientPhone;
     let seal1 = this.seal1;
@@ -169,11 +217,11 @@ export class CadastroFichaPage {
     let standartDivisor = this.standartDivisor;
     let salePrice = this.salePrice;
     let description = this.description;
-    
+    let name = this.name
     if(!this.code) {
       
       this.firestore.collection("Datasheet").add({
-        
+        name,
         seal1,
         seal2,
         seal3,
@@ -188,11 +236,12 @@ export class CadastroFichaPage {
         salePrice,
         rawMaterial: this.productsIds,
         rawPrice: this.productsPrices,
-        image: "",
+        image1: "",
+        image2: "",
         description
       }).then((resp) => {
         this.firestore.collection("Datasheet").doc(resp.id).set({
-          
+          name,
           seal1,
           seal2,
           seal3,
@@ -207,11 +256,12 @@ export class CadastroFichaPage {
           salePrice,
           rawMaterial: this.productsIds,
           rawPrice: this.productsPrices,
-          image: "",
+          image1: "",
+          image2: "",
           code:resp.id,
           description
         }).then((resp) => {
-          this.navCtrl.push(ListPage, {classToList: "CadastroFichaPage"});
+          
         }).catch((err) => {
           
         })
@@ -220,15 +270,12 @@ export class CadastroFichaPage {
       })
     }
     else {
-      this.firestore.collection("Datasheet").doc(this.code).set({
-        clientCode,
-        clientPhone,
+      this.firestore.collection("Datasheet").doc(this.code).update({
         seal1,
         seal2,
         seal3,
         date,
         modelist,
-        productAmount,
         observations,
         hourAmount: this.hourAmount,
         laborCust,
@@ -246,6 +293,7 @@ export class CadastroFichaPage {
         
       })
     }
+    this.navCtrl.push(ListPage, {classToList: "CadastroFichaPage"});
       
   }
 }

@@ -64,7 +64,8 @@ export class ListPage {
 
   }
 
-  searchWhereButtons(who: string){
+  searchWhereButtons(who: string, where){
+    this.searchWhere = where;
     for(let i in this.selected){
       if(who == i){
         this.selected[i] = "selected";
@@ -127,38 +128,47 @@ export class ListPage {
 
  getTypeOfReturn() {
    if(this.collection == "Providers") {
+     this.searchWhere = "email";
      return "Type 1";
    }
 
    else if(this.collection == "Users") {
+    this.searchWhere = "email";
     return "Type 2";
    }
 
    else if(this.collection == "Datasheet") {
+    this.searchWhere = "code";
     return "Type 3";
    }
 
    else if(this.collection == "Products") {
-     return "Type 4";
+    this.searchWhere = "name";
+    return "Type 4";
    }
 
    else if(this.collection == "Clients") {
-
+    this.searchWhere = "email";
     return "Type 5";
   }
-  console.log(this.collection)
+  
 
  }
  search(term, where = "email") {
-   console.log(term)
-  /*const firestore = firebase.firestore();
-  firestore.collection(this.collection).orderBy(this.searchWhere).startAt(this.searchTerm).endAt(this.searchTerm+'\uf8ff').onSnapshot((snapshot) => {
-    this.data = [];
-    snapshot.forEach(doc => {
-
-      this.data.push(doc.data());
+  console.log(this.collection)
+  const firestore = firebase.firestore();
+  console.log(this.searchWhere)
+  try {
+    firestore.collection(this.collection).orderBy(this.searchWhere).startAt(this.searchTerm).endAt(this.searchTerm+'\uf8ff').onSnapshot((snapshot) => {
+      this.data = [];
+      snapshot.forEach(doc => {
+  
+        this.data.push(doc.data());
+      })
     })
-  })*/
+  }catch {
+
+  }
  }
 
 

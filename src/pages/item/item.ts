@@ -33,6 +33,8 @@ export class ItemPage {
   modelist:number;
   Key: string;
   firestore:any;
+  image1:string;
+  image2:string;
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
     this.itemID = navParams.get('itemID');
     this.firestore = firebase.firestore();
@@ -40,7 +42,10 @@ export class ItemPage {
       const data = resp.data();
       this.ProductName = data.description;
       this.price = data.salePrice;
-      this.modelist = data.modelist
+      this.modelist = data.modelist;
+      this.image1 = data.image1;
+      this.image2 = data.image2;
+      
     }).catch((err) => {
 
     })
