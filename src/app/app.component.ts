@@ -64,7 +64,7 @@ export class MyApp {
         this.values[i] = resp;
         console.log(resp)
         console.log(this.values[i]);
-        console.log("Refreshing Almoxarifado stats")
+        console.log("Refreshing Almoxarifado stats");
       }).catch((err) => {
 
       })
@@ -73,16 +73,17 @@ export class MyApp {
 
 
   refresh(){
-    for(let i in this.urls){
-      this.getData(this.urls[i]).then((resp) => {
-        this.values[i] = Number(resp);
-        console.log(this.values[i]);
-
-      }).catch((err) => {
-
-      })
-    }
+    if(this.isLoggedIn == true){ 
+      for(let i in this.urls){
+        this.getData(this.urls[i]).then((resp) => {
+          this.values[i] = Number(resp);
+        }).catch((err) => {
+  
+        })
+      }
+      console.log("Refreshing Almoxarifado stats: ");
   }
+}
 
   getData(url: string) {
     return this.http.get(url).toPromise();
