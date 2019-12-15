@@ -29,7 +29,7 @@ export class ItemPage {
   OwnerImage: string;
 
   
-  price:number;
+  price:string;
   modelist:number;
   Key: string;
   firestore:any;
@@ -41,7 +41,7 @@ export class ItemPage {
     this.firestore.collection("Datasheet").doc(this.itemID).get().then(resp => {
       const data = resp.data();
       this.ProductName = data.description;
-      this.price = data.salePrice;
+      this.price = parseFloat(data.salePrice).toFixed(2);
       this.modelist = data.modelist;
       this.image1 = data.image1;
       this.image2 = data.image2;

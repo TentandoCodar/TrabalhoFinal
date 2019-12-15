@@ -9,7 +9,7 @@
         <ion-input (ionChange)="searchMode()" [(ngModel)]="searchTerm" class="input_form" style="width: 90%; padding-left: 10px; font-size: 17px;" placeholder="{{searchPlaceholder}}"></ion-input>
 
         <div *ngIf="searching == false" style="width: 10%">
-         <button type="button" name="button" class="button_style" style="width: 100%; border: none; display: block;" (click)="search(searchTerm, searchWhere)" ><ion-icon class="search-button" name="ios-search"></ion-icon></button>
+         <button type="button" name="button" class="button_style" style="width: 100%; border: none; display: block;" (click)="search(searchType, searchTerm)" ><ion-icon class="search-button" name="ios-search"></ion-icon></button>
         </div>
         <div *ngIf="searching == true" style="width: 10%">
          <button type="button" name="button" class="button_style" style="width: 100%; border: none; display: block;" (click)="clear()" >                        <ion-icon class="search-button" name="md-close"></ion-icon></button>
@@ -20,7 +20,7 @@
       <div *ngIf="searching == false">
       <h2>Filtre por:</h2>
       <ion-row style="width: 100%; display: block;">
-        <button (click)="searchWhereButtons(0,'shirt','camisas')" class="button_search {{selected[0]}}"   >Camisas</button>
+        <button (click)="searchWhereButtons(0,'blouse','camisas')" class="button_search {{selected[0]}}"   >Blusa</button>
         <button (click)="searchWhereButtons(1,'body','bodyes')" class="button_search {{selected[1]}}"  >Bodyes</button>
         <button (click)="searchWhereButtons(2,'coat','casacos')" class="button_search {{selected[2]}}"  >Casacos</button>
         <button (click)="searchWhereButtons(3,'dress','vestidos')" class="button_search {{selected[3]}}"  >Vestidos</button>
@@ -62,7 +62,7 @@
 
     <div *ngFor="let data of productData" (click)="pushItem( data.code )" class="planilha" style="padding: 0px;">
       <div class="card_colecao">
-        <img src="../../assets/imgs/leticia4.jpeg" alt="" class="shop-item">
+        <img [src]="data.image1" alt="" class="shop-item">
         <span class="shop-item-label">{{data.name}}</span><br>
         <span class="shop-item-price"><span class="shop-item-price-tag">R$</span>{{data.salePrice}}</span>
         <br>

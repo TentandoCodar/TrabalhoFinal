@@ -16,36 +16,65 @@ export class AboutPage {
   searchType: any;
   searchPlaceholder: string = "Pesquisar";
   hasFilter: boolean = false;
+  
 
   constructor(public modalCtrl: ModalController,public navCtrl: NavController) {
     this.firestore = firebase.firestore();
     this.getData();
   }
 
-  getData() {
-    this.firestore.collection("Datasheet").onSnapshot(snapshot => {
-      this.productData = [];
-      snapshot.forEach(doc => {
-        const data = doc.data();
-        data.salePrice = parseFloat(data.salePrice);
-        data.salePrice = data.salePrice.toFixed(2);
-        this.productData.push(data);
-        
-      });
-    })
+  getData(type = "", term = "") {
+    if(term) {
+      this.firestore.collection("Datasheet").orderBy('name').startAt(term).endAt(term+'\uf8ff').onSnapshot(snapshot => {
+        this.productData = [];
+        snapshot.forEach(doc => {
+          const data = doc.data();
+          data.salePrice = parseFloat(data.salePrice);
+          data.salePrice = data.salePrice.toFixed(2);
+          this.productData.push(data);
+          
+        });
+      })
+    }
+    else {
+      if(type) {
+        this.firestore.collection("Datasheet").where('type', '==', type).onSnapshot(snapshot => {
+          this.productData = [];
+          snapshot.forEach(doc => {
+            const data = doc.data();
+            data.salePrice = parseFloat(data.salePrice);
+            data.salePrice = data.salePrice.toFixed(2);
+            this.productData.push(data);
+            
+          });
+        })
+      }
+      else {
+        this.firestore.collection("Datasheet").onSnapshot(snapshot => {
+          this.productData = [];
+          snapshot.forEach(doc => {
+            const data = doc.data();
+            data.salePrice = parseFloat(data.salePrice);
+            data.salePrice = data.salePrice.toFixed(2);
+            this.productData.push(data);
+            
+          });
+        })
+      }
+    }
   }
 
   
 
-  search(term, where = "email") {
+  search(type, term) {
 
- 
-   if(this.searching == false){
-    this.searching = true;
-  }else{
-    this.searching = false;
-  }
-  
+    if(this.searching == false){
+      this.searching = true;
+    }else{
+      this.searching = false;
+    }
+   
+    this.getData(this.searchType, this.searchTerm)
  }
 
  clear(){
@@ -76,6 +105,7 @@ searchWhereButtons(who: string, where, placeholder :string){
 
     
   }
+  this.getData(this.searchType, this.searchTerm)
   // this.searchPlaceholder = placeholder;
 }
 
