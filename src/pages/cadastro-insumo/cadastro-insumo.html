@@ -17,8 +17,7 @@
 
     <div class="formulario" style="width: 100%; border: none;"><div class="plan-label2">Nome do Fornecedor:</div><br>
       <ion-item>
-        <select (ionChange)="changeProvider()" value="Selecionar" [(ngModel)]="providerId" style="width: 100%; border: none;color: black">
-          <option disabled selected>Selecionar</option>
+        <select (change)="changeProvider()" value="Selecionar" [(ngModel)]="providerId" style="width: 100%; border: none;color: black">
           <option *ngFor="let provider of providers" [value]="provider.id" style="color: black">{{provider.name}}</option>
 
         </select>
@@ -38,6 +37,11 @@
   </div>
 
   <button (click)="push()" class="button_style" style="background-color: #000; color: #fff">CANCELAR</button>
-  <button (click)="signUpProduct()" type="button" name="button" class="button_style">CADASTRAR</button>  <br/>
+
+  <button  *ngIf="code" (click)="signUpProduct()" type="button" class="button_style" >ATUALIZAR</button>
+  <button  *ngIf="!code" (click)="signUpProduct()" type="button" class="button_style" >CADASTRAR</button>
+
+  <!-- <button (click)="signUpProduct()" type="button" name="button" class="button_style">CADASTRAR</button>  -->
+   <br/> <br><br>
 
 </ion-content>

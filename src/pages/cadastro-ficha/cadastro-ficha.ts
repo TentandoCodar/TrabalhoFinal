@@ -37,7 +37,7 @@ export class CadastroFichaPage {
   priceCust:number;
   standartDivisor:number;
   salePrice:number;
-  products:{id,name, price}[] = [];
+  products:{id,name, price, unity}[] = [];
   productsIndexes= [];
   productsPrices = [];
   productsIds = [];
@@ -76,10 +76,11 @@ export class CadastroFichaPage {
         snapshot.forEach(doc => {
           
           const data = doc.data();
-          this.products.push({id:data.code, name:data.name, price: data.price})
+          
+          this.products.push({id:data.code, name:data.name, price: data.price, unity: data.unity});
         })
   
-        
+        console.log(this.products[0].unity);
   
       })
 
@@ -135,7 +136,7 @@ export class CadastroFichaPage {
     this.productsIndexes = [];
     for(let i = 0;i < this.productAmount; i++) {
       this.productsArray.push(i);
-      this.placeholders.push(`Selecione a quantidade para o produto ${i + 1}`);
+      this.placeholders.push(`${i + 1}`);
       this.productsIndexes.push("");
     }
     

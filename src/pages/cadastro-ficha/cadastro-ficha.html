@@ -18,7 +18,6 @@
     <div class="formulario" style="width: 100%; border: none;"><ion-label class="plan-label"  >Tipo da Peça:</ion-label> <br>
       <ion-item>
         <select  [(ngModel)]="type" style="width: 100%; border: none;color: black">
-          <option disabled selected style="color: black">Selecionar</option>
           <option value="blouse" style="color: black">Camisa</option>
           <option value="body" style="color: black">Body</option>
           <option value="shoe" style="color: black">Casaco</option>
@@ -76,21 +75,20 @@
         <input [disabled]="code != ''" [(ngModel)]="productAmount" type="text" class="input_form" placeholder=" ">
       </div>
     <button *ngIf="!code" (click)="setProductAmount()" class="button_style">Criar</button>
-    <div *ngIf="!code"  class="formulario" style="width: 100%; border: none;">
-      <ion-item *ngFor="let i of productsArray; let indice = index">
-        <select value="Selecionar" [(ngModel)]="productsIndexes[i]" style="width: 100%; border: none;color: black">
-          <option disabled selected>Selecionar</option>
-          <option *ngFor="let product of products;let index = index" [value]="index" style="color: black">{{product.name}}</option>
 
-        </select>
-        
-      </ion-item>
-    </div>
-    <div *ngIf="!code"  class="formulario" style="width: 100%; border: none;">
-      <ion-item *ngFor="let i of productsArray; let indice = index">
-        <input [(ngModel)]="productsAmount[indice]" [placeholder]="placeholders[indice]"/>
-      </ion-item>
-    </div>
+    
+      <div *ngIf="!code"   style="width: 100%; border: none;">
+        <div *ngFor="let i of productsArray; let indice = index">
+          <ion-row class="formulario">
+              <select aria-placeholder="Selecionar" [(ngModel)]="productsIndexes[i]" style="width: 50%; border: none;color: black">   
+                <option *ngFor="let product of products;let index = index" [value]="index" style="color: black">{{product.name}}</option>
+             </select>
+             <ion-label class="plan-label" style="width:15%; text-align: right;"  >Qt:</ion-label> <br>
+            <input [(ngModel)]="productsAmount[indice]" placeholder="{{productsIndexes[indice] ? products[productsIndexes[indice]].unity : 'Unidade'}}"  class="input_form" style="width:35%;"/>
+          </ion-row>
+        </div>
+      </div>
+    
 
   </div>
       <div  class="planilha">
@@ -122,7 +120,10 @@
   </div>
 
   <button (click)="push()" class="button_style" style="background-color: #000; color: #fff">CANCELAR</button>
-<button (click)="signUp()" type="submit" class="button_style" >CADASTRAR</button> <br><br><br><br><br><br>
+  
+  
+<button  *ngIf="code" (click)="signUp()" type="submit" class="button_style" >ATUALIZAR</button>
+<button  *ngIf="!code" (click)="signUp()" type="submit" class="button_style" >CADASTRAR</button> <br><br><br><br><br><br>
 
   <!--<div class="planilha">
     <div class="lugardotitulo_form">

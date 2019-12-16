@@ -66,6 +66,7 @@ export class CadastroInsumoPage {
     console.log('ionViewDidLoad CadastroInsumoPage');
   }
   changeProvider() {
+    console.log("sadsajoisadjiosa")
     this.providerCode = this.providers[this.providerId].code;
     
 

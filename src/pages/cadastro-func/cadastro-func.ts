@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController  } from 'ionic-angular';
 import {AngularFireAuth} from 'angularfire2/auth';
-import { TabsPage } from '../tabs/tabs';
+import { AlertController } from 'ionic-angular';
 import firebase from 'firebase';
 import {ListPage} from '../list/list';
 /**
@@ -23,10 +23,13 @@ export class CadastroFuncPage {
   code:string;
   state:string;
   firestore:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public afAuth: AngularFireAuth, public viewCtrl: ViewController) {
+  thisEmail:string;
+  thisPassword:string;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public afAuth: AngularFireAuth, public viewCtrl: ViewController, public alertCtrl: AlertController) {
     this.code = navParams.get('itemId');
     this.firestore = firebase.firestore();
-    
+    this.thisEmail = this.afAuth.auth.currentUser.email;
     
     if(this.code) {
       
@@ -68,7 +71,11 @@ export class CadastroFuncPage {
             name:this.name,
             code:resp.id,
           }).then(() => {
-            
+            this.afAuth.auth.signInWithEmailAndPassword(this.thisEmail, this.thisPassword).then((resp) => {
+
+            }).catch((err) => {
+              alert("Ocorreu um erro")
+            })
           })
         }).catch((err) => {
 
@@ -79,7 +86,7 @@ export class CadastroFuncPage {
     }
     else {
       this.afAuth.auth.signInWithEmailAndPassword(this.email, this.password).then((resp) => {
-        this.firestore.collection("Users").doc(this.code).set({
+        this.firestore.collection("Users").doc(this.code).update({
           email:this.email,
           name:this.name,
           code:this.code
@@ -92,5 +99,47 @@ export class CadastroFuncPage {
     }
     this.navCtrl.push(ListPage, {classToList: "CadastroFuncPage"});
   }
+  
+
+
+
+
+
+
+  presentPrompt() {
+    let alert = this.alertCtrl.create({
+      title: 'Confirmar identidade',
+      inputs: [
+        {
+          name: 'autentication',
+          placeholder: 'Confirme sua senha',
+          type: 'password'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Confirmar',
+          handler: data => {
+            if ( 1 == 1 ) {
+              this.thisPassword = data;
+            } else {
+              // invalid login
+              return false;
+            }
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
+
   
 }

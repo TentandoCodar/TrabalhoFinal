@@ -21,6 +21,8 @@
 
 
   <button (click)="push()" class="button_style" style="background-color: #000; color: #fff">CANCELAR</button>
-  <button (click)="signUpProvider()" type="button" name="button" class="button_style">CADASTRAR</button> <br/>
+  <button  *ngIf="code" (click)="signUpProvider()" type="button" name="button"  class="button_style" >ATUALIZAR</button>
+  <button  *ngIf="!code" (click)="signUpProvider()" type="button" name="button"  class="button_style" >CADASTRAR</button> <br> <br>
+  <!-- <button (click)="signUpProvider()" type="button" name="button" class="button_style">CADASTRAR</button>-->
 
 </ion-content>

@@ -47,6 +47,11 @@
 
   <ion-scroll padding style="overflow-y: scroll !important; width: 100%; height: 100%;">
     <br><br><br><br><br><br><br><br>
+
+
+    <div *ngIf="data.length == 0"> <p style="text-align: center; margin-top: 40%; color: #999; font-family: 'Poppins'; font-weight: 500;">Sem resultados, verifique se as palavras ou tags de pesquisa estão corretas</p></div>
+
+
     <div  *ngIf="getTypeOfReturn() == 'Type 1'">
       <div class="planilha"  *ngFor="let provider of data">
 
@@ -75,8 +80,11 @@
     <div  *ngIf="getTypeOfReturn() == 'Type 3'">
         <div class="planilha" *ngFor="let files of data" >
 
-          <h1 class="card-title">{{files.description}}</h1>
-            <label class="card-label">Código:</label> <span class="card-stats">{{files.code}}</span>   <br/> <br/>
+          <h1 class="card-title">{{files.name}}</h1>
+            <label class="card-label">Código:</label> <span class="card-stats">{{files.code}}</span>   <br/> 
+            <label class="card-label">Modelista:</label> <span class="card-stats">{{files.modelist}}</span> <br/> 
+            <label class="card-label">Tipo:</label> <span class="card-stats">{{files.type}}</span>   <br/>
+            <label class="card-label">Descrição:</label> <span class="card-stats">{{files.description.slice(0,20)}}</span><br/> <br>
           <button  class="button_style_card" style="color: white; background-color: black;" (click)="delete(files.code)">Excluir</button>
           <button class="button_style_card" (click)="showModal('add', 'Datasheet', files.code)">Abrir</button>
         </div>
@@ -88,7 +96,8 @@
           <h1 class="card-title">{{product.name}}</h1>
            <label class="card-label">Preço:</label> <span class="card-stats">{{product.price}}</span>   <br/>
            <label class="card-label">Unidade:</label> <span class="card-stats">{{product.unity}}</span> <br/>
-           <label class="card-label">Código:</label> <span class="card-stats">{{product.code}}</span>   <br/> <br/>
+           <label class="card-label">Código:</label> <span class="card-stats">{{product.code}}</span>
+              <br/> <br/>
           <button  class="button_style_card" style="color: white; background-color: black;" (click)="delete(product.code)">Excluir</button>
           <button class="button_style_card" (click)="showModal('add', 'Products', product.code)">Abrir</button>
         </div>

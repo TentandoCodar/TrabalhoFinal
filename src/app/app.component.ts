@@ -19,7 +19,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
    values: any[] = [0, 0, 0, 0];
-   urls: string[] = ["https://api.thingspeak.com/channels/756771/fields/1/last", "https://api.thingspeak.com/channels/756771/fields/2/last", "https://api.thingspeak.com/channels/756771/fields/3/last", "https://api.thingspeak.com/channels/756771/fields/4/last"];
+   urls: string[] = ["https://api.thingspeak.com/channels/756771/fields/1/last", "https://api.thingspeak.com/channels/756771/fields/2/last", "https://api.thingspeak.com/channels/756771/fields/3/last"];
 
 
     // url1:string = "https://api.thingspeak.com/channels/756771/fields/1/last";
@@ -77,11 +77,11 @@ export class MyApp {
       for(let i in this.urls){
         this.getData(this.urls[i]).then((resp) => {
           this.values[i] = Number(resp);
+          console.log("Refreshing Almoxarifado stats: ", this.values[i]);
         }).catch((err) => {
   
         })
       }
-      console.log("Refreshing Almoxarifado stats: ");
   }
 }
 
