@@ -25,8 +25,6 @@ export class ContactPage {
 
   login(){
     this.afAuth.auth.signInWithEmailAndPassword(this.email,this.password).then((resp) => {
-      
-      this.isLoggedIn = true;
     }).catch((err) => {
       alert("Nao foi possivel logar em nossos sistemas");
       console.log(err)
@@ -40,11 +38,11 @@ export class ContactPage {
         if(user.email) {
           
           this.email = user.email;
-          this.isLoggedIn = true;
           const firestore = firebase.firestore();
-          firestore.collection('Users').where("email", "==", this.email).onSnapshot(snapshot => {
+          firestore.collection('Users').where("email", "==", this.email).get().then((snapshot) => {
+            let count = 0;
             snapshot.forEach(doc => {
-              
+              count++;
               this.name = doc.data().name
               if(doc.data().image) {
                 this.imageUrl = doc.data().image;
@@ -53,7 +51,21 @@ export class ContactPage {
                 this.imageUrl = "https://firebasestorage.googleapis.com/v0/b/tccwave.appspot.com/o/personImage.png?alt=media&token=29eb68fc-bc53-4f52-ad37-45d09306fbab";
               }
             })
+            if(count == 0) {
+              this.afAuth.auth.signOut().then((resp) => {
+                alert("Voce não conseguiu se logar");
+                this.isLoggedIn = false;
+              })
+            }
+            else {
+              this.isLoggedIn = true;
+            }
+            
+            
+          }).catch((err) => {
+            console.log(err)
           })
+          
         }
         else {
           this.isLoggedIn = false;

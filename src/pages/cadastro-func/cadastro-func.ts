@@ -57,8 +57,12 @@ export class CadastroFuncPage {
   }
 
   signUp() {
-    if(this.state !== "edit") {
     
+    if(this.state !== "edit") {
+      if(!this.email || !this.password) {
+        alert("Dados incompletos");
+        return null;
+      }
       this.afAuth.auth.createUserWithEmailAndPassword(this.email,this.password).then((resp:any) => {
         this.afAuth.auth.currentUser.sendEmailVerification();
         this.firestore.collection("Users").add({
@@ -72,7 +76,7 @@ export class CadastroFuncPage {
             code:resp.id,
           }).then(() => {
             this.afAuth.auth.signInWithEmailAndPassword(this.thisEmail, this.thisPassword).then((resp) => {
-
+              this.navCtrl.push(ListPage, {classToList: "CadastroFuncPage"});
             }).catch((err) => {
               alert("Ocorreu um erro")
             })
@@ -85,19 +89,23 @@ export class CadastroFuncPage {
       })
     }
     else {
+      if(!this.email || !this.password) {
+        alert("Dados incompletos");
+        return null;
+      }
       this.afAuth.auth.signInWithEmailAndPassword(this.email, this.password).then((resp) => {
         this.firestore.collection("Users").doc(this.code).update({
           email:this.email,
           name:this.name,
           code:this.code
         }).then((resp) => {
-          
+          this.navCtrl.push(ListPage, {classToList: "CadastroFuncPage"});
         }).catch((err) => {
 
         })
       })
     }
-    this.navCtrl.push(ListPage, {classToList: "CadastroFuncPage"});
+    
   }
   
 
@@ -128,7 +136,9 @@ export class CadastroFuncPage {
           text: 'Confirmar',
           handler: data => {
             if ( 1 == 1 ) {
-              this.thisPassword = data;
+              console.log(data);
+              /*this.thisPassword = data;
+              this.signUp();*/
             } else {
               // invalid login
               return false;

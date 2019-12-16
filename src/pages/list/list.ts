@@ -206,12 +206,11 @@ export class ListPage {
  }
  delete(id) {
   const firestore = firebase.firestore();
-  if(this.collection == "Users"){
+  if(this.collection == "Users" && id == "yADaQJi1ZqHfhvErIjTZ") {
+    alert("Esse usuario nao pode ser excluido");
     return null;
   }
-  else {
-    firestore.collection(this.collection).doc(id).delete();
-  }
+  firestore.collection(this.collection).doc(id).delete();
  }
 
 
