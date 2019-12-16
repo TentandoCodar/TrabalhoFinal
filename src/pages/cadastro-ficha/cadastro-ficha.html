@@ -17,17 +17,17 @@
     
     <div class="formulario" style="width: 100%; border: none;"><ion-label class="plan-label"  >Tipo da Peça:</ion-label> <br>
       <ion-item>
-        <select value="Selecionar" [(ngModel)]="productsType" style="width: 100%; border: none;color: black">
+        <select  [(ngModel)]="type" style="width: 100%; border: none;color: black">
           <option disabled selected style="color: black">Selecionar</option>
-          <option value="index" style="color: black">Camisa</option>
-          <option value="index" style="color: black">Body</option>
-          <option value="index" style="color: black">Casaco</option>
-          <option value="index" style="color: black">Vestido</option>
-          <option value="index" style="color: black">Macacão</option>
-          <option value="index" style="color: black">Saia</option>
-          <option value="index" style="color: black">Bermuda</option>
-          <option value="index" style="color: black">Calça</option>
-          <option value="index" style="color: black">Calçado</option>
+          <option value="blouse" style="color: black">Camisa</option>
+          <option value="body" style="color: black">Body</option>
+          <option value="shoe" style="color: black">Casaco</option>
+          <option value="coat" style="color: black">Vestido</option>
+          <option value="overall" style="color: black">Macacão</option>
+          <option value="skirt" style="color: black">Saia</option>
+          <option value="short" style="color: black">Bermuda</option>
+          <option value="dress" style="color: black">Calça</option>
+          <option value="pants" style="color: black">Calçado</option>
 
         </select>
       </ion-item>
@@ -84,6 +84,11 @@
 
         </select>
         
+      </ion-item>
+    </div>
+    <div *ngIf="!code"  class="formulario" style="width: 100%; border: none;">
+      <ion-item *ngFor="let i of productsArray; let indice = index">
+        <input [(ngModel)]="productsAmount[indice]" [placeholder]="placeholders[indice]"/>
       </ion-item>
     </div>
 

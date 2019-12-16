@@ -43,8 +43,14 @@ export class ItemPage {
       this.ProductName = data.description;
       this.price = parseFloat(data.salePrice).toFixed(2);
       this.modelist = data.modelist;
-      this.image1 = data.image1;
-      this.image2 = data.image2;
+      if(!data.image1) {
+        this.image1 = `../assets/coverImages/${data.type}.png`; 
+        this.image2 = `../assets/coverImages/${data.type}.png`; 
+      }
+      else {
+        this.image1 = data.image1;
+        this.image2 = data.image2;
+      }
       
     }).catch((err) => {
 

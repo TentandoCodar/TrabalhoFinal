@@ -16,7 +16,7 @@ export class AboutPage {
   searchType: any;
   searchPlaceholder: string = "Pesquisar";
   hasFilter: boolean = false;
-  
+  noHasImage = [];
 
   constructor(public modalCtrl: ModalController,public navCtrl: NavController) {
     this.firestore = firebase.firestore();
@@ -24,6 +24,7 @@ export class AboutPage {
   }
 
   getData(type = "", term = "") {
+    console.log("Ola")
     if(term) {
       this.firestore.collection("Datasheet").orderBy('name').startAt(term).endAt(term+'\uf8ff').onSnapshot(snapshot => {
         this.productData = [];
@@ -31,6 +32,13 @@ export class AboutPage {
           const data = doc.data();
           data.salePrice = parseFloat(data.salePrice);
           data.salePrice = data.salePrice.toFixed(2);
+          if(!data.image1) {
+            console.log("nao tem imagem")
+            data.image1 = 'coat';
+          }
+          else {
+            console.log("tem imagem");
+          }
           this.productData.push(data);
           
         });
@@ -44,6 +52,13 @@ export class AboutPage {
             const data = doc.data();
             data.salePrice = parseFloat(data.salePrice);
             data.salePrice = data.salePrice.toFixed(2);
+            if(!data.image1) {
+              console.log("nao tem imagem")
+              data.image1 = `../assets/coverImages/${data.type}.png`;
+            }
+            else {
+              console.log("tem imagem");
+            }
             this.productData.push(data);
             
           });
@@ -56,6 +71,13 @@ export class AboutPage {
             const data = doc.data();
             data.salePrice = parseFloat(data.salePrice);
             data.salePrice = data.salePrice.toFixed(2);
+            if(!data.image1) {
+              console.log("nao tem imagem")
+              data.image1 = `../assets/coverImages/${data.type}.png`;
+            }
+            else {
+              console.log("tem imagem");
+            }
             this.productData.push(data);
             
           });

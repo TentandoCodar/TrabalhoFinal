@@ -43,10 +43,12 @@ export class CadastroFichaPage {
   productsIds = [];
   productsArray = [];
   productsAmount = [];
+  placeholders = [];
   materialCost:number = 0;
   laborCustFinal:number = 0;
   profitMargin:number = 0;
   name:string = "";
+  type: string;
   totalComercializationCost:number = 0;
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
     this.date = new Date().toLocaleDateString('pt-BR');
@@ -84,21 +86,7 @@ export class CadastroFichaPage {
       this.firestore.collection('Costs').onSnapshot(snapshot => {
         snapshot.forEach(doc => {
           const data = doc.data();
-          const totalComercializationCostPlaceholder = (
-            parseFloat(data.AdministrativeExpenses) + 
-            parseFloat(data.Comissions) + 
-            parseFloat(data.DiverseExpenses) + 
-            parseFloat(data.FinancialExpenses) + 
-            parseFloat(data.FixedCosts) + 
-            parseFloat(data.Investments) + 
-            parseFloat(data.LaborCostBrute) + 
-            parseFloat(data.OperationalExpenses) + 
-            parseFloat(data.PaymentSheetBrute) + 
-            parseFloat(data.Theft) +
-            parseFloat(data.Transportation) +
-            parseFloat(data.WithDraw)
-        );
-          this.totalComercializationCost = totalComercializationCostPlaceholder;
+          this.standartDivisor = data.Total / 100;
           this.profitMargin = data.ProfitMargin;
           this.laborCust = data.LaborCostBrute;
         });
@@ -127,20 +115,9 @@ export class CadastroFichaPage {
         
         snapshot.forEach(doc => {
           const data = doc.data();
-          const totalComercializationCostPlaceholder = (
-            parseFloat(data.AdministrativeExpenses) + 
-            parseFloat(data.Comissions) + 
-            parseFloat(data.DiverseExpenses) + 
-            parseFloat(data.FinancialExpenses) + 
-            parseFloat(data.FixedCosts) + 
-            parseFloat(data.Investments) + 
-            parseFloat(data.LaborCostBrute) + 
-            parseFloat(data.OperationalExpenses) + 
-            parseFloat(data.PaymentSheetBrute) + 
-            parseFloat(data.Theft) +
-            parseFloat(data.Transportation) +
-            parseFloat(data.WithDraw)
-        )
+          
+          
+          this.standartDivisor = data.Total / 100;
           this.profitMargin = data.ProfitMargin;
           this.laborCust = data.LaborCostBrute;
         });
@@ -158,6 +135,7 @@ export class CadastroFichaPage {
     this.productsIndexes = [];
     for(let i = 0;i < this.productAmount; i++) {
       this.productsArray.push(i);
+      this.placeholders.push(`Selecione a quantidade para o produto ${i + 1}`);
       this.productsIndexes.push("");
     }
     
@@ -185,6 +163,7 @@ export class CadastroFichaPage {
         this.productsIndexes.forEach(value => {
         
           this.productsPrices.push(this.products[value].price * this.productsAmount[value]);
+          
           this.productsIds.push(this.products[value].id);
         })
     
@@ -199,12 +178,11 @@ export class CadastroFichaPage {
     }
     
     this.priceCust = this.materialCost + (this.hourAmount * this.laborCust);
-    this.standartDivisor = 1 - (this.profitMargin / 100 + this.totalComercializationCost / 100);
-    this.salePrice =this.priceCust / this.standartDivisor;
+    this.salePrice = this.priceCust / this.standartDivisor;
+    
     
     this.salePrice = parseFloat(this.salePrice.toFixed(2));
-    let clientCode = this.clientCode;
-    let clientPhone = this.clientPhone;
+    
     let seal1 = this.seal1;
     let seal2 = this.seal2;
     let seal3 = this.seal3;
@@ -226,6 +204,7 @@ export class CadastroFichaPage {
         seal2,
         seal3,
         date,
+        type:this.type,
         modelist,
         productAmount,
         observations,
@@ -240,12 +219,13 @@ export class CadastroFichaPage {
         image2: "",
         description
       }).then((resp) => {
-        this.firestore.collection("Datasheet").doc(resp.id).set({
+        this.firestore.collection("Datasheet").doc(resp.id).update({
           name,
           seal1,
           seal2,
           seal3,
           date,
+          type:this.type,
           modelist,
           productAmount,
           observations,
@@ -274,6 +254,7 @@ export class CadastroFichaPage {
         seal1,
         seal2,
         seal3,
+        type:this.type,
         date,
         modelist,
         observations,

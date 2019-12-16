@@ -17,22 +17,22 @@ import firebase from 'firebase';
   templateUrl: 'cadastro-custos.html',
 })
 export class CadastroCustosPage {
-  withdrawal:number;
-  comissions:number;
-  financialExpenses:number;
-  administrativeExpenses:number;
-  fixedCosts:number;
-  freight:number;
-  investment:number;
-  miscellaneousExpenses:number;
-  operationalExpenses:number;
-  profitMargin:number;
-  theft:number;
-  total:number;
-  charge:number;
-  chargePercentage:number;
-  paymentSheetBrute:number;
-  laborCostBrute:number;
+  withdrawal:any;
+  comissions:any;
+  financialExpenses:any;
+  administrativeExpenses:any;
+  fixedCosts:any;
+  freight:any;
+  investment:any;
+  miscellaneousExpenses:any;
+  operationalExpenses:any;
+  profitMargin:any;
+  theft:any;
+  total:any;
+  charge:any;
+  chargePercentage:any;
+  paymentSheetBrute:any;
+  laborCostBrute:any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     
     this.getData();
@@ -55,12 +55,25 @@ export class CadastroCustosPage {
         this.financialExpenses = data.FinancialExpenses;
         this.miscellaneousExpenses = data.DiverseExpenses;
         this.withdrawal = data.Withdraw;
+        this.total = (
+          parseFloat(this.administrativeExpenses) +
+          parseFloat(this.comissions) +
+          parseFloat(this.operationalExpenses) + 
+          parseFloat(this.theft) +
+          parseFloat(this.freight) +
+          parseFloat(this.fixedCosts) +
+          parseFloat(this.profitMargin) +
+          parseFloat(this.investment) +
+          parseFloat(this.financialExpenses) +
+          parseFloat(this.miscellaneousExpenses) + 
+          parseFloat(this.withdrawal)
+        );
         this.chargePercentage = data.ChargePercentage;
         this.paymentSheetBrute = data.PaymentSheetBrute;
         this.charge = this.paymentSheetBrute * (this.chargePercentage / 100);
         
         
-        this.laborCostBrute  = this.paymentSheetBrute + this.charge;
+        this.laborCostBrute  = parseFloat(this.paymentSheetBrute) + parseFloat(this.charge);
       })
     })
   }
@@ -72,12 +85,26 @@ export class CadastroCustosPage {
     const firestore = firebase.firestore();
     this.charge = this.paymentSheetBrute * (this.chargePercentage / 100);
     this.laborCostBrute  = this.paymentSheetBrute + this.charge;
+    this.total = (
+      parseFloat(this.administrativeExpenses) +
+      parseFloat(this.comissions) +
+      parseFloat(this.operationalExpenses) + 
+      parseFloat(this.theft) +
+      parseFloat(this.freight) +
+      parseFloat(this.fixedCosts) +
+      parseFloat(this.profitMargin) +
+      parseFloat(this.investment) +
+      parseFloat(this.financialExpenses) +
+      parseFloat(this.miscellaneousExpenses) + 
+      parseFloat(this.withdrawal)
+    );
     firestore.collection('Costs').doc("kJEJcageHISuAcRqBVnB").update({
       AdministrativeExpenses: this.administrativeExpenses,
       Comissions: this.comissions,
       OperationalExpenses: this.operationalExpenses,
       Theft: this.theft,
       Transportation: this.freight,
+      total:this.total,
       FixedCosts: this.fixedCosts,
       ProfitMargin: this.profitMargin,
       Investments: this.investment,
