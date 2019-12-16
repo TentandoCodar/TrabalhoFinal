@@ -64,7 +64,20 @@ ion-content{
   font-size: 30px;
   z-index: 1000px;
   margin-top: -50;
+  text-align: center; 
+  display: flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content:center; 
 }
+
+.nav-back-arrow > h1{
+  font-family: 'Poppins';
+  font-weight: 300;
+  margin-left: 10px;
+  margin-bottom: 0px;
+}
+
 
 .popover-content{
   top: 10px                     !important;
@@ -270,6 +283,7 @@ label{
 }
 
 .search-button{
+  font-size: 29px;
   text-align: center; 
   display: flex;
   flex-direction:row;

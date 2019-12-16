@@ -4,17 +4,25 @@ page-sobre {
     .link_site{
     font-size: 17px;
     font-family: 'poppins';
+    margin-bottom: 0px;
     }
-    
+    td{
+        font-size: 16px;
+        font-family: 'poppins';
+        // padding-right: -50%;
+    }
     .link_sitee{
+        margin: 0px;
         padding-left: 10%;
         font-size: 16px;
-        color:     #708090;
         font-family: 'poppins';
+    }.link_sitee a{
+        color: #8ca8c0;
+        margin-top: 0px;
     }
     
     .link_site1{
-        padding-top: 60%;
+        padding-top: 20%;
         font-size: 18px;
         color: #808080;
         text-align: center;
@@ -23,7 +31,7 @@ page-sobre {
     
     .font_pwr{
         font-size: 26px;
-        color: #808080;
+        color: #8ca8c0;
         font-family: 'La Belle Aurore';
     }
     

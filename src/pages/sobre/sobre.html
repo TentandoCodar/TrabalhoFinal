@@ -1,29 +1,35 @@
 <ion-content padding>
 
-  <div>
-    <ion-icon class="nav-back-arrow" name="md-arrow-back" style="position:fixed" (click)="back()"><h2 style="font-family: 'Poppins'; font-weight: 700; margin-left: 20px;">Sobre</h2></ion-icon>
-  </div>
+  <ion-icon class="nav-back-arrow" name="md-arrow-back" style="position:fixed" (click)="back()"><h1>Sobre</h1></ion-icon>
 
   <br>  <br>
 
-<p class="link_site">Versão 1.0.0</p>
-<p class="link_site">Softwares terceiros: </p>
+  <p class="link_site">Aplicativo v1.0.0</p>
+  <p class="link_site">Softwares terceiros: </p>
 
-<a  href="#" class="cadastrar" onclick="window.open('https://firebase.google.com/', '_system', 'location=yes'); return false;" >
-  <p class="link_sitee">Firebase  </p>
-</a>
+  <p class="link_sitee">
+    <a  href="#" onclick="window.open('https://firebase.google.com/', '_system', 'location=yes'); return false;" >
+      Firebase</a>
+<br>
+    <a  href="#" onclick="window.open('https://thingspeak.com/', '_system', 'location=yes'); return false;" >
+      Thingspeak</a>
+  </p>
 
-<a  href="#" class="cadastrar" onclick="window.open('https://thingspeak.com/', '_system', 'location=yes'); return false;" >
-  <p class="link_sitee">Thingspeak  </p>
-</a>
+  <p class="link_site">Versões:  </p>
 
+    <!-- <p >  -->
+      <table style="margin-left: 10%; width: 100%;">
+        <tr><td>Ionic:</td>     <td> </td>  <td>3.2.2 </td></tr>
+        <tr><td>Firebase:</td>  <td> </td>  <td>^7.5.0</td></tr>
+        <tr><td>Angular:</td>   <td> </td>  <td>3.9.5 </td></tr>
+        <tr><td>Typescript:</td><td> </td>  <td>^3.7.3</td></tr>
+      </table>
+    <!-- </p> -->
 
-<p class="link_site">Versão ionic 3.2.2 </p>
-
-<p class="link_site">A franquia Wave pertence à High Fashion.</p>
+  <p class="link_site" style="text-align: center;">A franquia Wave pertence à empresa High Fashion.</p>
 
 
   <p class="link_site1">Criado por<br><a  href="#" class="cadastrar" onclick="window.open('http://10.10.9.168/pwr/index.php', '_system', 'location=yes'); return false;" > <span class="font_pwr"> PWR</span></a>
-
+</p>
 
 </ion-content>
